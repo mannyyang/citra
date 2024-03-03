@@ -11,13 +11,11 @@ Welcome to UseNuxt, a comprehensive SaaS starter project built with Nuxt.js, des
 - **SEO Friendly:** Built-in SEO optimization for better visibility.
 - **Fully Customizable:** Flexible codebase that allows for easy customization and scalability.
 
-
 ## Demo 🚀
 
 Experience UseNuxt in action and see firsthand what it can do for your next project.
 
 👉 [Visit the Demo](http://demo.usenuxt.com)
-
 
 ## Installation 🛠
 
@@ -88,7 +86,6 @@ UseNuxt leverages a powerful stack of technologies and libraries to provide a co
 
 These dependencies are carefully selected to provide a robust, scalable foundation for your SaaS application, ensuring that you have all the tools you need for development, deployment, and beyond.
 
-
 ## Contributing 🤝
 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -102,4 +99,3 @@ Contributions are what make the open-source community such an amazing place to l
 ## License 📄
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
