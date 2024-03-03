@@ -26,9 +26,9 @@ const footerNavs = [
     </div>
     <ul class="items-center justify-center mt-8 space-y-5 sm:flex sm:space-x-4 sm:space-y-0">
       <li v-for="item in footerNavs" :key="item.name" class="">
-        <a href="{{item.href}}">
+        <NuxtLink :to="item.href">
           {{ item.name }}
-        </a>
+        </NuxtLink>
       </li>
     </ul>
     <div class="mt-8 items-center justify-between sm:flex gap-8">
@@ -39,7 +39,7 @@ const footerNavs = [
         <ul class="flex items-center space-x-8">
           <li>
             <NuxtLink external href="https://github.com/samkanje/usenuxt-free">
-              <UIcon name="i-devicon-github" class="h-6 w-6 grayscale hover:grayscale-0" />
+              <UIcon name="i-devicon-github" class="h-6 w-6 grayscale hover:grayscale-0 dark:invert dark:opacity-60" />
             </NuxtLink>
           </li>
           <li>
@@ -49,7 +49,7 @@ const footerNavs = [
           </li>
           <li>
             <NuxtLink external href="https://twitter.com/in/kanje">
-              <UIcon name="i-devicon-twitter" class="h-6 w-6 grayscale hover:grayscale-0" />
+              <UIcon name="i-devicon-twitter" class="h-6 w-6 grayscale hover:grayscale-0 dark:invert dark:opacity-60" />
             </NuxtLink>
           </li>
           <li>

@@ -1,6 +1,6 @@
 {
-  "id": "8bebb0cf-4fe8-42bf-9e54-bfc98bc796c6",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "2bda0705-92ee-49f2-82e3-5eab9f2bcde6",
+  "prevId": "8bebb0cf-4fe8-42bf-9e54-bfc98bc796c6",
   "version": "5",
   "dialect": "pg",
   "tables": {
@@ -381,6 +381,13 @@
           "type": "varchar",
           "primaryKey": false,
           "notNull": true
+        },
+        "interval": {
+          "name": "interval",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'month'"
         },
         "stripe_customer_id": {
           "name": "stripe_customer_id",

@@ -2,7 +2,7 @@ import type Stripe from 'stripe'
 
 export default defineEventHandler(async (event) => {
   const rawBody = await readRawBody(event)
-  const stripeSignature = event.headers.get('stripe-signature')
+  const stripeSignature = event.node.req.headers['stripe-signature'] as string
   if (!stripeSignature || !rawBody) {
     throw createError({
       statusCode: 400,
@@ -33,5 +33,8 @@ export default defineEventHandler(async (event) => {
       })
     }
   }
+  if (stripeEvent.type && (stripeEvent.type.startsWith('product') || stripeEvent.type.startsWith('plan') || stripeEvent.type.startsWith('price')))
+    await stripeService.updateProducts()
+
   return `handled ${stripeEvent.type}.`
 })
