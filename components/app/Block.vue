@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import grapesjs from 'grapesjs'
-import plugin from '../types'
+import grapesjs from 'grapesjs';
+import plugin from '../types';
 
 const gjs = ref(null)
 
 onMounted(() => {
   grapesjs.init({
     container: gjs.value,
-    height: '100%',
+    height: 'auto',
     noticeOnUnload: false,
     storageManager: false,
     fromElement: true,
@@ -20,5 +20,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="gjs" />
+  <div ref="gjs" class="min-h-full" />
 </template>

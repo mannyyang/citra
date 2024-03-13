@@ -1,6 +1,14 @@
 <script setup lang="ts">
 const route = useRoute()
-const layout = () => route?.path?.startsWith('/app') ? 'app' : 'default'
+
+function layout() {
+  if (route?.path?.startsWith('/app'))
+    return 'app'
+  else if (route?.path?.startsWith('/build'))
+    return 'build'
+  else
+    return 'default'
+}
 </script>
 
 <template>
