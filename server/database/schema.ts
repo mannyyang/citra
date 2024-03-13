@@ -56,7 +56,7 @@ export type OrgInvitation = typeof orgInvitation.$inferSelect
 export const product = pgTable('product', {
   id: varchar('id').primaryKey(),
   name: varchar('name').notNull(),
-  code: varchar('code').notNull(),
+  code: varchar('code'),
   monthlyPrice: bigint('pricing_monthly', { mode: 'number' }).notNull(),
   stripeMonthlyPriceId: varchar('stripe_monthly_pricing_id').notNull(),
   yearlyPrice: bigint('pricing_yearly', { mode: 'number' }).notNull(),
