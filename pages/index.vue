@@ -7,7 +7,3 @@
   <MarketingPricing />
   <MarketingFAQ />
 </template>
-
-<style>
-@import url('~/assets/css/grapes.min.css')
-</style>

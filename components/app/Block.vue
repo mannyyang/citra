@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import grapesjs from 'grapesjs';
+import 'grapesjs/dist/css/grapes.min.css';
 import plugin from '../types';
 
 const gjs = ref(null)
