@@ -34,4 +34,10 @@ export default defineNuxtConfig({
     apiHost: process.env.PLAUSIBLE_API_HOST ?? 'https://plausible.io',
     trackLocalhost: true,
   },
+
+  app: {
+    head: {
+      link: [{ rel: 'stylesheet', href: 'https://unpkg.com/grapesjs/dist/css/grapes.min.css' }],
+    },
+  },
 })
