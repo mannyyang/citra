@@ -24,7 +24,6 @@
     "@lucia-auth/oauth": "^3.5.1",
     "@nuxt/ui": "^2.11.1",
     "drizzle-orm": "^0.29.3",
-    "grapesjs": "^0.21.9",
     "lucia": "^2.7.6",
     "postgres": "^3.4.3",
     "slugify": "^1.6.6",

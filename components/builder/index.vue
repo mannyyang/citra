@@ -1,32 +1,30 @@
 <script setup lang="ts">
 import { useGrapes } from 'vue-grapesjs-composables';
-import 'grapesjs/dist/css/grapes.min.css';
-
-import divBlock from './plugins';
+import 'vue-grapesjs-composables/css/vue-grapes.css'
+import devBlock from './plugins/div'
 
 const canvas = ref(null)
 
 const grapes = useGrapes({
   container: canvas,
   height: 'auto',
-  panels: {},  
+  panels: {},    
 })
 
-grapes.onInit(divBlock)
+grapes.onInit(devBlock)
 </script>
 
 <template>
-  <div class="ca-builder flex w-full min-h-full">  
+  <div class="ca-builder flex w-full min-h-full">
     <div
-      ref="canvas"
-      class="flex-1 min-h-full"
-    />
+      ref="canvas"     
+      class="flex-1 min-h-full" 
+    >
+    </div>
+    <BuilderBlocks :grapes="grapes"/>
   </div>
 </template>
 
-<style scoped >
-.gjs-devices-c {
-  padding: 2px 3px 0 3px;
-}
-
+<style>
+.gjs-cv-canvas { position: absolute; }
 </style>
