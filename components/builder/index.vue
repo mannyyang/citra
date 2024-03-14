@@ -21,7 +21,6 @@ grapes.onInit(devBlock)
       class="flex-1 min-h-full" 
     >
     </div>
-    <BuilderBlocks :grapes="grapes"/>
   </div>
 </template>
 
