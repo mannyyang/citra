@@ -8,6 +8,9 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
+  routeRules: {
+    '/build/**': { ssr: false },
+  },
   runtimeConfig: {
     databaseUrl: '',
     public: {
@@ -33,5 +36,5 @@ export default defineNuxtConfig({
     domain: process.env.PLAUSIBLE_DOMAIN,
     apiHost: process.env.PLAUSIBLE_API_HOST ?? 'https://plausible.io',
     trackLocalhost: true,
-  },
+  }
 })

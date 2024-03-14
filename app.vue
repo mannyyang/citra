@@ -1,10 +1,9 @@
 <script setup lang="ts">
-const route = useRoute()
-const layout = () => route?.path?.startsWith('/app') ? 'app' : 'default'
+const { layout } = useLayout()
 </script>
 
 <template>
-  <NuxtLayout :name="layout()">
+  <NuxtLayout :name="layout">
     <NuxtPage />
   </NuxtLayout>
 </template>

@@ -13,6 +13,11 @@ const appLinks = computed(() => [
     icon: 'i-solar-users-group-rounded-line-duotone',
     to: `${base.value}/team`,
   },
+  {
+    label: 'Build',
+    icon: 'i-solar-users-group-rounded-line-duotone',
+    to: `${base.value}/build`,
+  },
 ])
 
 const adminLinks = computed(() => [
