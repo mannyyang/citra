@@ -1,129 +1,46 @@
-import type { Plugin } from 'grapesjs'
-import loadBlocks from './blocks'
+import type { Plugin } from 'grapesjs';
 
-export interface PluginOptions {
-  /**
-   * Which blocks to add.
-   * @default ['column1', 'column2', 'column3', 'column3-7', 'text', 'link', 'image', 'video', 'map']
-   */
-  blocks?: string[]
 
-  /**
-   * Make use of flexbox for the grid
-   * @default false
-   */
-  flexGrid?: boolean
+const COMPONENT_TYPE = 'ntvDiv';
 
-  /**
-   * Classes prefix
-   * @default 'gjs-'
-   */
-  stylePrefix?: string
+/**
+ * Creates an empty div as a starting point.
+ */
+const plugin: Plugin = (editor) => {
+  const Components = editor.Components;
+  const BlockManager = editor.BlockManager;
 
-  /**
-   * Use basic CSS for blocks
-   * @default true
-   */
-  addBasicStyle?: boolean
+  Components.addType(COMPONENT_TYPE, {
+    isComponent: (el) => {
+      if (el && el.classList) return el.classList.contains('ntvb-div');
+    },
+    model: {
+      defaults: {
+        classes: ['ntvb-div'],
+        tagName: 'div',
+        style: {
+          display: 'flex',
+          padding: '20px'
+        }
+      }
+    }
+  });
 
-  /**
-   * Blocks category name
-   * @default 'Basic'
-   */
-  category?: string
-
-  /**
-   * 1 Column label
-   * @default '1 Column'
-   */
-  labelColumn1?: string
-
-  /**
-   * 2 Columns label
-   * @default '2 Columns'
-   */
-  labelColumn2?: string
-
-  /**
-   * 3 Columns label
-   * @default '3 Columns'
-   */
-  labelColumn3?: string
-
-  /**
-   * 3/7 Columns label
-   * @default '2 Columns 3/7'
-   */
-  labelColumn37?: string
-
-  /**
-   * Text label
-   * @default 'Text'
-   */
-  labelText?: string
-
-  /**
-   * Link label
-   * @default 'Link'
-   */
-  labelLink?: string
-
-  /**
-   * Image label
-   * @default 'Image'
-   */
-  labelImage?: string
-
-  /**
-   * Video label
-   * @default 'Video'
-   */
-  labelVideo?: string
-
-  /**
-   * Map label
-   * @default 'Map'
-   */
-  labelMap?: string
-
-  /**
-   * Initial row height
-   * @default 75
-   */
-  rowHeight?: number
-}
-
-const plugin: Plugin<PluginOptions> = (editor, opts = {}) => {
-  const config: Required<PluginOptions> = {
-    blocks: [
-      'column1',
-      'column2',
-      'column3',
-      'column3-7',
-      'text',
-      'link',
-      'image',
-      'video',
-      'map',
-    ],
-    flexGrid: false,
-    stylePrefix: 'gjs-',
-    addBasicStyle: true,
+  BlockManager.add('div', {
     category: 'Basic',
-    labelColumn1: '1 Column',
-    labelColumn2: '2 Columns',
-    labelColumn3: '3 Columns',
-    labelColumn37: '2 Columns 3/7',
-    labelText: 'Text',
-    labelLink: 'Link',
-    labelImage: 'Image',
-    labelVideo: 'Video',
-    labelMap: 'Map',
-    rowHeight: 75,
-    ...opts,
-  }
+    label: 'Div',
+    media: `
+    <svg viewBox="0 0 24 24">
+      <path 
+        fill="currentColor" 
+        d="M2 20h20V4H2v16Zm-1 0V4a1 1 0 0 1 1-1h20a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1Z">
+      </path>
+    </svg>`,
+    content: {
+      type: COMPONENT_TYPE
+    },
+    select: true
+  });
+};
 
-  loadBlocks(editor, config)
-}
-
-export default plugin
+export default plugin;

@@ -1,23 +1,17 @@
 <script setup lang="ts">
-import grapesjs from 'grapesjs';
-import 'grapesjs/dist/css/grapes.min.css';
+import { useGrapes } from 'vue-grapesjs-composables'
+import 'vue-grapesjs-composables/css/vue-grapes.css'
 import plugin from '../types';
 
 const gjs = ref(null)
 
-onMounted(() => {
-  grapesjs.init({
-    container: gjs.value,
-    height: 'auto',
-    noticeOnUnload: false,
-    storageManager: false,
-    fromElement: true,
-    plugins: [plugin],
-    pluginsOpts: [
-      editor => plugin(editor, {}),
-    ],
-  })
+const grapes = useGrapes({
+  container: gjs,
+  fromElement: true
 })
+
+grapes.onInit(editor => plugin(editor))
+
 </script>
 
 <template>
