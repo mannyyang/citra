@@ -25,5 +25,6 @@ grapes.onInit(devBlock)
 </template>
 
 <style>
-.gjs-cv-canvas { position: absolute; }
+.gjs-cv-canvas { position: absolute;  top: 42px}
+.gjs-devices-c { padding: 2px 3px 0px 3px }
 </style>
