@@ -1,7 +1,7 @@
 import type { Plugin } from 'grapesjs';
 
 
-const COMPONENT_TYPE = 'ntvDiv';
+const COMPONENT_TYPE = 'caDiv';
 
 /**
  * Creates an empty div as a starting point.
