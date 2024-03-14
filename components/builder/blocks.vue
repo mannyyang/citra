@@ -7,8 +7,14 @@ const blocksMgr = useBlocks(grapes)
 </script>
 
 <template>
-  <div class="block-list">
-    <div v-for="block in blocksMgr.blocks" :key="block.getId()" draggable="true"
-      @dragstart="blocksMgr.dragStart(block._model)" @dragend="blocksMgr.dragStop()" v-html="block.getLabel()" />
+  <div class="block-list w-1/6 border border-grey">
+    <div
+      v-for="block in blocksMgr.blocks"
+      :key="block.getId()"
+      draggable="true"
+      @dragstart="blocksMgr.dragStart(block._model)"
+      @dragend="blocksMgr.dragStop()"
+      v-html="block.getLabel()"
+    />
   </div>
 </template>

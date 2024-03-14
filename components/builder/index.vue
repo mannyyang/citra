@@ -2,17 +2,24 @@
 import { useGrapes } from 'vue-grapesjs-composables';
 import 'vue-grapesjs-composables/css/vue-grapes.css';
 
-import plugin from './plugins/div';
+import divBlock from './plugins/div';
 
-const gjs = ref(null)
+const canvas = ref(null)
 
 const grapes = useGrapes({
-  container: gjs,
+  container: canvas,
   height: 'auto',
-  plugins: [plugin],
+  plugins: [divBlock],
+  panels: {},
 })
 </script>
 
 <template>
-  <div ref="gjs" class="min-h-full" />
+  <div class="ca-builder flex w-full min-h-full">
+    <BuilderBlocks :grapes="grapes" />
+    <div
+      ref="canvas"
+      class="flex-1 min-h-full"
+    />
+  </div>
 </template>
