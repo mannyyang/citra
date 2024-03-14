@@ -2,7 +2,7 @@ import type { Plugin } from 'grapesjs';
 import loadBlocks from './blocks';
 import { type PluginOptions } from "./pluginOptions";
 
-const plugin: Plugin<PluginOptions> = (editor, opts = {}) => {
+const plugin: Plugin<PluginOptions> = (editor) => {
     const config: Required<PluginOptions> = {
       blocks: [
         'column1',
@@ -29,7 +29,6 @@ const plugin: Plugin<PluginOptions> = (editor, opts = {}) => {
       labelVideo: 'Video',
       labelMap: 'Map',
       rowHeight: 75,
-      ...opts
     };
   
     loadBlocks(editor, config);
