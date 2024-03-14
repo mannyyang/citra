@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/build': { ssr: false },
+    '/build/**': { ssr: false },
   },
   runtimeConfig: {
     databaseUrl: '',
