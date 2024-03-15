@@ -1,13 +1,14 @@
-
-const COMPONENT_TYPE = 'caDiv';
+import type { Plugin } from 'grapesjs';
 
 /**
- * Creates an empty div as a starting point.
+ * Creates a button component with some default styles and adds it as a reusable block.
  */
-const plugin = (editor) => {
+const COMPONENT_TYPE = 'ntvButton';
+
+const plugin: Plugin = (editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
-  
+
   Components.addType(COMPONENT_TYPE, {
     extend: 'link',
     isComponent: (el) => {
@@ -34,23 +35,6 @@ const plugin = (editor) => {
       init() {}
     }
   });
-
-  BlockManager.add('div', {
-    category: 'Basic',
-    label: 'Div',
-    media: `
-    <svg viewBox="0 0 24 24">
-      <path 
-        fill="currentColor" 
-        d="M2 20h20V4H2v16Zm-1 0V4a1 1 0 0 1 1-1h20a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1Z">
-      </path>
-    </svg>`,
-    content: {
-      type: COMPONENT_TYPE
-    },
-    select: true
-  });
-
 
   BlockManager.add('button', {
     category: 'Basic',
