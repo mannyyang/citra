@@ -1,17 +1,17 @@
-import type { Plugin } from 'grapesjs';
+import type { Editor } from 'grapesjs';
 
 /**
  * Creates a button component with some default styles and adds it as a reusable block.
  */
 const COMPONENT_TYPE = 'ntvButton';
 
-const plugin: Plugin = (editor) => {
+const plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
   Components.addType(COMPONENT_TYPE, {
     extend: 'link',
-    isComponent: (el) => {
+    isComponent: (el: HTMLElement) => {
       if (el && el.classList) return el.classList.contains('ntvb-button');
     },
     model: {

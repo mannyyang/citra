@@ -1,16 +1,16 @@
-import type { Plugin } from 'grapesjs';
+import type { Editor } from 'grapesjs';
 
 const COMPONENT_TYPE = 'div';
 
 /**
  * Creates an empty div as a starting point.
  */
-const plugin: Plugin = (editor) => {
+const plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
   Components.addType(COMPONENT_TYPE, {
-    isComponent: (el) => {
+    isComponent: (el: HTMLElement) => {
       if (el && el.classList) return el.classList.contains('ca-div');
     },
     model: {
