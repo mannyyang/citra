@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { useGrapes } from 'vue-grapesjs-composables';
-import 'vue-grapesjs-composables/css/vue-grapes.css'
 import devBlock from './plugins/div'
+import "grapesjs/dist/css/grapes.min.css"
+
 
 const canvas = ref(null)
 
@@ -24,7 +25,3 @@ grapes.onInit(devBlock)
   </div>
 </template>
 
-<style>
-.gjs-cv-canvas { position: absolute;  top: 42px}
-.gjs-devices-c { padding: 2px 3px 0px 3px }
-</style>
