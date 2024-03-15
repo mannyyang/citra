@@ -2,7 +2,7 @@
 import { useGrapes } from 'vue-grapesjs-composables';
 import devBlock from './plugins/div'
 import "grapesjs/dist/css/grapes.min.css"
-
+import "./builder.css"
 
 const canvas = ref(null)
 
