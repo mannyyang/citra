@@ -1,4 +1,4 @@
-import type { Editor } from 'grapesjs';
+import type { Editor, Plugin } from 'grapesjs';
 
 
 const COMPONENT_TYPE = 'navListItem';
@@ -6,12 +6,11 @@ const COMPONENT_TYPE = 'navListItem';
 /**
  * Creates an empty div as a starting point.
  */
-const plugin = (editor: Editor) => {
+const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
-  Components.addType(COMPONENT_TYPE, {
-    extend: 'navList',
+  Components.addType(COMPONENT_TYPE, {    
     isComponent: (el: HTMLElement) => {
       if (el && el.classList) return el.classList.contains('nav-list-item');
     },
@@ -19,6 +18,13 @@ const plugin = (editor: Editor) => {
       defaults: {
         classes: ['nav-list-item'],
         tagName: 'li',
+        style: {
+          outline: '1px dashed #555 !important',
+          'outline-offset': '-1px !important',
+          'box-shadow': 'inset 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 4px rgba(255, 255, 255, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.3)',
+          height: '75px',
+          'min-width': '75px'
+        }
       },      
     }
   });

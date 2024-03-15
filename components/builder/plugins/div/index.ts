@@ -1,11 +1,11 @@
-import type { Editor } from 'grapesjs';
+import type { Editor, Plugin } from 'grapesjs';
 
 const COMPONENT_TYPE = 'div';
 
 /**
  * Creates an empty div as a starting point.
  */
-const plugin = (editor: Editor) => {
+const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 

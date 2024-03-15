@@ -1,11 +1,11 @@
-import type { Editor } from 'grapesjs';
+import type { Editor, Plugin } from 'grapesjs';
 
 /**
  * Creates a link component with some default styles and adds it as a reusable block.
  */
 const COMPONENT_TYPE = 'ntvLinkBlock';
 
-const plugin = (editor: Editor) => {
+const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
@@ -19,8 +19,8 @@ const plugin = (editor: Editor) => {
         style: {
           display: 'inline-block',          
           padding: '5px',
-          'min-height': '50px',
-          'min-width': '50px',
+          height: '50px',
+          width: '50px'
         },
         tagName: 'a'
       },
