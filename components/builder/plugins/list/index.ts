@@ -1,5 +1,5 @@
 import type { Editor, Plugin } from 'grapesjs';
-
+import { LIST_ITEM_STYLE } from '../listItem';
 
 const COMPONENT_TYPE = 'navList';
 
@@ -25,14 +25,8 @@ const plugin: Plugin = (editor: Editor) => {
         },
         components:[{
           tagName: 'li',
-          type: 'text',
-          style: {
-            outline: '1px dashed #555 !important',
-            'outline-offset': '-1px !important',
-            'box-shadow': 'inset 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 4px rgba(255, 255, 255, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.3)',
-            height: '75px',
-            'min-width': '75px'
-          }
+          type: 'navListItem',
+          style: LIST_ITEM_STYLE
         }],        
       },      
     }
