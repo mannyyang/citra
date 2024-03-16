@@ -27,12 +27,10 @@ const plugin: Plugin = (editor: Editor) => {
       defaults: {
         classes: ['nav-list-item'],
         tagName: 'li',
-        style: LIST_ITEM_STYLE
-      },
-      
-    },
-    
-    
+        style: LIST_ITEM_STYLE,
+        draggable: `[data-gjs-type="navList"]`
+      }      
+    }
   });
 
   BlockManager.add('listItem', {
