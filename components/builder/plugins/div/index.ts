@@ -8,13 +8,13 @@ const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
-  Components.addType(ComponentTypes.NtvbDiv, {
+  Components.addType(ComponentTypes.CaDiv, {
     isComponent: (el: HTMLElement) => {
-      if (el && el.classList) return el.classList.contains(ComponentClasses.NtvbDiv);
+      if (el && el.classList) return el.classList.contains(ComponentClasses.CaDiv);
     },
     model: {
       defaults: {
-        classes: [ComponentClasses.NtvbDiv],
+        classes: [ComponentClasses.CaDiv],
         tagName: 'div',
         style: {
           display: 'flex',
@@ -35,7 +35,7 @@ const plugin: Plugin = (editor: Editor) => {
       </path>
     </svg>`,
     content: {
-      type: ComponentTypes.NtvbDiv
+      type: ComponentTypes.CaDiv
     },
     select: true
   });
