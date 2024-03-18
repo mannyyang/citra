@@ -10,9 +10,7 @@ export const LIST_ITEM_STYLE = {
   'min-width': '75px',
   padding: '10px'
 }
-/**
- * Creates an empty div as a starting point.
- */
+
 const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;

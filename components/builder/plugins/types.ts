@@ -4,7 +4,10 @@ export enum ComponentTypes {
     CaList = 'CaList',
     CaLinkBlock = 'CaLinkBlock',
     CaDiv = 'CaDiv',
-    CaButton = 'CaButton'
+    CaButton = 'CaButton',
+    CaHeading = 'CaHeading',
+    CaParagraph = 'CaParagraph',
+    CaTextLink = 'CaTextLink'
 }
 
 export enum ComponentClasses {
@@ -13,12 +16,19 @@ export enum ComponentClasses {
     CaLinkBlock = 'ntvb-link-block',
     CaDiv = 'ntvb-div',
     CaButton = 'ntvb-button',
-}
+    CaHeading = 'ntvb-heading',
+    CaParagraph = 'ntvb-paragraph',
+    CaTextLink = 'ntvb-text-link'
+
+};
 
 export enum BlockIdentifies {
     ListItem = 'listItem',
     List = 'list',
     Link = 'link',
     Div = 'div',
-    Button = 'button'
+    Button = 'button',
+    Heading = 'heading',
+    Paragraph = 'paragraph',
+    TextBlock = 'textBlock'
 }
