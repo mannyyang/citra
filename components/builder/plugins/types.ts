@@ -7,7 +7,10 @@ export enum ComponentTypes {
     CaButton = 'CaButton',
     CaHeading = 'CaHeading',
     CaParagraph = 'CaParagraph',
-    CaTextLink = 'CaTextLink'
+    CaTextLink = 'CaTextLink',
+    CaTextBlock = 'CaTextBlock',
+    CaBlockQuote = 'CaBlockQuote',
+    CaRichText = 'CaRichText'
 }
 
 export enum ComponentClasses {
@@ -18,8 +21,10 @@ export enum ComponentClasses {
     CaButton = 'ntvb-button',
     CaHeading = 'ntvb-heading',
     CaParagraph = 'ntvb-paragraph',
-    CaTextLink = 'ntvb-text-link'
-
+    CaTextLink = 'ntvb-text-link',
+    CaTextBlock = 'ntvb-text-block',
+    CaBlockQuote = 'ntvb-block-quote',
+    CaRichText = 'ntvb-rich-text'
 };
 
 export enum BlockIdentifies {
@@ -30,5 +35,8 @@ export enum BlockIdentifies {
     Button = 'button',
     Heading = 'heading',
     Paragraph = 'paragraph',
-    TextBlock = 'textBlock'
+    TextLink = 'textLink',
+    TextBlock = 'textBlock',
+    BlockQuote = 'blockQuote',
+    RichText = 'richText'
 }
