@@ -1,21 +1,20 @@
-import type { Plugin } from 'grapesjs';
-
-const COMPONENT_TYPE = 'div';
+import type { Editor, Plugin } from 'grapesjs';
+import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
 
 /**
  * Creates an empty div as a starting point.
  */
-const plugin: Plugin = (editor) => {
+const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
-  Components.addType(COMPONENT_TYPE, {
-    isComponent: (el) => {
-      if (el && el.classList) return el.classList.contains('ca-div');
+  Components.addType(ComponentTypes.CaDiv, {
+    isComponent: (el: HTMLElement) => {
+      if (el && el.classList) return el.classList.contains(ComponentClasses.CaDiv);
     },
     model: {
       defaults: {
-        classes: ['ca-div'],
+        classes: [ComponentClasses.CaDiv],
         tagName: 'div',
         style: {
           display: 'flex',
@@ -25,7 +24,7 @@ const plugin: Plugin = (editor) => {
     }
   });
 
-  BlockManager.add('div', {
+  BlockManager.add(BlockIdentifies.Div, {
     category: 'Basic',
     label: 'Div',
     media: `
@@ -36,7 +35,7 @@ const plugin: Plugin = (editor) => {
       </path>
     </svg>`,
     content: {
-      type: COMPONENT_TYPE
+      type: ComponentTypes.CaDiv
     },
     select: true
   });
