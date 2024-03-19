@@ -17,6 +17,7 @@ const plugin: Plugin = (editor: Editor) => {
         model: {
             defaults: {
                 classes: [ComponentClasses.CaVideo],
+                provider: 'so',
                 'change:provider': 'updateProvider',
             },
 
