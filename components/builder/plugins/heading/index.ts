@@ -10,6 +10,7 @@ const plugin: Plugin = (editor: Editor) => {
     isComponent: (el: HTMLElement) => {
       if (el && el.classList) return el.classList.contains(ComponentClasses.CaHeading);
     },
+    extend: 'text',
     model: {
       defaults: {
         classes: [ComponentClasses.CaHeading],

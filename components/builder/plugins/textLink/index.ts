@@ -12,6 +12,7 @@ const plugin: Plugin = (editor: Editor) => {
           return el.classList.contains(ComponentClasses.CaTextLink);
         }
       },
+      extend: 'text',
       model: {
         defaults: {
           classes: [ComponentClasses.CaTextLink],
@@ -22,11 +23,14 @@ const plugin: Plugin = (editor: Editor) => {
             color: '-webkit-link',
             cursor: 'pointer',
             'text-decoration': 'underline'            
-          },
+          },        
           traits: ['href'],
           content: 'Text Link'
-        }
+        },
+        
+
       }
+      
     });
   
     BlockManager.add(BlockIdentifies.TextLink, {

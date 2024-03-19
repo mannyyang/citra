@@ -12,6 +12,7 @@ const plugin: Plugin = (editor: Editor) => {
           return el.classList.contains(ComponentClasses.CaParagraph);
         }
       },
+      extend: 'text',
       model: {
         defaults: {
           classes: [ComponentClasses.CaParagraph],
