@@ -13,7 +13,9 @@ export enum ComponentTypes {
     CaRichText = 'CaRichText',
     CaImage = 'CaImage',
     CaVideo = 'CaVideo',
-    CaYoutube = 'CaYoutube'
+    CaYoutube = 'CaYoutube',
+    CaRow = 'CaRow',
+    CaCell = 'CaCell'
 }
 
 export enum ComponentClasses {
@@ -30,7 +32,10 @@ export enum ComponentClasses {
     CaRichText = 'ntvb-rich-text',
     CaImage = 'ntvb-image',
     CaVideo = 'ntvb-video',
-    CaYoutube = 'ntvb-youtube'
+    CaYoutube = 'ntvb-youtube',
+    CaRow = 'ntvb-row',
+    CaCell = 'ntvb-cell',
+
 };
 
 export enum BlockIdentifies {
@@ -47,5 +52,6 @@ export enum BlockIdentifies {
     RichText = 'richText',
     Image = 'image',
     Video = 'video',
-    Youtube = 'youtube'
+    Youtube = 'youtube',
+    Column = 'column'
 }

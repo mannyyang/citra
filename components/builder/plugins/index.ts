@@ -1,5 +1,6 @@
 import BlockQuote from './blockQuote';
 import Button from './button';
+import Column from './column';
 import Div from './div';
 import Heading from './heading';
 import Image from './image';
@@ -25,7 +26,8 @@ const plugins = [
   BlockQuote,
   Image,
   Video,
-  Youtube
+  Youtube,
+  Column
 ];
 
 export default plugins;
