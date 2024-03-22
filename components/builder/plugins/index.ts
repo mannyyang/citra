@@ -19,6 +19,7 @@ const plugins = [
   LinkBlock,
   List,
   ListItem,
+  Column,
   Heading,
   Paragraph,
   TextLink,
@@ -26,8 +27,7 @@ const plugins = [
   BlockQuote,
   Image,
   Video,
-  Youtube,
-  Column
+  Youtube
 ];
 
 export default plugins;
