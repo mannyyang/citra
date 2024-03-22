@@ -116,7 +116,7 @@ const plugin: Plugin = (editor: Editor) => {
             value = toParse ? JSON.stringify(value) : value;
             result.push(`${key}=${toParse ? `'${value}'` : `'${value}'`}`);
         }
-        console.log(result.join(' '))
+
         return result.length ? ` ${result.join(' ')}` : '';
     };
 
@@ -167,8 +167,16 @@ const plugin: Plugin = (editor: Editor) => {
                 const childComponents = editor.getSelected()?.components();
                 if (childComponents) {
                     let counts = 1;
-                    while (childComponents.length)
-                        childComponents.at(0).remove();
+
+                    for (let i = 0; i < childComponents.length; i++) {
+                        if (childComponents.at(i).components().length > 0) {
+                            continue;
+                        } else {
+                            childComponents.at(i).remove();
+                            i -= 1;
+                        }
+                    }
+
 
                     switch (this.getAttributes().type) {
                         case 'one':
@@ -183,7 +191,9 @@ const plugin: Plugin = (editor: Editor) => {
                             counts = 3;
                             break;
                     }
-
+                    const baseId = childComponents.length;
+                    counts -= baseId;
+                    
                     for (let i = 0; i < counts; i++) {
                         childComponents.add({
                             type: ComponentTypes.CaCell,
@@ -191,11 +201,11 @@ const plugin: Plugin = (editor: Editor) => {
 
                         if (counts === 2) {
                             if (('one_two' === this.getAttributes().type && i === 0) || ('two_one' === this.getAttributes().type && i === 1)) {
-                                childComponents.at(i).setStyle(flexGrid ? { 'flex-basis': '33%' } : { 'width': '33%' })
+                                childComponents.at(baseId + i).setStyle(flexGrid ? { 'flex-basis': '33%' } : { 'width': '33%' })
                             }
 
                             if (('one_two' === this.getAttributes().type && i === 1) || ('two_one' === this.getAttributes().type && i === 0)) {
-                                childComponents.at(i).setStyle(flexGrid ? { 'flex-basis': '67%' } : { 'width': '67%' })
+                                childComponents.at(baseId + i).setStyle(flexGrid ? { 'flex-basis': '67%' } : { 'width': '67%' })
                             }
                         }
                     }
