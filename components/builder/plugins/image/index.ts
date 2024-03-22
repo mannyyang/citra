@@ -15,8 +15,7 @@ const plugin: Plugin = (editor: Editor) => {
       extend: 'image',
       model: {
         defaults: {            
-          classes: [ComponentClasses.CaImage],
-          draggable: `[data-gjs-type="${ComponentTypes.CaDiv}"]`,
+          classes: [ComponentClasses.CaImage],          
           style: {
             'padding': '10px 25px',
             'align': 'center',
