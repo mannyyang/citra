@@ -5,28 +5,25 @@ import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
 /**
  * Creates a link component with some default styles and adds it as a reusable block.
  */
-const COMPONENT_TYPE = 'ntvLinkBlock';
 
 const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
   Components.addType(ComponentTypes.CaLinkBlock, {
-    isComponent: (el: HTMLElement) => {
-      if (el && el.classList) return el.classList.contains(ComponentClasses.CaLinkBlock);
-    },
+    isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaLinkBlock.toLowerCase(),
     model: {
       defaults: {
         classes: [ComponentClasses.CaLinkBlock],
         style: {
-          display: 'inline-block',          
+          display: 'inline-block',
           padding: '5px',
           height: '50px',
           width: '50px'
         },
         tagName: 'a'
       },
-      init() {}
+      init() { }
     }
   });
 

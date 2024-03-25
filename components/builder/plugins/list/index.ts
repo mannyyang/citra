@@ -11,9 +11,7 @@ const plugin: Plugin = (editor: Editor) => {
   const BlockManager = editor.BlockManager;
 
   Components.addType(ComponentTypes.CaList, {
-    isComponent: (el: HTMLElement) => {
-      if (el && el.classList) return el.classList.contains(ComponentClasses.CaList);
-    },
+    isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaList.toLowerCase(),
     model: {
       defaults: {
         classes: [ComponentClasses.CaList],
@@ -30,7 +28,7 @@ const plugin: Plugin = (editor: Editor) => {
             type: ComponentTypes.CaListItem,
             style: LIST_ITEM_STYLE
           }
-        ],
+        ]
       },
     }
   });

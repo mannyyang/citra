@@ -12,9 +12,7 @@ const plugin: Plugin = (editor: Editor) => {
 
   Components.addType(ComponentTypes.CaButton, {
     extend: 'link',
-    isComponent: (el: HTMLElement) => {
-      if (el && el.classList) return el.classList.contains(ComponentClasses.CaButton);
-    },
+    isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaButton.toLowerCase(),
     model: {
       defaults: {
         classes: [ComponentClasses.CaButton],
@@ -31,9 +29,10 @@ const plugin: Plugin = (editor: Editor) => {
         components: {
           tagName: 'span',
           components: 'Button Text'
-        }
+        },
+
       },
-      init() {}
+      init() { }
     }
   });
 

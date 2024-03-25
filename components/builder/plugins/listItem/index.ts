@@ -16,11 +16,7 @@ const plugin: Plugin = (editor: Editor) => {
   const BlockManager = editor.BlockManager;
 
   Components.addType(ComponentTypes.CaListItem, {
-    isComponent: (el: HTMLElement) => {
-      if (el && el.classList) {
-        return el.classList.contains(ComponentClasses.CaListItem);
-      }
-    },
+    isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaListItem.toLowerCase(),
     model: {
       defaults: {
         classes: [ComponentClasses.CaListItem],

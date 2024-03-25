@@ -7,17 +7,13 @@ const plugin: Plugin = (editor: Editor) => {
     const BlockManager = editor.BlockManager;
 
     Components.addType(ComponentTypes.CaYoutube, {
-        isComponent: (el: HTMLElement) => {
-            if (el && el.classList) {
-                return el.classList.contains(ComponentClasses.CaYoutube);
-            }
-        },
+        isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaYoutube.toLowerCase(),
         extend: 'video',
         model: {
             defaults: {
-                classes: [ComponentClasses.CaYoutube], 
+                classes: [ComponentClasses.CaYoutube],
                 provider: 'yt',
-                'change:provider': 'updateProvider',            
+                'change:provider': 'updateProvider'
             },
 
             updateProvider() {

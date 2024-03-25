@@ -8,9 +8,7 @@ const plugin: Plugin = (editor: Editor) => {
   const BlockManager = editor.BlockManager;
 
   Components.addType(ComponentTypes.CaHeading, {
-    isComponent: (el: HTMLElement) => {
-      if (el && el.classList) return el.classList.contains(ComponentClasses.CaHeading);
-    },
+    isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaHeading.toLowerCase(),
     extend: 'text',
     model: {
       defaults: {

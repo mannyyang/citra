@@ -9,16 +9,12 @@ const plugin: Plugin = (editor: Editor) => {
 
     Components.addType(ComponentTypes.CaVideo, {
         extend: 'video',
-        isComponent: (el: HTMLElement) => {
-            if (el && el.classList) {
-                return el.classList.contains(ComponentClasses.CaVideo);
-            }
-        },
+        isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaVideo.toLowerCase(),
         model: {
             defaults: {
                 classes: [ComponentClasses.CaVideo],
                 provider: 'so',
-                'change:provider': 'updateProvider',
+                'change:provider': 'updateProvider'
             },
 
             updateProvider() {

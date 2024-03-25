@@ -8,9 +8,7 @@ const plugin: Plugin = (editor: Editor) => {
     const BlockManager = editor.BlockManager;
 
     Components.addType(ComponentTypes.CaBlockQuote, {
-        isComponent: (el: HTMLElement) => {
-            if (el && el.classList) return el.classList.contains(ComponentClasses.CaBlockQuote);
-        },
+        isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaBlockQuote.toLowerCase(),
         extend: 'text',
         model: {
             defaults: {
@@ -33,7 +31,7 @@ const plugin: Plugin = (editor: Editor) => {
     BlockManager.add(BlockIdentifies.BlockQuote, {
         category: 'Typography',
         label: 'Block Quote',
-        media:  exportedSVG["blockQuote"],
+        media: exportedSVG["blockQuote"],
         content: {
             type: ComponentTypes.CaBlockQuote
         },

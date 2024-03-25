@@ -124,20 +124,16 @@ const plugin: Plugin = (editor: Editor) => {
     const attrsCell = attrsToString(colAttr);
 
     Components.addType(ComponentTypes.CaCell, {
-        isComponent: (el: HTMLElement) => {
-            if (el && el.classList) return el.classList.contains(ComponentClasses.CaCell);
-        },
+        isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaCell.toLowerCase(),
         model: {
             defaults: {
-                classes: [ComponentClasses.CaCell],
+                classes: [ComponentClasses.CaCell]
             }
         }
     })
 
     Components.addType(ComponentTypes.CaRow, {
-        isComponent: (el: HTMLElement) => {
-            if (el && el.classList) return el.classList.contains(ComponentClasses.CaRow);
-        },
+        isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaRow.toLowerCase(),
         model: {
             defaults: {
                 classes: [ComponentClasses.CaRow],
@@ -193,7 +189,7 @@ const plugin: Plugin = (editor: Editor) => {
                     }
                     const baseId = childComponents.length;
                     counts -= baseId;
-                    
+
                     for (let i = 0; i < counts; i++) {
                         childComponents.add({
                             type: ComponentTypes.CaCell,

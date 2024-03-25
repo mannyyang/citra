@@ -10,9 +10,7 @@ const plugin: Plugin = (editor: Editor) => {
   const BlockManager = editor.BlockManager;
 
   Components.addType(ComponentTypes.CaDiv, {
-    isComponent: (el: HTMLElement) => {
-      if (el && el.classList) return el.classList.contains(ComponentClasses.CaDiv);
-    },
+    isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaRow.toLowerCase(),
     model: {
       defaults: {
         classes: [ComponentClasses.CaDiv],

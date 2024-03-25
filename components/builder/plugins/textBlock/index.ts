@@ -5,11 +5,9 @@ import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
 const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
-  
+
   Components.addType(ComponentTypes.CaTextBlock, {
-    isComponent: (el: HTMLElement) => {
-      if (el && el.classList) return el.classList.contains(ComponentClasses.CaTextBlock);
-    },
+    isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaTextBlock.toLowerCase(),
     extend: 'text',
     model: {
       defaults: {
@@ -18,12 +16,12 @@ const plugin: Plugin = (editor: Editor) => {
         droppable: false,
         editable: true,
         style: {
-            display: 'block',
-            'box-sizing': 'border-box'
-        },       
+          display: 'block',
+          'box-sizing': 'border-box'
+        }
       }
     }
-    
+
   });
 
   BlockManager.add(BlockIdentifies.TextBlock, {
