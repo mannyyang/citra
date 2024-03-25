@@ -1,4 +1,5 @@
 import type { Editor, Plugin } from 'grapesjs';
+import { exportedSVG } from '../icons';
 import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
 
 
@@ -28,7 +29,7 @@ const plugin: Plugin = (editor: Editor) => {
   BlockManager.add(BlockIdentifies.Heading, {
     category: 'Typography',
     label: 'Heading',
-    media: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 4v3h5.5v12h3V7H19V4H5z"></path></svg>`,
+    media: exportedSVG['heading'],
     content: {
       type: ComponentTypes.CaHeading
     },
