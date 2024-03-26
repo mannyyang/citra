@@ -1,13 +1,14 @@
 import type { Editor, Plugin } from 'grapesjs';
 import { exportedSVG } from '../icons';
 import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
+import { isComponent } from '../util';
 
 const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
   Components.addType(ComponentTypes.CaTextBlock, {
-    isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaTextBlock.toLowerCase(),
+    isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaTextBlock),
     extend: 'text',
     model: {
       defaults: {
@@ -18,6 +19,9 @@ const plugin: Plugin = (editor: Editor) => {
         style: {
           display: 'block',
           'box-sizing': 'border-box'
+        },
+        attributes: {
+          'data-ca': ComponentTypes.CaTextBlock
         }
       }
     }

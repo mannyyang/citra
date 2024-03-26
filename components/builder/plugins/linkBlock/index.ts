@@ -1,6 +1,7 @@
 import type { Editor, Plugin } from 'grapesjs';
 import { exportedSVG } from '../icons';
 import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
+import { isComponent } from '../util';
 
 /**
  * Creates a link component with some default styles and adds it as a reusable block.
@@ -11,7 +12,7 @@ const plugin: Plugin = (editor: Editor) => {
   const BlockManager = editor.BlockManager;
 
   Components.addType(ComponentTypes.CaLinkBlock, {
-    isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaLinkBlock.toLowerCase(),
+    isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaLinkBlock),
     model: {
       defaults: {
         classes: [ComponentClasses.CaLinkBlock],
@@ -21,7 +22,10 @@ const plugin: Plugin = (editor: Editor) => {
           height: '50px',
           width: '50px'
         },
-        tagName: 'a'
+        tagName: 'a',
+        attributes: {
+          'data-ca': ComponentTypes.CaLinkBlock
+        }
       },
       init() { }
     }

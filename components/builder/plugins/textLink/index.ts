@@ -1,13 +1,14 @@
 import type { Editor, Plugin } from 'grapesjs';
 import { exportedSVG } from '../icons';
 import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
+import { isComponent } from '../util';
 
 const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
   Components.addType(ComponentTypes.CaTextLink, {
-    isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaTextLink.toLowerCase(),
+    isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaTextLink),
     extend: 'text',
     model: {
       defaults: {
@@ -21,7 +22,10 @@ const plugin: Plugin = (editor: Editor) => {
           'text-decoration': 'underline'
         },
         traits: ['href'],
-        content: 'Text Link'
+        content: 'Text Link',
+        attributes: {
+          'data-ca': ComponentTypes.CaTextLink
+        }
       },
     }
 

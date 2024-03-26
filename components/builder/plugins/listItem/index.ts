@@ -1,6 +1,7 @@
 import type { Editor, Plugin } from 'grapesjs';
 import { exportedSVG } from '../icons';
 import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
+import { isComponent } from '../util';
 
 export const LIST_ITEM_STYLE = {
   outline: '1px dashed #555 !important',
@@ -16,7 +17,7 @@ const plugin: Plugin = (editor: Editor) => {
   const BlockManager = editor.BlockManager;
 
   Components.addType(ComponentTypes.CaListItem, {
-    isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaListItem.toLowerCase(),
+    isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaListItem),
     model: {
       defaults: {
         classes: [ComponentClasses.CaListItem],
@@ -34,7 +35,10 @@ const plugin: Plugin = (editor: Editor) => {
               }
             ]
           }
-        ]
+        ],
+        attributes: {
+          'data-ca': ComponentTypes.CaListItem
+        }
       }
     }
   });

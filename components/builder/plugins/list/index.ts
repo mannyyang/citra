@@ -2,6 +2,7 @@ import type { Editor, Plugin } from 'grapesjs';
 import { exportedSVG } from '../icons';
 import { LIST_ITEM_STYLE } from '../listItem';
 import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
+import { isComponent } from '../util';
 
 /**
  * Creates an empty div as a starting point.
@@ -11,7 +12,7 @@ const plugin: Plugin = (editor: Editor) => {
   const BlockManager = editor.BlockManager;
 
   Components.addType(ComponentTypes.CaList, {
-    isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaList.toLowerCase(),
+    isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaList),
     model: {
       defaults: {
         classes: [ComponentClasses.CaList],
@@ -28,7 +29,10 @@ const plugin: Plugin = (editor: Editor) => {
             type: ComponentTypes.CaListItem,
             style: LIST_ITEM_STYLE
           }
-        ]
+        ],
+        attributes: {
+          'data-ca': ComponentTypes.CaList
+        }
       },
     }
   });

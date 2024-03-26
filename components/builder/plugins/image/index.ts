@@ -1,13 +1,14 @@
 import type { Editor, Plugin } from 'grapesjs';
 import { exportedSVG } from '../icons';
 import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
+import { isComponent } from '../util';
 
 const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
   Components.addType(ComponentTypes.CaImage, {
-    isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaImage.toLowerCase(),
+    isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaImage),
     extend: 'image',
     model: {
       defaults: {
@@ -17,6 +18,9 @@ const plugin: Plugin = (editor: Editor) => {
           'align': 'center',
         },
         traits: ['href', 'rel', 'alt', 'title'],
+        attributes: {
+          'data-ca': ComponentTypes.CaImage
+        }
       }
     },
     view: {

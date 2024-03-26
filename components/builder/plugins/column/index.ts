@@ -1,6 +1,7 @@
 import { type Editor, type Plugin } from 'grapesjs';
 import { exportedSVG } from '../icons';
 import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
+import { isComponent } from '../util';
 
 
 const plugin: Plugin = (editor: Editor) => {
@@ -124,16 +125,19 @@ const plugin: Plugin = (editor: Editor) => {
     const attrsCell = attrsToString(colAttr);
 
     Components.addType(ComponentTypes.CaCell, {
-        isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaCell.toLowerCase(),
+        isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaCell),
         model: {
             defaults: {
-                classes: [ComponentClasses.CaCell]
+                classes: [ComponentClasses.CaCell],
+                attributes: {
+                    'data-ca': ComponentTypes.CaCell
+                }
             }
         }
     })
 
     Components.addType(ComponentTypes.CaRow, {
-        isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaRow.toLowerCase(),
+        isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaRow),
         model: {
             defaults: {
                 classes: [ComponentClasses.CaRow],
@@ -151,7 +155,10 @@ const plugin: Plugin = (editor: Editor) => {
                         ]
                     }
                 ],
-                attributes: { type: 'one' },
+                attributes: {
+                    'data-ca': ComponentTypes.CaRow,
+                    type: 'one'
+                },
             },
 
             init() {

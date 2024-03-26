@@ -1,19 +1,23 @@
 import type { Editor, Plugin } from 'grapesjs';
 import { exportedSVG } from '../icons';
 import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
+import { isComponent } from '../util';
 
 const plugin: Plugin = (editor: Editor) => {
     const Components = editor.Components;
     const BlockManager = editor.BlockManager;
 
     Components.addType(ComponentTypes.CaYoutube, {
-        isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaYoutube.toLowerCase(),
+        isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaYoutube),
         extend: 'video',
         model: {
             defaults: {
                 classes: [ComponentClasses.CaYoutube],
                 provider: 'yt',
-                'change:provider': 'updateProvider'
+                'change:provider': 'updateProvider',
+                attributes: {
+                    'data-ca': ComponentTypes.CaYoutube
+                }
             },
 
             updateProvider() {

@@ -1,6 +1,7 @@
 import type { Editor, Plugin } from 'grapesjs';
 import { exportedSVG } from '../icons';
 import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
+import { isComponent } from '../util';
 
 /**
  * Creates a button component with some default styles and adds it as a reusable block.
@@ -12,7 +13,7 @@ const plugin: Plugin = (editor: Editor) => {
 
   Components.addType(ComponentTypes.CaButton, {
     extend: 'link',
-    isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaButton.toLowerCase(),
+    isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaButton),
     model: {
       defaults: {
         classes: [ComponentClasses.CaButton],
@@ -30,7 +31,9 @@ const plugin: Plugin = (editor: Editor) => {
           tagName: 'span',
           components: 'Button Text'
         },
-
+        attributes: {
+          'data-ca': ComponentTypes.CaButton
+        }
       },
       init() { }
     }

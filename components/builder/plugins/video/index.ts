@@ -1,6 +1,7 @@
 import type { Editor, Plugin } from 'grapesjs';
 import { exportedSVG } from '../icons';
 import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
+import { isComponent } from '../util';
 
 const plugin: Plugin = (editor: Editor) => {
     const Components = editor.Components;
@@ -9,12 +10,15 @@ const plugin: Plugin = (editor: Editor) => {
 
     Components.addType(ComponentTypes.CaVideo, {
         extend: 'video',
-        isComponent: (el: Element) => (el.tagName || '').toLowerCase() === ComponentTypes.CaVideo.toLowerCase(),
+        isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaVideo),
         model: {
             defaults: {
                 classes: [ComponentClasses.CaVideo],
                 provider: 'so',
-                'change:provider': 'updateProvider'
+                'change:provider': 'updateProvider',
+                attributes: {
+                    'data-ca': ComponentTypes.CaVideo
+                }
             },
 
             updateProvider() {
