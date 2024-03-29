@@ -39,8 +39,6 @@ const plugin: Plugin = (editor: Editor) => {
             }
         }`;
 
-
-
     const styleClm = flexGrid
         ? `
         .${clsCell} {
@@ -221,6 +219,7 @@ const plugin: Plugin = (editor: Editor) => {
         category: 'Basic',
         label: 'Column',
         media: exportedSVG['column'],
+        // TODO: update to use json style
         content: `<div ${attrsRow}><div ${attrsCell}></div></div><style>${styleRow}${styleClm}${styleClm1}${styleClm2}</style>`,
         select: true
     });
