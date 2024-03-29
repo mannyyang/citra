@@ -7,33 +7,36 @@ const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
-  Components.addType(ComponentTypes.CaHeading, {
-    isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaHeading),
+  Components.addType(ComponentTypes.CaTextBlock, {
+    isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaTextBlock),
     extend: 'text',
     model: {
       defaults: {
-        classes: [ComponentClasses.CaHeading],
-        tagName: 'h1',
+        classes: [ComponentClasses.CaTextBlock],
+        tagName: 'div',
         droppable: false,
+        editable: true,
         style: {
-          'margin-top': '0px',
-          'margin-bottom': '10px'
+          display: 'block',
+          'box-sizing': 'border-box'
         },
-        components: 'Heading Text',
         attributes: {
-          'data-ca': ComponentTypes.CaHeading
+          'data-ca': ComponentTypes.CaTextBlock
         }
       }
     }
+
   });
 
-  BlockManager.add(BlockIdentifies.Heading, {
+  BlockManager.add(BlockIdentifies.TextBlock, {
     category: 'Typography',
-    label: 'Heading',
-    media: exportedSVG['heading'],
+    label: 'Text Block',
+    media: exportedSVG['textBlock'],
     content: {
-      type: ComponentTypes.CaHeading
+      type: ComponentTypes.CaTextBlock,
+      content: 'This is simple text'
     },
+    activate: true,
     select: true
   });
 }

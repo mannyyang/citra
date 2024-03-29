@@ -11,6 +11,7 @@ const {
 } = useGrapes({
   container: canvas,
   height: 'auto',
+  fromElement:true,
   panels: {},
   plugins,
 })
