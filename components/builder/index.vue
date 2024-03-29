@@ -1,50 +1,40 @@
 <script setup lang="ts">
 import 'grapesjs/dist/css/grapes.min.css';
-
 import './builder.css';
+
+import type { EditorConfig } from 'grapesjs';
 import plugins from './plugins';
 
-const canvas = ref(null)
+const canvas: any = ref(null)
 
-const {
-  onInit,
-} = useGrapes({
+const options: EditorConfig = {
   container: canvas,
   height: 'auto',
-  fromElement:true,
+  fromElement: true,
   panels: {},
   plugins,
-})
+}
 
-onInit((editor) => {
-  const panels = editor.Panels
-  const commands = editor.Commands
+const grapes = useGrapes(options)
 
-  const cmdClear = 'canvas-clear'
+// Initialize GrapesJS
+watch(
+  canvas,
+  (newVal: any) => {
+    if (!newVal) return;
 
-  commands.add(cmdClear, () => {
-    if (confirm('Are you sure to clean the canvas?'))
-      editor.runCommand('core:canvas-clear')
-  })
+    grapes.init({
+      ...options,
+      container: newVal
+    });
+  },
+  { immediate: true }
+);
 
-  const clearButton = {
-    id: cmdClear,
-    command: () => editor.runCommand(cmdClear),
-    label: `
-    <svg viewBox="0 0 24 24">
-      <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-    </svg>`,
-  }
-
-  panels.addButton('options', clearButton)
-})
 </script>
 
 <template>
   <div class="ca-builder flex w-full min-h-full">
-    <div
-      ref="canvas"
-      class="flex-1 min-h-full"
-    />
+    <div ref="canvas" class="flex-1 min-h-full" />
   </div>
 </template>
