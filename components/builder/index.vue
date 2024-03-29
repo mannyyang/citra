@@ -2,7 +2,7 @@
 import 'grapesjs/dist/css/grapes.min.css';
 
 import './builder.css';
-import plugins from './plugins';
+import plugins from './plugins-new';
 
 const canvas = ref(null)
 
