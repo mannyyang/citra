@@ -1,5 +1,5 @@
+import loadBlocks from './block';
 import loadComponents from './components';
-import loadBlocks from './blocks';
 // import Glide from '@glidejs/glide';
 
 export default (editor, opts = {}) => {
