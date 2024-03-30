@@ -1,5 +1,5 @@
 import type { Editor } from 'grapesjs';
-import { RequiredPluginOptions } from '..';
+import type { RequiredPluginOptions } from '..';
 import {
   cmdClear,
   cmdDeviceDesktop,

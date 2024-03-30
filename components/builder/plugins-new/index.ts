@@ -8,11 +8,13 @@ import pluginTabs from 'grapesjs-tabs';
 import pluginToolip from 'grapesjs-tooltip';
 import pluginTuiImageEditor from 'grapesjs-tui-image-editor';
 import pluginTyped from 'grapesjs-typed';
+import pluginBlockQuote from './blockQuote';
 import pluginButton from './button';
 import pluginColumn from './column';
 import pluginCustomBlocks from './custom-blocks';
 import pluginDevices from './devices';
 import pluginDiv from './div';
+import pluginHeading from './heading';
 import pluginImage from './image';
 import pluginInteractiveBlocks from './interactive-blocks';
 import pluginLink from './link';
@@ -20,6 +22,8 @@ import pluginList from './list';
 import pluginListItem from './list-item';
 import pluginText from './text';
 import pluginUserBlocks from './user-blocks';
+import pluginVideo from './video';
+import pluginYoutube from './youtube';
 
 
 const plugins = [
@@ -32,13 +36,19 @@ const plugins = [
         return editor.getHtml() + '<style>' + editor.getCss() + '</style>';
       }
     }),
+  
   parserPostCSS,
   pluginStyleBg,
   pluginToolip,
   pluginExport,
   pluginCustomCode,
   pluginCountdown,
+
   // // blocks
+  pluginVideo,
+  pluginYoutube,
+  pluginBlockQuote,
+  pluginHeading,
   pluginButton,
   pluginColumn,
   pluginCustomBlocks,

@@ -1,5 +1,5 @@
 import type { Editor } from 'grapesjs';
-import { RequiredPluginOptions } from '..';
+import type { RequiredPluginOptions } from '..';
 import { cmdImport } from './../consts';
 
 export default (editor: Editor, config: RequiredPluginOptions) => {

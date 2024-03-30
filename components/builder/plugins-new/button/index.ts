@@ -1,18 +1,22 @@
 import type { Plugin } from 'grapesjs';
-import { BuilderComponent, BuilderBlock } from '../enum';
+import { BuilderBlock, BuilderComponent } from '../enum';
+import { exportedSVG } from '../icons';
+import { isComponent } from '../util';
 
 const plugin: Plugin = (editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
   Components.addType(BuilderComponent.BUTTON.id, {
+    isComponent: (el) => isComponent(el, BuilderComponent.BUTTON.id),
     extend: 'link',
     model: {
       defaults: {
         name: BuilderComponent.BUTTON.name,
         classes: ['ntvb-button'],
         attributes: {
-          'data-ntvb': 'button'
+          'data-ntvb': 'button',
+          'data-ca': BuilderComponent.BUTTON.id
         },
         style: {
           display: 'flex',
@@ -36,7 +40,7 @@ const plugin: Plugin = (editor) => {
     category: 'Basic',
     activate: true,
     label: 'Button',
-    media: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 9c0-.6-.5-1-1.3-1H3.4C2.5 8 2 8.4 2 9v6c0 .6.5 1 1.3 1h17.4c.8 0 1.3-.4 1.3-1V9zm-1 6H3V9h18v6z"></path><path d="M4 11.5h16v1H4z"></path></svg>`,
+    media: exportedSVG['button'],
     content: {
       type: BuilderComponent.BUTTON.id
     }

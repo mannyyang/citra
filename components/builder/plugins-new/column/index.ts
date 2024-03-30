@@ -1,6 +1,7 @@
 import { type Editor, type Plugin } from 'grapesjs';
-import { BuilderComponent, BuilderBlock } from '../enum';
+import { BuilderBlock, BuilderComponent } from '../enum';
 // import { exportedSVG } from '../icons';
+import { exportedSVG } from '../icons';
 import { isComponent } from '../util';
 
 const plugin: Plugin = (editor: Editor) => {
@@ -149,9 +150,7 @@ const plugin: Plugin = (editor: Editor) => {
   BlockManager.add(BuilderBlock.COLUMN.id, {
     category: 'Basic',
     label: 'Column',
-    media: `
-    <svg style="fill: none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="miter"><rect x="2" y="2" width="20" height="20" rx="0"></rect><line x1="12" y1="2" x2="12" y2="22"></line></svg>
-    `,
+    media: exportedSVG['column'],
     content: {
       type: BuilderComponent.ROW.id,
       components: [
