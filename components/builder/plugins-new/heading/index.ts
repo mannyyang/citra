@@ -14,6 +14,7 @@ const plugin: Plugin = (editor: Editor) => {
     model: {
       defaults: {
         classes: [BuilderComponent.HEADING.class],
+        name: BuilderComponent.HEADING.name,
         tagName: 'h1',
         droppable: false,
         style: {

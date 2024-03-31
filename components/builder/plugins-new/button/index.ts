@@ -13,7 +13,7 @@ const plugin: Plugin = (editor) => {
     model: {
       defaults: {
         name: BuilderComponent.BUTTON.name,
-        classes: ['ntvb-button'],
+        classes: [BuilderComponent.BUTTON.class],
         attributes: {
           'data-ntvb': 'button',
           'data-ca': BuilderComponent.BUTTON.id
@@ -27,19 +27,17 @@ const plugin: Plugin = (editor) => {
           'border-radius': '5px',
           'text-align': 'center',
           'text-decoration': 'none'
-        },
-        components: {
-          tagName: 'span',
-          components: 'Button Text'
-        }
-      }
+        },        
+        content: 'Button Text',
+        traits: ['href']
+      },
     }
   });
 
   BlockManager.add(BuilderBlock.BUTTON.id, {
     category: 'Basic',
     activate: true,
-    label: 'Button',
+    label: BuilderBlock.BUTTON.name,
     media: exportedSVG['button'],
     content: {
       type: BuilderComponent.BUTTON.id

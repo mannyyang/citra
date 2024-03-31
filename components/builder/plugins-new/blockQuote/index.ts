@@ -13,6 +13,7 @@ const plugin: Plugin = (editor: Editor) => {
         model: {
             defaults: {
                 classes: [BuilderComponent.BLOCK_QUOTE.class],
+                name: BuilderComponent.BLOCK_QUOTE.name,
                 tagName: 'div',
                 droppable: false,
                 style: {
@@ -33,10 +34,10 @@ const plugin: Plugin = (editor: Editor) => {
 
     BlockManager.add(BuilderBlock.BLOCK_QUOTE.id, {
         category: 'Typography',
-        label: 'Block Quote',
+        label: BuilderBlock.BLOCK_QUOTE.name,
         media: exportedSVG["blockQuote"],
         content: {
-            type: BuilderBlock.BLOCK_QUOTE.name
+            type: BuilderComponent.BLOCK_QUOTE.id
         },
         select: true
     });

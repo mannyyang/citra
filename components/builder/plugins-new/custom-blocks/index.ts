@@ -3,6 +3,7 @@
 import type { BlockProperties, ComponentDefinition, Plugin } from 'grapesjs';
 import { BuilderBlock, BuilderComponent } from '../enum';
 import { exportedSVG } from '../icons';
+import { isComponent } from '../util';
 
 export type PluginOptions = {
   /**

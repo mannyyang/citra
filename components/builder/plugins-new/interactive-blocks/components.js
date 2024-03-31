@@ -1,4 +1,5 @@
 import { BuilderComponent } from '../enum';
+import { isComponent } from '../util';
 import carousel from './blocks/carousel';
 import flipCards from './blocks/flip-cards';
 import flipCards3d from './blocks/flip-cards-3d';
