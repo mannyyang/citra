@@ -13,6 +13,7 @@ const plugin: Plugin = (editor: Editor) => {
     extend: 'text',
     model: {
       defaults: {
+        name: BuilderComponent.HEADING.name,
         classes: [BuilderComponent.HEADING.class],
         tagName: 'h1',
         droppable: false,
