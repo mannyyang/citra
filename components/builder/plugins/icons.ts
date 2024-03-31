@@ -14,7 +14,7 @@ const IconSet = {
             height: 24
         },
         column: {
-            body: '<rect x="2" y="2" width="20" height="20" rx="0"></rect><line x1="12" y1="2" x2="12" y2="22"></line>',
+            body: '<path fill="currentColor" d="M2 20h8V4H2v16Zm-1 0V4a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1ZM13 20h8V4h-8v16Zm-1 0V4a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1h-8a1 1 0 0 1-1-1Z"/>',
             width: 24,
             height: 24
         },

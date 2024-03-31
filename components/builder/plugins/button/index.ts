@@ -9,11 +9,11 @@ const plugin: Plugin = (editor) => {
 
   Components.addType(BuilderComponent.BUTTON.id, {
     isComponent: (el) => isComponent(el, BuilderComponent.BUTTON.id),
-    extend: 'link',
+    extend: 'text',
     model: {
       defaults: {
         name: BuilderComponent.BUTTON.name,
-        classes: ['ntvb-button'],
+        classes: [BuilderComponent.BUTTON.class],
         attributes: {
           'data-ntvb': 'button',
           'data-ca': BuilderComponent.BUTTON.id
@@ -28,11 +28,14 @@ const plugin: Plugin = (editor) => {
           'text-align': 'center',
           'text-decoration': 'none'
         },
-        components: {
-          tagName: 'span',
-          components: 'Button Text'
-        }
+        content: 'Button Text'
       }
+    },
+    view: {
+      init() {
+        this.listenTo(this.model, `change:modify change:dataSource change:Table`, this.handleChanges);
+      },
+      handleChanges() {}
     }
   });
 
