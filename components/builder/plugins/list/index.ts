@@ -1,7 +1,8 @@
 import type { Editor, Plugin } from 'grapesjs';
+// import { exportedSVG } from '../icons';
+// import { LIST_ITEM_STYLE } from '../listItem';
+import { BuilderBlock, BuilderComponent } from '../enum';
 import { exportedSVG } from '../icons';
-import { LIST_ITEM_STYLE } from '../listItem';
-import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
 import { isComponent } from '../util';
 
 /**
@@ -11,38 +12,37 @@ const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
-  Components.addType(ComponentTypes.CaList, {
-    isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaList),
+  Components.addType(BuilderComponent.LIST.id, {
+    isComponent: (el: HTMLElement) => isComponent(el, BuilderComponent.LIST.id),
     model: {
       defaults: {
-        classes: [ComponentClasses.CaList],
+        classes: [BuilderComponent.LIST.class],
         tagName: 'ul',
         style: {
           'margin-top': '0px',
           'margin-bottom': '10px',
           'padding-left': '40px'
         },
-        droppable: `[data-gjs-type="${ComponentTypes.CaListItem}"]`,
+        droppable: `[data-gjs-type="${BuilderComponent.LIST_ITEM.id}"]`,
         components: [
           {
-            tagName: 'li',
-            type: ComponentTypes.CaListItem,
-            style: LIST_ITEM_STYLE
+            type: BuilderComponent.LIST_ITEM.id
+            // style: LIST_ITEM_STYLE
           }
         ],
         attributes: {
-          'data-ca': ComponentTypes.CaList
+          'data-ca': BuilderComponent.LIST.id
         }
-      },
+      }
     }
   });
 
-  BlockManager.add(BlockIdentifies.List, {
+  BlockManager.add(BuilderBlock.LIST.id, {
     category: 'Basic',
     label: 'List',
     media: exportedSVG['list'],
     content: {
-      type: ComponentTypes.CaList
+      type: BuilderComponent.LIST.id
     },
     select: true
   });

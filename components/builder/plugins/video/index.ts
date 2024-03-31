@@ -1,6 +1,6 @@
 import type { Editor, Plugin } from 'grapesjs';
+import { BuilderBlock, BuilderComponent } from '../enum';
 import { exportedSVG } from '../icons';
-import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
 import { isComponent } from '../util';
 
 const plugin: Plugin = (editor: Editor) => {
@@ -8,16 +8,16 @@ const plugin: Plugin = (editor: Editor) => {
     const BlockManager = editor.BlockManager;
 
 
-    Components.addType(ComponentTypes.CaVideo, {
+    Components.addType(BuilderComponent.VIDEO.id, {
         extend: 'video',
-        isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaVideo),
+        isComponent: (el: HTMLElement) => isComponent(el, BuilderComponent.VIDEO.id),
         model: {
             defaults: {
-                classes: [ComponentClasses.CaVideo],
+                classes: [BuilderComponent.VIDEO.class],
                 provider: 'so',
                 'change:provider': 'updateProvider',
                 attributes: {
-                    'data-ca': ComponentTypes.CaVideo
+                    'data-ca': BuilderComponent.VIDEO.id
                 }
             },
 
@@ -67,12 +67,12 @@ const plugin: Plugin = (editor: Editor) => {
         }
     });
 
-    BlockManager.add(BlockIdentifies.Video, {
+    BlockManager.add(BuilderBlock.VIDEO.id, {
         category: 'Media',
-        label: 'Video',
+        label: BuilderBlock.VIDEO.name,
         media: exportedSVG['video'],
         content: {
-            type: ComponentTypes.CaVideo,
+            type: BuilderComponent.VIDEO.id,
             controls: true,
             style: {
                 width: '100%',
