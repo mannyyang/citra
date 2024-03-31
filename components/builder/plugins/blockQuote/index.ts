@@ -1,18 +1,18 @@
 import type { Editor, Plugin } from 'grapesjs';
-import { exportedSVG } from "../icons";
-import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
+import { BuilderBlock, BuilderComponent } from '../enum';
+import { exportedSVG } from '../icons';
 import { isComponent } from '../util';
 
 const plugin: Plugin = (editor: Editor) => {
     const Components = editor.Components;
     const BlockManager = editor.BlockManager;
 
-    Components.addType(ComponentTypes.CaBlockQuote, {
-        isComponent: (el) => isComponent(el, ComponentTypes.CaBlockQuote),
+    Components.addType(BuilderComponent.BLOCK_QUOTE.id, {
+        isComponent: (el) => isComponent(el, BuilderComponent.BLOCK_QUOTE.id),
         extend: 'text',
         model: {
             defaults: {
-                classes: [ComponentClasses.CaBlockQuote],
+                classes: [BuilderComponent.BLOCK_QUOTE.class],
                 tagName: 'div',
                 droppable: false,
                 style: {
@@ -25,18 +25,18 @@ const plugin: Plugin = (editor: Editor) => {
                 },
                 content: 'Block Quote',
                 attributes: {
-                    'data-ca': ComponentTypes.CaBlockQuote
+                    'data-ca': BuilderComponent.BLOCK_QUOTE.id
                 }
             }
         },
     });
 
-    BlockManager.add(BlockIdentifies.BlockQuote, {
+    BlockManager.add(BuilderBlock.BLOCK_QUOTE.id, {
         category: 'Typography',
-        label: 'Block Quote',
+        label: BuilderBlock.BLOCK_QUOTE.name,
         media: exportedSVG["blockQuote"],
         content: {
-            type: ComponentTypes.CaBlockQuote
+            type: BuilderComponent.BLOCK_QUOTE.id
         },
         select: true
     });

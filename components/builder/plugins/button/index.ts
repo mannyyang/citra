@@ -1,22 +1,23 @@
-import type { Editor, Plugin } from 'grapesjs';
+import type { Plugin } from 'grapesjs';
+import { BuilderBlock, BuilderComponent } from '../enum';
 import { exportedSVG } from '../icons';
-import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
 import { isComponent } from '../util';
 
-/**
- * Creates a button component with some default styles and adds it as a reusable block.
- */
-
-const plugin: Plugin = (editor: Editor) => {
+const plugin: Plugin = (editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
-  Components.addType(ComponentTypes.CaButton, {
+  Components.addType(BuilderComponent.BUTTON.id, {
+    isComponent: (el) => isComponent(el, BuilderComponent.BUTTON.id),
     extend: 'link',
-    isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaButton),
     model: {
       defaults: {
-        classes: [ComponentClasses.CaButton],
+        name: BuilderComponent.BUTTON.name,
+        classes: ['ntvb-button'],
+        attributes: {
+          'data-ntvb': 'button',
+          'data-ca': BuilderComponent.BUTTON.id
+        },
         style: {
           display: 'flex',
           'justify-content': 'center',
@@ -30,22 +31,18 @@ const plugin: Plugin = (editor: Editor) => {
         components: {
           tagName: 'span',
           components: 'Button Text'
-        },
-        attributes: {
-          'data-ca': ComponentTypes.CaButton
         }
-      },
-      init() { }
+      }
     }
   });
 
-  BlockManager.add(BlockIdentifies.Button, {
+  BlockManager.add(BuilderBlock.BUTTON.id, {
     category: 'Basic',
     activate: true,
     label: 'Button',
     media: exportedSVG['button'],
     content: {
-      type: ComponentTypes.CaButton
+      type: BuilderComponent.BUTTON.id
     }
   });
 };
