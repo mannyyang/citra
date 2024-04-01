@@ -16,7 +16,7 @@ import pluginDevices from './devices';
 import pluginDiv from './div';
 import pluginHeading from './heading';
 import pluginImage from './image';
-import pluginInteractiveBlocks from './interactive-blocks';
+import pluginInteractiveBlocks from './interactiveBlocks';
 import pluginLink from './link';
 import pluginList from './list';
 import pluginListItem from './list-item';
