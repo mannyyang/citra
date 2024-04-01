@@ -72,15 +72,16 @@ const carousel = {
     </div>
     `,
     script() {
-        var Swiper = require('swiper');
-        const script = document.createElement('script')        
+        // var Swiper = require('swiper');
+        const script = document.createElement('script')
+        script.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js'
         script.onload = () => {
             new Swiper('.swiper', {
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
-                slidesPerGroup: 2,
+                slidesPerGroup: 1,
                 breakpoints: {
                     768: {
                         slidesPerView: 1,

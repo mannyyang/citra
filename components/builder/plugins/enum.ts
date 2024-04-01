@@ -72,6 +72,36 @@ export const BuilderComponent = {
     name: 'Carousel',
     class: `${CLASS_PREFIX}-carousel`
   },
+  CAROUSEL_IMAGE:{
+    id: 'carousel-image',
+    name: 'Carousel Image',
+    class: `${CLASS_PREFIX}-carousel-image`
+  },
+  CAROUSEL_WRAPPER:{
+    id: 'carousel-wrapper',
+    name: 'Carousel Wrapper',
+    class: `${CLASS_PREFIX}-carousel-wrapper`
+  },
+  CAROUSEL_SWIPER_ITEM: {
+    id: 'carousel-swiper-item',
+    name: 'Carousel Swiper Item',
+    class: `${CLASS_PREFIX}-carousel-swiper-item`
+  },
+  CAROUSEL_SWIPER_CONTAINER: {
+    id: 'carousel-swiper-container',
+    name: 'Carousel Swiper Container',
+    class: `${CLASS_PREFIX}-carousel-swiper-container`
+  },
+  CAROUSEL_LEFT_BUTTON: {
+    id: 'carousel-left-button',
+    name: 'Carousel Left Button',
+    class: `${CLASS_PREFIX}-carousel-left-button`
+  },
+  CAROUSEL_RIGHT_BUTTON: {
+    id: 'carousel-right-button',
+    name: 'Carousel Right Button',
+    class: `${CLASS_PREFIX}-carousel-right-button`
+  },
   SOCIAL_CARDS:{
     id:'social-cards',
     name:'Social Cards',
@@ -91,7 +121,7 @@ export const BuilderComponent = {
     id:'youtube',
     name: 'Youtube',
     class: `${CLASS_PREFIX}-youtube`
-  }
+  },  
 };
 
 export const BuilderBlock = {
