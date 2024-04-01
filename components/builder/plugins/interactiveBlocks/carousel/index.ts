@@ -118,6 +118,7 @@ const plugin: Plugin = (editor: Editor) => {
     isComponent: el => isComponent(el, BuilderComponent.CAROUSEL.id),
     model: {
       defaults: {
+        script:  carousel.script,
         styles: carousel.styles,
         components: [{
           tagName: BuilderBlock.DIV.id,
