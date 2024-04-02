@@ -11,15 +11,18 @@ import pluginTyped from 'grapesjs-typed';
 
 import pluginBlockQuote from './blockQuote';
 import pluginButton from './button';
+import pluginCarousel from './carousel';
 import pluginColumn from './column';
 import pluginDevices from './devices';
 import pluginDiv from './div';
+import pluginFlipCards from './flipCards';
+import pluginFlipCards3D from './flipCards3D';
 import pluginHeading from './heading';
 import pluginImage from './image';
-import pluginInteractiveBlocks from './interactiveBlocks';
 import pluginLink from './link';
 import pluginList from './list';
 import pluginListItem from './list-item';
+import pluginSocialCards from './socialCards';
 import pluginText from './text';
 import pluginVideo from './video';
 import pluginYoutube from './youtube';
@@ -52,11 +55,14 @@ const plugins = [
   pluginImage,
   pluginVideo,
   pluginYoutube,
-  pluginInteractiveBlocks,
+  pluginSocialCards,
   pluginToolip,
   pluginExport,
   pluginCustomCode,
   pluginCountdown,
+  pluginFlipCards,
+  pluginFlipCards3D,
+  pluginCarousel,
 
   (editor: Editor) =>
     pluginTabs(editor, {

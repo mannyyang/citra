@@ -1,7 +1,7 @@
 import type { Editor, Plugin } from 'grapesjs';
-import { BuilderBlock, BuilderComponent } from '../../enum';
-import { exportedSVG } from '../../icons';
-import { isComponent } from '../../util';
+import { BuilderBlock, BuilderComponent } from '../enum';
+import { exportedSVG } from '../icons';
+import { isComponent } from '../util';
 import socialCards from './constants';
 
 const plugin: Plugin = (editor: Editor) => {
