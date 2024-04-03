@@ -118,7 +118,7 @@ const plugin: Plugin = (editor: Editor) => {
     isComponent: el => isComponent(el, BuilderComponent.CAROUSEL.id),
     model: {
       defaults: {
-        script:  carousel.script,
+        script: carousel.script,
         styles: carousel.styles,
         components: [{
           tagName: BuilderBlock.DIV.id,
@@ -128,14 +128,39 @@ const plugin: Plugin = (editor: Editor) => {
             { type: BuilderComponent.CAROUSEL_LEFT_BUTTON.id },
             { type: BuilderComponent.CAROUSEL_RIGHT_BUTTON.id }
           ]
-        }],
+        }],        
         attributes: {
-          'data-ca': BuilderComponent.CAROUSEL.id,
+          'data-ca': BuilderComponent.CAROUSEL.id     
         },
         classes: [BuilderComponent.CAROUSEL.class, 'block-carousel'],
-      },
-    },
+        traits: [
+          {
+            label: 'Slides Per Group',
+            name: 'slidesPerGroup',
+            type: 'number',
+            changeProp: true,
+
+          },
+          {
+            label: 'Slides Per View',
+            name: 'slidesPerView',
+            type: 'number',
+            changeProp: true
+          }
+        ],     
+        slidesPerGroup: 1,
+        slidesPerView: 1
+      },      
+      init() {
+        this.listenTo(this, 'change:slidesPerGroup', () => this.updateSlides())
+        this.listenTo(this, 'change:slidesPerView', () => this.updateSlides())
+      },    
+      updateSlides(){
+        this.view?.render()
+      }
+    }
   });
+
 
   BlockManager.add(BuilderBlock.CAROUSEL.id, {
     category: 'Interactive',
