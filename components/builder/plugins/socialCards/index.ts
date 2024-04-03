@@ -23,7 +23,7 @@ const plugin: Plugin = (editor: Editor) => {
   });
 
   BlockManager.add(BuilderBlock.SOCIAL_CARDS.id, {
-    category: BuilderCategory.INTERACTIVE.name,
+    category: BuilderCategory.INTERACTIVE,
     label: BuilderBlock.SOCIAL_CARDS.name,
     media: exportedSVG['socialCards'],
     content: {

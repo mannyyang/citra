@@ -41,7 +41,7 @@ const plugin: Plugin = (editor) => {
   });
 
   BlockManager.add(BuilderBlock.BUTTON.id, {
-    category: BuilderCategory.BASIC.name,
+    category: BuilderCategory.BASIC,
     activate: true,
     label: 'Button',
     media: exportedSVG['button'],

@@ -163,7 +163,7 @@ const plugin: Plugin = (editor: Editor) => {
 
 
   BlockManager.add(BuilderBlock.CAROUSEL.id, {
-    category: BuilderCategory.INTERACTIVE.name,
+    category: BuilderCategory.INTERACTIVE,
     label: BuilderBlock.CAROUSEL.name,
     media: exportedSVG['carousel'],
     content: {

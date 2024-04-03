@@ -38,7 +38,7 @@ const plugin: Plugin = (editor: Editor) => {
   });
 
   BlockManager.add(BuilderBlock.LIST.id, {
-    category: BuilderCategory.BASIC.name,
+    category: BuilderCategory.BASIC,
     label: 'List',
     media: exportedSVG['list'],
     content: {

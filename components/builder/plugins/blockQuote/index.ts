@@ -32,7 +32,7 @@ const plugin: Plugin = (editor: Editor) => {
     });
 
     BlockManager.add(BuilderBlock.BLOCK_QUOTE.id, {
-        category: BuilderCategory.TYPOGRAPHY.name,
+        category: BuilderCategory.TYPOGRAPHY,
         label: BuilderBlock.BLOCK_QUOTE.name,
         media: exportedSVG["blockQuote"],
         content: {

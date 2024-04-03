@@ -6,7 +6,7 @@ const plugin: Plugin = (editor: Editor) => {
   const BlockManager = editor.BlockManager;
 
   BlockManager.add(BuilderBlock.IMAGE.id, {
-    category: BuilderCategory.MEDIA.name,
+    category: BuilderCategory.MEDIA,
     label: BuilderBlock.IMAGE.name,
     media: exportedSVG['image'],
     content: {

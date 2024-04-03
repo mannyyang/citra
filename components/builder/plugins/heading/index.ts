@@ -30,7 +30,7 @@ const plugin: Plugin = (editor: Editor) => {
   });
 
   BlockManager.add(BuilderBlock.HEADING.id, {
-    category: BuilderCategory.TYPOGRAPHY.name,
+    category: BuilderCategory.TYPOGRAPHY,
     label: BuilderComponent.HEADING.name,
     media: exportedSVG['heading'],
     content: {

@@ -6,7 +6,7 @@ const plugin: Plugin = (editor: Editor) => {
   const BlockManager = editor.BlockManager;
 
   BlockManager.add(BuilderBlock.TEXT.id, {
-    category: BuilderCategory.TYPOGRAPHY.name,
+    category: BuilderCategory.TYPOGRAPHY,
     label: BuilderBlock.TEXT.name,
     activate: true,
     select: true,

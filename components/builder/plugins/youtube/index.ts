@@ -68,7 +68,7 @@ const plugin: Plugin = (editor: Editor) => {
     });
 
     BlockManager.add(BuilderBlock.YOUTUBE.id, {
-        category: BuilderCategory.MEDIA.name,
+        category: BuilderCategory.MEDIA,
         label: BuilderBlock.YOUTUBE.name,
         media: exportedSVG['youtube'],
         content: {

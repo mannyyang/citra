@@ -29,7 +29,7 @@ const plugin: Plugin = (editor) => {
   });
 
   BlockManager.add(BuilderBlock.DIV.id, {
-    category: BuilderCategory.BASIC.name,
+    category: BuilderCategory.BASIC,
     label: BuilderBlock.DIV.name,
     media: exportedSVG['div'],
     content: {

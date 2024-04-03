@@ -24,7 +24,7 @@ const plugin: Plugin = (editor: Editor) => {
   });
 
   BlockManager.add(BuilderBlock.FLIP_CARDS_3D.id, {
-    category: BuilderCategory.INTERACTIVE.name,
+    category: BuilderCategory.INTERACTIVE,
     label: BuilderBlock.FLIP_CARDS_3D.name,
     media: exportedSVG['flipCards3D'],
     content: {

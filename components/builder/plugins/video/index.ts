@@ -68,7 +68,7 @@ const plugin: Plugin = (editor: Editor) => {
     });
 
     BlockManager.add(BuilderBlock.VIDEO.id, {
-        category: BuilderCategory.MEDIA.name,
+        category: BuilderCategory.MEDIA,
         label: BuilderBlock.VIDEO.name,
         media: exportedSVG['video'],
         content: {

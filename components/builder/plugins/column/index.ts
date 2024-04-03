@@ -148,7 +148,7 @@ const plugin: Plugin = (editor: Editor) => {
   });
 
   BlockManager.add(BuilderBlock.COLUMN.id, {
-    category: BuilderCategory.BASIC.name,
+    category: BuilderCategory.BASIC,
     label: 'Column',
     media: exportedSVG['column'],
     content: {

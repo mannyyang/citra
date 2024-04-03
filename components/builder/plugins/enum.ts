@@ -196,17 +196,8 @@ export const BuilderBlock = {
 };
 
 export const BuilderCategory = {
-  TYPOGRAPHY: {
-    name: 'Typography'
-  },
-  BASIC: {
-    name: 'Basic'
-  },
-  INTERACTIVE: {
-    name: 'Interactive'
-  },
-  MEDIA: {
-    name: 'Media'
-  }
-
+  TYPOGRAPHY: 'Typography',
+  BASIC: 'Basic',
+  INTERACTIVE: 'Interactive',
+  MEDIA: 'Media'
 }
