@@ -1,8 +1,15 @@
 
-declare global {
-  class Swiper {
-    constructor(...args) {}
-  }
+interface SwiperOptions {
+  navigation: {
+    nextEl: string;
+    prevEl: string;
+  };
+  slidesPerGroup?: number;
+  slidesPerView?: number;
+}
+
+class Swiper {
+  constructor(container: string, options?: SwiperOptions ){}
 }
 
 const carousel = {
