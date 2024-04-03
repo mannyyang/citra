@@ -1,7 +1,7 @@
 import type { Editor, Plugin } from 'grapesjs';
 import { exportedSVG } from '../icons';
 
-import { BuilderBlock, BuilderComponent } from '../enum';
+import { BuilderBlock, BuilderCategory, BuilderComponent } from '../enum';
 import { isComponent } from '../util';
 
 const plugin: Plugin = (editor: Editor) => {
@@ -30,7 +30,7 @@ const plugin: Plugin = (editor: Editor) => {
   });
 
   BlockManager.add(BuilderBlock.HEADING.id, {
-    category: 'Typography',
+    category: BuilderCategory.TYPOGRAPHY.name,
     label: BuilderComponent.HEADING.name,
     media: exportedSVG['heading'],
     content: {

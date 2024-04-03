@@ -1,5 +1,5 @@
 import type { Editor, Plugin } from 'grapesjs';
-import { BuilderBlock, BuilderComponent } from '../enum';
+import { BuilderBlock, BuilderCategory, BuilderComponent } from '../enum';
 import { exportedSVG } from '../icons';
 import { isComponent } from '../util';
 import flipCards from './constants';
@@ -24,7 +24,7 @@ const plugin: Plugin = (editor: Editor) => {
   });
 
   BlockManager.add(BuilderBlock.FLIP_CARDS.id, {
-    category: 'Interactive',
+    category: BuilderCategory.INTERACTIVE.name,
     label: BuilderBlock.FLIP_CARDS.name,
     media: exportedSVG['flipCards'],
     content: {

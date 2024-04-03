@@ -1,5 +1,5 @@
 import type { Plugin } from 'grapesjs';
-import { BuilderBlock, BuilderComponent } from '../enum';
+import { BuilderBlock, BuilderCategory, BuilderComponent } from '../enum';
 import { exportedSVG } from '../icons';
 import { isComponent } from '../util';
 
@@ -18,7 +18,7 @@ const plugin: Plugin = (editor) => {
           'data-ntvb': 'button',
           'data-ca': BuilderComponent.BUTTON.id
         },
-        tagName:'button',
+        tagName: 'button',
         style: {
           display: 'flex',
           'justify-content': 'center',
@@ -36,12 +36,12 @@ const plugin: Plugin = (editor) => {
       init() {
         this.listenTo(this.model, `change:modify change:dataSource change:Table`, this.handleChanges);
       },
-      handleChanges() {}
+      handleChanges() { }
     }
   });
 
   BlockManager.add(BuilderBlock.BUTTON.id, {
-    category: 'Basic',
+    category: BuilderCategory.BASIC.name,
     activate: true,
     label: 'Button',
     media: exportedSVG['button'],

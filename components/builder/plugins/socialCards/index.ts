@@ -1,5 +1,5 @@
 import type { Editor, Plugin } from 'grapesjs';
-import { BuilderBlock, BuilderComponent } from '../enum';
+import { BuilderBlock, BuilderCategory, BuilderComponent } from '../enum';
 import { exportedSVG } from '../icons';
 import { isComponent } from '../util';
 import socialCards from './constants';
@@ -23,7 +23,7 @@ const plugin: Plugin = (editor: Editor) => {
   });
 
   BlockManager.add(BuilderBlock.SOCIAL_CARDS.id, {
-    category: 'Interactive',
+    category: BuilderCategory.INTERACTIVE.name,
     label: BuilderBlock.SOCIAL_CARDS.name,
     media: exportedSVG['socialCards'],
     content: {

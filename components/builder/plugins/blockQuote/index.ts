@@ -1,5 +1,5 @@
 import type { Editor, Plugin } from 'grapesjs';
-import { BuilderBlock, BuilderComponent } from '../enum';
+import { BuilderBlock, BuilderCategory, BuilderComponent } from '../enum';
 import { exportedSVG } from '../icons';
 import { isComponent } from '../util';
 
@@ -32,7 +32,7 @@ const plugin: Plugin = (editor: Editor) => {
     });
 
     BlockManager.add(BuilderBlock.BLOCK_QUOTE.id, {
-        category: 'Typography',
+        category: BuilderCategory.TYPOGRAPHY.name,
         label: BuilderBlock.BLOCK_QUOTE.name,
         media: exportedSVG["blockQuote"],
         content: {

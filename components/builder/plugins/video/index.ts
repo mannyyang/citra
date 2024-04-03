@@ -1,5 +1,5 @@
 import type { Editor, Plugin } from 'grapesjs';
-import { BuilderBlock, BuilderComponent } from '../enum';
+import { BuilderBlock, BuilderCategory, BuilderComponent } from '../enum';
 import { exportedSVG } from '../icons';
 import { isComponent } from '../util';
 
@@ -68,7 +68,7 @@ const plugin: Plugin = (editor: Editor) => {
     });
 
     BlockManager.add(BuilderBlock.VIDEO.id, {
-        category: 'Media',
+        category: BuilderCategory.MEDIA.name,
         label: BuilderBlock.VIDEO.name,
         media: exportedSVG['video'],
         content: {

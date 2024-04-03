@@ -1,5 +1,5 @@
 import type { Editor, Plugin } from 'grapesjs';
-import { BuilderBlock, BuilderComponent } from '../enum';
+import { BuilderBlock, BuilderCategory, BuilderComponent } from '../enum';
 import { exportedSVG } from '../icons';
 import { isComponent } from '../util';
 import carousel from './constants';
@@ -128,9 +128,9 @@ const plugin: Plugin = (editor: Editor) => {
             { type: BuilderComponent.CAROUSEL_LEFT_BUTTON.id },
             { type: BuilderComponent.CAROUSEL_RIGHT_BUTTON.id }
           ]
-        }],        
+        }],
         attributes: {
-          'data-ca': BuilderComponent.CAROUSEL.id     
+          'data-ca': BuilderComponent.CAROUSEL.id
         },
         classes: [BuilderComponent.CAROUSEL.class, 'block-carousel'],
         traits: [
@@ -147,15 +147,15 @@ const plugin: Plugin = (editor: Editor) => {
             type: 'number',
             changeProp: true
           }
-        ],     
+        ],
         slidesPerGroup: 1,
         slidesPerView: 1
-      },      
+      },
       init() {
         this.listenTo(this, 'change:slidesPerGroup', () => this.updateSlides())
         this.listenTo(this, 'change:slidesPerView', () => this.updateSlides())
-      },    
-      updateSlides(){
+      },
+      updateSlides() {
         this.view?.render()
       }
     }
@@ -163,7 +163,7 @@ const plugin: Plugin = (editor: Editor) => {
 
 
   BlockManager.add(BuilderBlock.CAROUSEL.id, {
-    category: 'Interactive',
+    category: BuilderCategory.INTERACTIVE.name,
     label: BuilderBlock.CAROUSEL.name,
     media: exportedSVG['carousel'],
     content: {

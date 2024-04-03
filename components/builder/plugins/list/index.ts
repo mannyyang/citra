@@ -1,7 +1,7 @@
 import type { Editor, Plugin } from 'grapesjs';
 // import { exportedSVG } from '../icons';
 // import { LIST_ITEM_STYLE } from '../listItem';
-import { BuilderBlock, BuilderComponent } from '../enum';
+import { BuilderBlock, BuilderCategory, BuilderComponent } from '../enum';
 import { exportedSVG } from '../icons';
 import { isComponent } from '../util';
 
@@ -38,7 +38,7 @@ const plugin: Plugin = (editor: Editor) => {
   });
 
   BlockManager.add(BuilderBlock.LIST.id, {
-    category: 'Basic',
+    category: BuilderCategory.BASIC.name,
     label: 'List',
     media: exportedSVG['list'],
     content: {

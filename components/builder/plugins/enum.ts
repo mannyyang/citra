@@ -41,7 +41,7 @@ export const BuilderComponent = {
     id: 'n-list-item',
     name: 'List Item',
     class: `${CLASS_PREFIX}-list-item`
-  }, 
+  },
   BLOCK_QUOTE: {
     id: 'n-block-quote',
     name: 'Block Quote',
@@ -57,27 +57,27 @@ export const BuilderComponent = {
     name: 'Heading',
     class: `${CLASS_PREFIX}-heading`
   },
-  FLIP_CARDS_3D:{
-    id:'flip-cards-3d',
-    name:'3D Flip Cards',
+  FLIP_CARDS_3D: {
+    id: 'flip-cards-3d',
+    name: '3D Flip Cards',
     class: `${CLASS_PREFIX}-flip-cards-3d`
   },
-  FLIP_CARDS:{
-    id:'flip-cards',
-    name:'Flip Cards',
+  FLIP_CARDS: {
+    id: 'flip-cards',
+    name: 'Flip Cards',
     class: `${CLASS_PREFIX}-flip-cards`
   },
-  CAROUSEL:{
-    id:'carousel',
+  CAROUSEL: {
+    id: 'carousel',
     name: 'Carousel',
     class: `${CLASS_PREFIX}-carousel`
   },
-  CAROUSEL_IMAGE:{
+  CAROUSEL_IMAGE: {
     id: 'carousel-image',
     name: 'Carousel Image',
     class: `${CLASS_PREFIX}-carousel-image`
   },
-  CAROUSEL_WRAPPER:{
+  CAROUSEL_WRAPPER: {
     id: 'carousel-wrapper',
     name: 'Carousel Wrapper',
     class: `${CLASS_PREFIX}-carousel-wrapper`
@@ -102,26 +102,26 @@ export const BuilderComponent = {
     name: 'Carousel Right Button',
     class: `${CLASS_PREFIX}-carousel-right-button`
   },
-  SOCIAL_CARDS:{
-    id:'social-cards',
-    name:'Social Cards',
+  SOCIAL_CARDS: {
+    id: 'social-cards',
+    name: 'Social Cards',
     class: `${CLASS_PREFIX}-social-cards`
   },
-  USER_BLOCKS:{
-    id:'block-adder',
+  USER_BLOCKS: {
+    id: 'block-adder',
     name: 'Block Adder',
     class: `${CLASS_PREFIX}-block-adder`
   },
-  VIDEO:{
-    id:'custom-video',
+  VIDEO: {
+    id: 'custom-video',
     name: 'Video',
     class: `${CLASS_PREFIX}-custom-video`
   },
-  YOUTUBE:{
-    id:'youtube',
+  YOUTUBE: {
+    id: 'youtube',
     name: 'Youtube',
     class: `${CLASS_PREFIX}-youtube`
-  },  
+  },
 };
 
 export const BuilderBlock = {
@@ -161,36 +161,52 @@ export const BuilderBlock = {
     id: 'heading',
     name: 'Heading'
   },
-  IMAGE:{
-    id:'image',
+  IMAGE: {
+    id: 'image',
     name: 'Image'
   },
-  FLIP_CARDS_3D:{
-    id:'flip-cards-3d',
-    name:'3D Flip Cards'
+  FLIP_CARDS_3D: {
+    id: 'flip-cards-3d',
+    name: '3D Flip Cards'
   },
-  FLIP_CARDS:{
-    id:'flip-cards',
-    name:'Flip Cards'
+  FLIP_CARDS: {
+    id: 'flip-cards',
+    name: 'Flip Cards'
   },
-  CAROUSEL:{
-    id:'carousel',
+  CAROUSEL: {
+    id: 'carousel',
     name: 'Carousel'
   },
-  SOCIAL_CARDS:{
-    id:'social-cards',
-    name:'Social Cards'
+  SOCIAL_CARDS: {
+    id: 'social-cards',
+    name: 'Social Cards'
   },
-  LINK:{
-    id:'link',
-    name:'Link'
+  LINK: {
+    id: 'link',
+    name: 'Link'
   },
-  VIDEO:{
-    id:'custom-video',
+  VIDEO: {
+    id: 'custom-video',
     name: 'Video',
   },
-  YOUTUBE:{
-    id:'youtube',
+  YOUTUBE: {
+    id: 'youtube',
     name: 'Youtube'
   }
 };
+
+export const BuilderCategory = {
+  TYPOGRAPHY: {
+    name: 'Typography'
+  },
+  BASIC: {
+    name: 'Basic'
+  },
+  INTERACTIVE: {
+    name: 'Interactive'
+  },
+  MEDIA: {
+    name: 'Media'
+  }
+
+}

@@ -1,5 +1,5 @@
 import type { Plugin } from 'grapesjs';
-import { BuilderBlock, BuilderComponent } from '../enum';
+import { BuilderBlock, BuilderCategory, BuilderComponent } from '../enum';
 import { exportedSVG } from '../icons';
 import { isComponent } from '../util';
 
@@ -29,7 +29,7 @@ const plugin: Plugin = (editor) => {
   });
 
   BlockManager.add(BuilderBlock.DIV.id, {
-    category: 'Basic',
+    category: BuilderCategory.BASIC.name,
     label: BuilderBlock.DIV.name,
     media: exportedSVG['div'],
     content: {

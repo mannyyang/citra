@@ -1,5 +1,5 @@
 import { type Editor, type Plugin } from 'grapesjs';
-import { BuilderBlock, BuilderComponent } from '../enum';
+import { BuilderBlock, BuilderCategory, BuilderComponent } from '../enum';
 // import { exportedSVG } from '../icons';
 import { exportedSVG } from '../icons';
 import { isComponent } from '../util';
@@ -148,7 +148,7 @@ const plugin: Plugin = (editor: Editor) => {
   });
 
   BlockManager.add(BuilderBlock.COLUMN.id, {
-    category: 'Basic',
+    category: BuilderCategory.BASIC.name,
     label: 'Column',
     media: exportedSVG['column'],
     content: {
