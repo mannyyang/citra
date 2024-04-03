@@ -65,9 +65,6 @@ dependencies:
   stripe:
     specifier: ^14.11.0
     version: 14.20.0
-  swiper:
-    specifier: ^11.1.0
-    version: 11.1.0
   uid:
     specifier: ^2.0.2
     version: 2.0.2
@@ -8008,11 +8005,6 @@ packages:
       css-what: 6.1.0
       csso: 5.0.5
       picocolors: 1.0.0
-
-  /swiper@11.1.0:
-    resolution: {integrity: sha512-Pm78CgU7Wvg+w/MgIL/1NwMSLgx0XqFof25EnVyX8iZFCYJv5CppH7LHkBj43qW2k5Cp3Iz7FcdBxrox7XX2AQ==}
-    engines: {node: '>= 4.7.0'}
-    dev: false
 
   /synckit@0.6.2:
     resolution: {integrity: sha512-Vhf+bUa//YSTYKseDiiEuQmhGCoIF3CVBhunm3r/DQnYiGT4JssmnKQc44BIyOZRK2pKjXXAgbhfmbeoC9CJpA==}
