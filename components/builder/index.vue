@@ -68,3 +68,9 @@ watch(
     <div ref="canvas" class="flex-1 min-h-full" />
   </div>
 </template>
+
+<style lang="scss">
+.gjs-pn-btn svg {
+  height: 22px;
+}
+</style>
