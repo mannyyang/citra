@@ -3,11 +3,11 @@ import type { RequiredPluginOptions } from '.';
 
 import { exportedSVG } from '../icons';
 import {
-  cmdClear,
-  cmdDeviceDesktop,
-  cmdDeviceMobile,
-  cmdDeviceTablet,
-  cmdImport
+cmdClear,
+cmdDeviceDesktop,
+cmdDeviceMobile,
+cmdDeviceTablet,
+cmdImport
 } from './consts';
 
 export default (editor: Editor, opts: RequiredPluginOptions) => {
@@ -36,17 +36,17 @@ export default (editor: Editor, opts: RequiredPluginOptions) => {
           id: cmdDeviceDesktop,
           command: cmdDeviceDesktop,
           active: true,
-          label: exportedSVG['pannelDeviceDesktop']
+          label: exportedSVG['panelDeviceDesktop']
         },
         {
           id: cmdDeviceTablet,
           command: cmdDeviceTablet,
-          label: exportedSVG['pannelDeviceTablet']
+          label: exportedSVG['panelDeviceTablet']
         },
         {
           id: cmdDeviceMobile,
           command: cmdDeviceMobile,
-          label: exportedSVG['pannelDeviceMobile']
+          label: exportedSVG['panelDeviceMobile']
         }
       ]
     },
@@ -57,44 +57,44 @@ export default (editor: Editor, opts: RequiredPluginOptions) => {
           id: swv,
           command: swv,
           context: swv,
-          label: exportedSVG['pannelSWV']
+          label: exportedSVG['panelSWV']
         },
         {
           id: prv,
           context: prv,
           command: () => editor.runCommand(prv),
-          label: exportedSVG['pannelPRV']
+          label: exportedSVG['panelPRV']
         },
         {
           id: ful,
           command: ful,
           context: ful,
-          label: exportedSVG['pannelFUL']
+          label: exportedSVG['panelFUL']
         },
         {
           id: expt,
           command: () => editor.runCommand(expt),
-          label: exportedSVG['pannelEXPT']
+          label: exportedSVG['panelEXPT']
         },
         {
           id: 'undo',
           command: () => editor.runCommand('core:undo'),
-          label: exportedSVG['pannelUndo']
+          label: exportedSVG['panelUndo']
         },
         {
           id: 'redo',
           command: () => editor.runCommand('core:redo'),
-          label: exportedSVG['pannelRedo']
+          label: exportedSVG['panelRedo']
         },
         {
           id: cmdImport,
           command: () => editor.runCommand(cmdImport),
-          label: exportedSVG['pannelImport']
+          label: exportedSVG['panelImport']
         },
         {
           id: cmdClear,
           command: () => editor.runCommand(cmdClear),
-          label: exportedSVG['pannelClear']
+          label: exportedSVG['panelClear']
         }
       ]
     },
@@ -105,22 +105,22 @@ export default (editor: Editor, opts: RequiredPluginOptions) => {
           id: osm,
           command: osm,
           active: true,
-          label: exportedSVG['pannelOSM']
+          label: exportedSVG['panelOSM']
         },
         {
           id: otm,
           command: otm,
-          label: exportedSVG['pannelOTM']
+          label: exportedSVG['panelOTM']
         },
         {
           id: ola,
           command: ola,
-          label: exportedSVG['pannelOLA']
+          label: exportedSVG['panelOLA']
         },
         {
           id: obl,
           command: obl,
-          label: exportedSVG['pannelOBL']
+          label: exportedSVG['panelOBL']
         }
       ]
     }

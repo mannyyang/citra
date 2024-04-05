@@ -236,13 +236,12 @@ function parseIconSet(
 }
 
 // Icon to SVG
-function iconToSVG(iconData: any, options: any) {
+function iconToSVG(iconData: any) {
   const { body, width, height } = iconData;
   const attributes = {
     width: width || '24',
     height: height || '24',
-    viewBox: `0 0 ${width} ${height}`,
-    ...options
+    viewBox: `0 0 ${width} ${height}`
   };
 
   return {
@@ -259,10 +258,7 @@ parseIconSet(BUILDER_ICONS.icons, (iconName, iconData) => {
   }
 
   // Render icon
-  const renderData = iconToSVG(iconData, {
-    width: '100%',
-    height: '100%'
-  });
+  const renderData = iconToSVG(iconData);
 
   // Generate attributes for SVG element
   const svgAttributes: Record<string, string> = {
