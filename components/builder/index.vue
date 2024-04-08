@@ -4,7 +4,7 @@ import 'grapesjs/dist/css/grapes.min.css';
 import type { EditorConfig } from 'grapesjs';
 import plugins from './plugins';
 
-
+const {$api} = useNuxtApp()
 const canvas: any = ref(null)
 
 const options: EditorConfig = {
@@ -61,11 +61,31 @@ watch(
   { immediate: true }
 );
 
+
+
+async function onPublish() {  
+  const componentData = JSON.stringify(grapes.editor.getComponents());
+  const html = grapes.editor.getHtml();
+  const css = grapes.editor.getCss();
+  const js =  grapes.editor.getJs()
+
+  const {data, error} = await useCreateBuilder(componentData, html, css, js)  
+  if (error.value) {
+    console.log(error.value);
+  }
+  
+  console.log(data.builder.builderPageId)
+}
+
+
 </script>
 
-<template>
-  <div class="ca-builder flex w-full min-h-full">
-    <div ref="canvas" class="flex-1 min-h-full" />
+<template>  
+  <div class="w-full text-right min-h-full">
+    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="onPublish">Publish</button>
+    <div class="ca-builder flex w-full h-full">  
+      <div ref="canvas" class="flex-1" />
+    </div>
   </div>
 </template>
 
