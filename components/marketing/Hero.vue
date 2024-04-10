@@ -13,6 +13,7 @@
         </p>        
         <div class="items-center justify-center gap-x-3 space-y-3 sm:flex sm:space-y-0">
           <iframe 
+          ref="iframe"
           data-tally-src="https://tally.so/embed/nGdEyL?hideTitle=1&transparentBackground=1&dynamicHeight=1" 
           loading="lazy" 
           width="100%" 
@@ -29,5 +30,23 @@
 </template>
 
 <script setup>
-var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
-</script>                  
+import { onMounted } from 'vue'
+
+onMounted(()=> {
+  const w="https://tally.so/widgets/embed.js";
+  const v= () => {
+    "undefined"!=typeof Tally
+      ?Tally.loadEmbeds() 
+      : document.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))
+  };
+
+  if("undefined"!=typeof Tally) {
+    v()
+  } else if (document.querySelector('script[src="'+w+'"]')==null) {
+    const s=document.createElement("script");
+    s.src=w, s.onload=v, s.onerror=v;
+    document.body.appendChild(s);
+  }
+})
+
+</script>                
