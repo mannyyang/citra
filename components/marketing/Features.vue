@@ -2,33 +2,33 @@
 const features = [
   {
     icon: 'i-tabler-shield-check',
-    title: 'Authentication',
-    desc: 'Includes password and social login flows for user convenience. Easily add more providers through Lucia Auth.',
+    title: 'Content Magic',
+    desc: 'Experience content creation that feels like a breeze, with suggestions that align perfectly with your goals.',
   },
   {
     icon: 'i-tabler-credit-card',
-    title: 'Payments',
-    desc: 'Stripe subscriptions and payments integration from day one. Users can manage subscriptions in the billing portal.',
+    title: 'Tailored to You',
+    desc: 'Your landing page adapts to your unique style effortlessly, ensuring a perfect match to your brand.',
   },
   {
     icon: 'i-tabler-database-star',
-    title: 'Own the data',
-    desc: 'Built with the most reliable and scalable database, Postgres. Use of Drizzle ORM makes it easy to use with any provider e.g. Supabase, AWS RDS...',
+    title: 'Multi-Device Ready',
+    desc: 'Rest easy knowing your landing page looks stunning and functions flawlessly across various screens.',
   },
   {
     icon: 'i-tabler-users-group',
-    title: 'Enterprise ready',
-    desc: 'Users can create teams and projects, and invite members.',
+    title: 'Smart Optimization',
+    desc: `Leverage automated insights to enhance your landing page's performance without breaking a sweat.`,
   },
   {
     icon: 'i-tabler-palette',
-    title: 'Elegant Design',
-    desc: 'Craft beautiful sites with NuxtUI and Headless UI components. Built with TailwindCSS and mobile first.',
+    title: 'Instant Analytics',
+    desc: 'Gain valuable insights in real-time, guiding you toward impactful decisions and adjustments.',
   },
   {
     icon: 'i-tabler-stars',
-    title: 'Flexible',
-    desc: 'You own the code. Modify it to your heart\'s content thanks to the modularized architecture.',
+    title: 'Streamlined Workflow',
+    desc: 'Focus on what truly matters while our platform takes care of the heavy lifting, so you can shine.',
   },
 ]
 </script>
@@ -38,18 +38,15 @@ const features = [
     <div class="max-w-screen-xl mx-auto px-4 text-center md:px-8">
       <div class="max-w-2xl mx-auto">
         <h3 class=" text-3xl font-semibold sm:text-4xl">
-          The fastest way to launch a product
+          Effortless Landing Page Creation
         </h3>
         <p class="mt-3">
-          Batteries included. All the features you need to start getting paid today!
+          Unlock a world of seamless landing page creation with intelligent automation that simplifies the process for you.
         </p>
       </div>
       <div class="mt-12">
         <ul class="grid gap-y-8 gap-x-12 sm:grid-cols-2 lg:grid-cols-3">
-          <li v-for="(item, index) in features" :key="index" class="space-y-3">
-            <div class="w-12 h-12 mx-auto bg-primary/10 text-primary-600 rounded-full flex items-center justify-center">
-              <UIcon :name="item.icon" class="h-6 w-6 text-primary" />
-            </div>
+          <li v-for="(item, index) in features" :key="index" class="space-y-3">            
             <h4 class="text-lg  font-semibold">
               {{ item.title }}
             </h4>
