@@ -81,3 +81,11 @@ export const subscription = pgTable('stripe_subscription', {
   stripeCustomerId: varchar('stripe_customer_id').notNull(),
   expires: bigint('expires', { mode: 'number' }).notNull(),
 })
+
+export const builderPage = pgTable('builder_page', {
+  builderPageId: varchar('builder_page_id').primaryKey(),
+  projectData: jsonb('features').notNull(),
+  html: varchar('html').notNull(),
+  css: varchar('css').notNull(),
+  js: varchar('js').notNull(),
+})

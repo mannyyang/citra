@@ -1,22 +1,22 @@
 import type { Editor, Plugin } from 'grapesjs';
+import { BuilderBlock, BuilderCategory, BuilderComponent } from '../enum';
 import { exportedSVG } from '../icons';
-import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
 import { isComponent } from '../util';
 
 const plugin: Plugin = (editor: Editor) => {
     const Components = editor.Components;
     const BlockManager = editor.BlockManager;
 
-    Components.addType(ComponentTypes.CaYoutube, {
-        isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaYoutube),
+    Components.addType(BuilderComponent.YOUTUBE.id, {
+        isComponent: (el: HTMLElement) => isComponent(el, BuilderComponent.YOUTUBE.id),
         extend: 'video',
         model: {
             defaults: {
-                classes: [ComponentClasses.CaYoutube],
+                classes: [BuilderComponent.YOUTUBE.class],
                 provider: 'yt',
                 'change:provider': 'updateProvider',
                 attributes: {
-                    'data-ca': ComponentTypes.CaYoutube
+                    'data-ca': BuilderComponent.YOUTUBE.id
                 }
             },
 
@@ -67,12 +67,12 @@ const plugin: Plugin = (editor: Editor) => {
         }
     });
 
-    BlockManager.add(BlockIdentifies.Youtube, {
-        category: 'Media',
-        label: 'Youtube',
+    BlockManager.add(BuilderBlock.YOUTUBE.id, {
+        category: BuilderCategory.MEDIA,
+        label: BuilderBlock.YOUTUBE.name,
         media: exportedSVG['youtube'],
         content: {
-            type: ComponentTypes.CaYoutube,
+            type: BuilderComponent.YOUTUBE.id,
             style: {
                 width: '100%',
                 height: 'auto'

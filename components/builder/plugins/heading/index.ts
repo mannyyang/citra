@@ -1,38 +1,40 @@
 import type { Editor, Plugin } from 'grapesjs';
 import { exportedSVG } from '../icons';
-import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
+
+import { BuilderBlock, BuilderCategory, BuilderComponent } from '../enum';
 import { isComponent } from '../util';
 
 const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
-  Components.addType(ComponentTypes.CaHeading, {
-    isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaHeading),
+  Components.addType(BuilderComponent.HEADING.id, {
+    isComponent: (el: HTMLElement) => isComponent(el, BuilderComponent.HEADING.id),
     extend: 'text',
     model: {
       defaults: {
-        classes: [ComponentClasses.CaHeading],
+        name: BuilderComponent.HEADING.name,
+        classes: [BuilderComponent.HEADING.class],
         tagName: 'h1',
         droppable: false,
         style: {
           'margin-top': '0px',
           'margin-bottom': '10px'
         },
-        components: 'Heading Text',
+        content: 'Heading Text',
         attributes: {
-          'data-ca': ComponentTypes.CaHeading
+          'data-ca': BuilderComponent.HEADING.id
         }
       }
     }
   });
 
-  BlockManager.add(BlockIdentifies.Heading, {
-    category: 'Typography',
-    label: 'Heading',
+  BlockManager.add(BuilderBlock.HEADING.id, {
+    category: BuilderCategory.TYPOGRAPHY,
+    label: BuilderComponent.HEADING.name,
     media: exportedSVG['heading'],
     content: {
-      type: ComponentTypes.CaHeading
+      type: BuilderComponent.HEADING.id
     },
     select: true
   });

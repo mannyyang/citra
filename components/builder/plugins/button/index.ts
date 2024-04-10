@@ -1,22 +1,24 @@
-import type { Editor, Plugin } from 'grapesjs';
+import type { Plugin } from 'grapesjs';
+import { BuilderBlock, BuilderCategory, BuilderComponent } from '../enum';
 import { exportedSVG } from '../icons';
-import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
 import { isComponent } from '../util';
 
-/**
- * Creates a button component with some default styles and adds it as a reusable block.
- */
-
-const plugin: Plugin = (editor: Editor) => {
+const plugin: Plugin = (editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
-  Components.addType(ComponentTypes.CaButton, {
-    extend: 'link',
-    isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaButton),
+  Components.addType(BuilderComponent.BUTTON.id, {
+    isComponent: (el) => isComponent(el, BuilderComponent.BUTTON.id),
+    extend: 'text',
     model: {
       defaults: {
-        classes: [ComponentClasses.CaButton],
+        name: BuilderComponent.BUTTON.name,
+        classes: [BuilderComponent.BUTTON.class],
+        attributes: {
+          'data-ntvb': 'button',
+          'data-ca': BuilderComponent.BUTTON.id
+        },
+        tagName: 'button',
         style: {
           display: 'flex',
           'justify-content': 'center',
@@ -27,25 +29,24 @@ const plugin: Plugin = (editor: Editor) => {
           'text-align': 'center',
           'text-decoration': 'none'
         },
-        components: {
-          tagName: 'span',
-          components: 'Button Text'
-        },
-        attributes: {
-          'data-ca': ComponentTypes.CaButton
-        }
+        content: 'Button Text'
+      }
+    },
+    view: {
+      init() {
+        this.listenTo(this.model, `change:modify change:dataSource change:Table`, this.handleChanges);
       },
-      init() { }
+      handleChanges() { }
     }
   });
 
-  BlockManager.add(BlockIdentifies.Button, {
-    category: 'Basic',
+  BlockManager.add(BuilderBlock.BUTTON.id, {
+    category: BuilderCategory.BASIC,
     activate: true,
     label: 'Button',
     media: exportedSVG['button'],
     content: {
-      type: ComponentTypes.CaButton
+      type: BuilderComponent.BUTTON.id
     }
   });
 };

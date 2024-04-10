@@ -1,38 +1,39 @@
-import type { Editor, Plugin } from 'grapesjs';
+import type { Plugin } from 'grapesjs';
+import { BuilderBlock, BuilderCategory, BuilderComponent } from '../enum';
 import { exportedSVG } from '../icons';
-import { BlockIdentifies, ComponentClasses, ComponentTypes } from '../types';
 import { isComponent } from '../util';
 
 /**
  * Creates an empty div as a starting point.
  */
-const plugin: Plugin = (editor: Editor) => {
+const plugin: Plugin = (editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
-  Components.addType(ComponentTypes.CaDiv, {
-    isComponent: (el: HTMLElement) => isComponent(el, ComponentTypes.CaDiv),
+  Components.addType(BuilderComponent.DIV.id, {
+    isComponent: (el: HTMLElement) => isComponent(el, BuilderComponent.DIV.id),
     model: {
       defaults: {
-        classes: [ComponentClasses.CaDiv],
+        name: BuilderComponent.DIV.name,
+        classes: [BuilderComponent.DIV.class],
         tagName: 'div',
+        attributes: {
+          'data-ca': BuilderComponent.DIV.id
+        },
         style: {
           display: 'flex',
           padding: '20px'
-        },
-        attributes: {
-          'data-ca': ComponentTypes.CaDiv
         }
       }
     }
   });
 
-  BlockManager.add(BlockIdentifies.Div, {
-    category: 'Basic',
-    label: 'Div',
+  BlockManager.add(BuilderBlock.DIV.id, {
+    category: BuilderCategory.BASIC,
+    label: BuilderBlock.DIV.name,
     media: exportedSVG['div'],
     content: {
-      type: ComponentTypes.CaDiv
+      type: BuilderComponent.DIV.id
     },
     select: true
   });

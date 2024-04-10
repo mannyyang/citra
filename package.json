@@ -26,6 +26,15 @@
     "@nuxt/ui": "^2.11.1",
     "drizzle-orm": "^0.29.3",
     "grapesjs": "^0.21.9",
+    "grapesjs-component-countdown": "^1.0.2",
+    "grapesjs-custom-code": "^1.0.2",
+    "grapesjs-parser-postcss": "^1.0.3",
+    "grapesjs-plugin-export": "^1.0.12",
+    "grapesjs-style-bg": "^2.0.2",
+    "grapesjs-tabs": "^1.0.6",
+    "grapesjs-tooltip": "^0.1.8",
+    "grapesjs-tui-image-editor": "^1.0.2",
+    "grapesjs-typed": "^2.0.1",
     "lucia": "^2.7.6",
     "postgres": "^3.4.3",
     "slugify": "^1.6.6",
@@ -42,6 +51,7 @@
     "drizzle-kit": "^0.20.10",
     "eslint": "^8.56.0",
     "husky": "^8.0.0",
-    "nuxt": "^3.9.1"
+    "nuxt": "^3.9.1",
+    "sass": "^1.72.0"
   }
 }

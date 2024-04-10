@@ -1,7 +1,9 @@
-import grapesjs, { Editor, type EditorConfig } from 'grapesjs'
-import { nextTick, onBeforeUnmount, onMounted, reactive } from 'vue'
+import { Editor, EditorConfig } from 'grapesjs';
+import grapesjs from 'grapesjs/dist/grapes.min.js';
+import { onBeforeUnmount, reactive } from 'vue';
 
 /**
+ * Derived and modified from https://github.com/dutchigor/vue-grapesjs-composables/blob/main/src/composables/useGrapes.js
  * Reactive base state and functions to manage Vue GrapesJS Composables.
  * @typedef VGCconfig
  * @property {Object} config Reactive version of the provided GrapesJS configuration object
@@ -19,11 +21,11 @@ import { nextTick, onBeforeUnmount, onMounted, reactive } from 'vue'
  * [GrapesJS]{@link https://github.com/artf/grapesjs/blob/master/src/editor/config/config.js}
  * @returns {VGCconfig}
  */
-export function useGrapes(config: EditorConfig | {
-  container: Ref<any>
-}) {
-  const beforeInit: Function[] = []
-  const afterInit: Function[] = []
+export function useGrapes(config: EditorConfig) {
+  let editor: Editor;
+
+  const beforeInit: Function[] = [];
+  const afterInit: Function[] = [];
 
   // Prepare object to export.
   const grapes = {
@@ -33,9 +35,9 @@ export function useGrapes(config: EditorConfig | {
     // Make the configuration reactive to make use of template refs to append to.
     // Some default values provided to be more inline with integrating in to Vue.
     config: reactive({
-      panels: { defaults: [] },
+      panels: {},
       height: '100%',
-      ...config,
+      ...config
     }),
 
     initialized: false,
@@ -47,7 +49,9 @@ export function useGrapes(config: EditorConfig | {
      * @inner
      * @param {Function} fn Function to register. Does not receive any parameters.
      */
-    onBeforeInit(fn: Function) { beforeInit.push(fn) },
+    onBeforeInit(fn: Function) {
+      beforeInit.push(fn);
+    },
 
     /**
      * @method onInit
@@ -56,37 +60,63 @@ export function useGrapes(config: EditorConfig | {
      * @param {Callback} fn Function to register. Receives the GrapesJS editor as a parameter.
      */
     onInit(fn: (editor: Editor) => void) {
-      afterInit.push(fn)
+      afterInit.push(fn);
     },
+    /**
+     * Initialize GrapesJS
+     * @method init
+     * @memberof VGCconfig
+     * @inner
+     * @returns {void}
+     */
+    init(config) {
+      init(config);
+    }
   } as {
     config: EditorConfig;
     initialized: boolean;
     editor: Editor | null;
     onBeforeInit: (fn: Function) => void;
     onInit: (fn: (editor: Editor) => void) => void;
+    init: (config?: EditorConfig) => void;
   };
 
-  let editor: Editor
-  // Initialize GrapesJs after Vue component has been mounted.
-  onMounted(async () => {
-    // Wait for all child components to mount
-    await nextTick()
+  // Tidy up
+  onBeforeUnmount(() => editor && editor.destroy());
+
+  // Have a user manually call init so they can control when the editor is
+  // created. They may want to init on mount or watch for some content.d
+  function init(initConfig?: EditorConfig) {
+    // check if container exists
+    if (!initConfig?.container && !grapes.config.container) {
+      console.error('No container provided for GrapesJS.');
+      return;
+    }
 
     // Execute all functions registered before initialization
-    for (const fn of beforeInit) { fn() }
+    for (const fn of beforeInit) {
+      fn();
+    }
 
     // Initialize GrapesJS
-    editor = grapesjs.init(grapes.config as EditorConfig)
+    let config = grapes.config;
+    if (initConfig) {
+      config = {
+        ...config,
+        ...initConfig
+      };
+    }
+    editor = grapesjs.init(config);
 
     // Make GrapesJS editor available to other composables
-    grapes.initialized = true
-    grapes.editor = editor
+    grapes.initialized = true;
+    grapes.editor = editor;
 
-    for (const fn of afterInit) { fn(editor) }
-  })
+    // Execute all functions registered after initialization
+    for (const fn of afterInit) {
+      fn(editor);
+    }
+  }
 
-  // Tidy up
-  onBeforeUnmount(() => editor.destroy())
-
-  return grapes
+  return grapes;
 }
