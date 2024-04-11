@@ -62,19 +62,16 @@ watch(
 
 
 
-function onPublish() {  
+async function onPublish() {  
   const componentData = JSON.stringify(grapes.editor.getComponents());
   const html = grapes.editor.getHtml();
   const css = grapes.editor.getCss();
   const js =  grapes.editor.getJs()
 
-  useCreateBuilder(componentData, html, css, js) 
-  .then(res => {    
-    navigateTo(`/build/${res.builder.builderPageId}`)
-  })
-  .catch(err=>{
-    console.log(err)
-  })    
+  try {
+    const { builder } =  await useCreateBuilder(componentData, html, css, js) 
+    navigateTo(`/build/${builder.builderPageId}`)
+  } catch(err) {}  
 }
 
 

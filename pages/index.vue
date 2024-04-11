@@ -3,7 +3,6 @@
 
 <template>
   <MarketingHero />
-  <MarketingFeatures />
-  <MarketingPricing />
-  <MarketingFAQ />
+  <MarketingFeatures />  
+  <MarketingPricing />  
 </template>

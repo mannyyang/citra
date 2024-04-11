@@ -1,5 +1,5 @@
 export async function useCreateBuilder( projectData:string, html: string, css:string, js: string) {
-    return $fetch('/api/builder', {
+    return await $fetch('/api/builder', {
         method: 'post',
         body: {
             projectData,
@@ -8,4 +8,8 @@ export async function useCreateBuilder( projectData:string, html: string, css:st
             js
         },
     })
+}
+
+export async function usePreviewBuilder(id: string) {
+    return await $fetch(`/api/builder/${id}`)
 }
