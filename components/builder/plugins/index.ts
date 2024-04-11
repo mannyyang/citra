@@ -17,7 +17,6 @@ import pluginDevices from './devices';
 import pluginDiv from './div';
 import pluginFlipCards from './flip-cards';
 import pluginFlipCards3D from './flip-cards-3d';
-import pluginHeading from './heading';
 import pluginImage from './image';
 import pluginLink from './link';
 import pluginList from './list';
@@ -25,7 +24,6 @@ import pluginListItem from './list-item';
 import pluginSocialCards from './social-cards';
 import pluginText from './text';
 import pluginVideo from './video';
-import pluginYoutube from './youtube';
 
 
 const plugins = [
@@ -47,14 +45,14 @@ const plugins = [
   pluginList,
   pluginListItem,
   pluginText,
-  pluginHeading,
+  // pluginHeading,
   pluginColumn,
   pluginButton,
   pluginBlockQuote,
 
   pluginImage,
   pluginVideo,
-  pluginYoutube,
+  // pluginYoutube,
   pluginSocialCards,
   pluginToolip,
   pluginExport,
