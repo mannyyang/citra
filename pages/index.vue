@@ -4,4 +4,5 @@
 <template>
   <MarketingHero />
   <MarketingFeatures />  
+  <MarketingPricing />  
 </template>
