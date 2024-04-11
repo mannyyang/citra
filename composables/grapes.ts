@@ -1,5 +1,4 @@
-import { Editor, EditorConfig } from 'grapesjs';
-import grapesjs from 'grapesjs/dist/grapes.min.js';
+import grapesjs, { Editor, type EditorConfig } from 'grapesjs';
 import { onBeforeUnmount, reactive } from 'vue';
 
 /**
