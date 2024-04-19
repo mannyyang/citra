@@ -20,10 +20,7 @@ const plugin: Plugin = (editor) => {
         attributes: {
           'data-ca': BuilderComponent.DIV.id
         },
-        style: {
-          display: 'flex',
-          padding: '20px'
-        }
+        
       }
     }
   });
@@ -33,8 +30,12 @@ const plugin: Plugin = (editor) => {
     label: BuilderBlock.DIV.name,
     media: exportedSVG['div'],
     content: {
-      type: BuilderComponent.DIV.id
+      type: BuilderComponent.DIV.id,
+      style: {
+        padding: '20px'
+      }
     },
+    
     select: true
   });
 };
