@@ -1,0 +1,1 @@
+ALTER TABLE "product" ALTER COLUMN "stripe_monthly_pricing_id" DROP NOT NULL;

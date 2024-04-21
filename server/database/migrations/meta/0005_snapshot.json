@@ -1,0 +1,3033 @@
+{
+  "id": "326da3cc-0f62-41d3-8027-21329c1b6eab",
+  "prevId": "5740e03e-760f-4fe1-a564-a7c0e5bb0e5e",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "auth_user": {
+      "name": "auth_user",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "auth_user_email_unique": {
+          "name": "auth_user_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      }
+    },
+    "builder_page": {
+      "name": "builder_page",
+      "schema": "",
+      "columns": {
+        "builder_page_id": {
+          "name": "builder_page_id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "projectData": {
+          "name": "projectData",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "html": {
+          "name": "html",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "css": {
+          "name": "css",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "js": {
+          "name": "js",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "features": {
+          "name": "features",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_activity": {
+      "name": "directus_activity",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "action": {
+          "name": "action",
+          "type": "varchar(45)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user": {
+          "name": "user",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "timestamp": {
+          "name": "timestamp",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "ip": {
+          "name": "ip",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_agent": {
+          "name": "user_agent",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "collection": {
+          "name": "collection",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "item": {
+          "name": "item",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "comment": {
+          "name": "comment",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "origin": {
+          "name": "origin",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_collections": {
+      "name": "directus_collections",
+      "schema": "",
+      "columns": {
+        "collection": {
+          "name": "collection",
+          "type": "varchar(64)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "icon": {
+          "name": "icon",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "display_template": {
+          "name": "display_template",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "hidden": {
+          "name": "hidden",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "singleton": {
+          "name": "singleton",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "translations": {
+          "name": "translations",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "archive_field": {
+          "name": "archive_field",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "archive_app_filter": {
+          "name": "archive_app_filter",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "archive_value": {
+          "name": "archive_value",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "unarchive_value": {
+          "name": "unarchive_value",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sort_field": {
+          "name": "sort_field",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "accountability": {
+          "name": "accountability",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'all'"
+        },
+        "color": {
+          "name": "color",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "item_duplication_fields": {
+          "name": "item_duplication_fields",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sort": {
+          "name": "sort",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "group": {
+          "name": "group",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "collapse": {
+          "name": "collapse",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'open'"
+        },
+        "preview_url": {
+          "name": "preview_url",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "versioning": {
+          "name": "versioning",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "directus_collections_group_foreign": {
+          "name": "directus_collections_group_foreign",
+          "tableFrom": "directus_collections",
+          "tableTo": "directus_collections",
+          "columnsFrom": [
+            "group"
+          ],
+          "columnsTo": [
+            "collection"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_dashboards": {
+      "name": "directus_dashboards",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "icon": {
+          "name": "icon",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'dashboard'"
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "date_created": {
+          "name": "date_created",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "user_created": {
+          "name": "user_created",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "color": {
+          "name": "color",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "directus_dashboards_user_created_directus_users_id_fk": {
+          "name": "directus_dashboards_user_created_directus_users_id_fk",
+          "tableFrom": "directus_dashboards",
+          "tableTo": "directus_users",
+          "columnsFrom": [
+            "user_created"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_extensions": {
+      "name": "directus_extensions",
+      "schema": "",
+      "columns": {
+        "enabled": {
+          "name": "enabled",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "folder": {
+          "name": "folder",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source": {
+          "name": "source",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bundle": {
+          "name": "bundle",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_fields": {
+      "name": "directus_fields",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "collection": {
+          "name": "collection",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "field": {
+          "name": "field",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "special": {
+          "name": "special",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "interface": {
+          "name": "interface",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "options": {
+          "name": "options",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "display": {
+          "name": "display",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "display_options": {
+          "name": "display_options",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "readonly": {
+          "name": "readonly",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "hidden": {
+          "name": "hidden",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "sort": {
+          "name": "sort",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "width": {
+          "name": "width",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'full'"
+        },
+        "translations": {
+          "name": "translations",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "conditions": {
+          "name": "conditions",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "required": {
+          "name": "required",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "group": {
+          "name": "group",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "validation": {
+          "name": "validation",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "validation_message": {
+          "name": "validation_message",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_files": {
+      "name": "directus_files",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "storage": {
+          "name": "storage",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "filename_disk": {
+          "name": "filename_disk",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "filename_download": {
+          "name": "filename_download",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "type": {
+          "name": "type",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "folder": {
+          "name": "folder",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "uploaded_by": {
+          "name": "uploaded_by",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "uploaded_on": {
+          "name": "uploaded_on",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "modified_by": {
+          "name": "modified_by",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "modified_on": {
+          "name": "modified_on",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "charset": {
+          "name": "charset",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "filesize": {
+          "name": "filesize",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "width": {
+          "name": "width",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "height": {
+          "name": "height",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "duration": {
+          "name": "duration",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "embed": {
+          "name": "embed",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "location": {
+          "name": "location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tags": {
+          "name": "tags",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "metadata": {
+          "name": "metadata",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "focal_point_x": {
+          "name": "focal_point_x",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "focal_point_y": {
+          "name": "focal_point_y",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "directus_files_folder_directus_folders_id_fk": {
+          "name": "directus_files_folder_directus_folders_id_fk",
+          "tableFrom": "directus_files",
+          "tableTo": "directus_folders",
+          "columnsFrom": [
+            "folder"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "directus_files_uploaded_by_directus_users_id_fk": {
+          "name": "directus_files_uploaded_by_directus_users_id_fk",
+          "tableFrom": "directus_files",
+          "tableTo": "directus_users",
+          "columnsFrom": [
+            "uploaded_by"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "directus_files_modified_by_directus_users_id_fk": {
+          "name": "directus_files_modified_by_directus_users_id_fk",
+          "tableFrom": "directus_files",
+          "tableTo": "directus_users",
+          "columnsFrom": [
+            "modified_by"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_flows": {
+      "name": "directus_flows",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "icon": {
+          "name": "icon",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "color": {
+          "name": "color",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'active'"
+        },
+        "trigger": {
+          "name": "trigger",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "accountability": {
+          "name": "accountability",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'all'"
+        },
+        "options": {
+          "name": "options",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "operation": {
+          "name": "operation",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "date_created": {
+          "name": "date_created",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "user_created": {
+          "name": "user_created",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "directus_flows_user_created_directus_users_id_fk": {
+          "name": "directus_flows_user_created_directus_users_id_fk",
+          "tableFrom": "directus_flows",
+          "tableTo": "directus_users",
+          "columnsFrom": [
+            "user_created"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "directus_flows_operation_unique": {
+          "name": "directus_flows_operation_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "operation"
+          ]
+        }
+      }
+    },
+    "directus_folders": {
+      "name": "directus_folders",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "parent": {
+          "name": "parent",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "directus_folders_parent_foreign": {
+          "name": "directus_folders_parent_foreign",
+          "tableFrom": "directus_folders",
+          "tableTo": "directus_folders",
+          "columnsFrom": [
+            "parent"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_migrations": {
+      "name": "directus_migrations",
+      "schema": "",
+      "columns": {
+        "version": {
+          "name": "version",
+          "type": "varchar(255)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "timestamp": {
+          "name": "timestamp",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_notifications": {
+      "name": "directus_notifications",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "timestamp": {
+          "name": "timestamp",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "status": {
+          "name": "status",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'inbox'"
+        },
+        "recipient": {
+          "name": "recipient",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sender": {
+          "name": "sender",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "subject": {
+          "name": "subject",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "message": {
+          "name": "message",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "collection": {
+          "name": "collection",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "item": {
+          "name": "item",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "directus_notifications_recipient_directus_users_id_fk": {
+          "name": "directus_notifications_recipient_directus_users_id_fk",
+          "tableFrom": "directus_notifications",
+          "tableTo": "directus_users",
+          "columnsFrom": [
+            "recipient"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "directus_notifications_sender_directus_users_id_fk": {
+          "name": "directus_notifications_sender_directus_users_id_fk",
+          "tableFrom": "directus_notifications",
+          "tableTo": "directus_users",
+          "columnsFrom": [
+            "sender"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_operations": {
+      "name": "directus_operations",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "key": {
+          "name": "key",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "position_x": {
+          "name": "position_x",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "position_y": {
+          "name": "position_y",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "options": {
+          "name": "options",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "resolve": {
+          "name": "resolve",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "reject": {
+          "name": "reject",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "flow": {
+          "name": "flow",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "date_created": {
+          "name": "date_created",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "user_created": {
+          "name": "user_created",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "directus_operations_flow_directus_flows_id_fk": {
+          "name": "directus_operations_flow_directus_flows_id_fk",
+          "tableFrom": "directus_operations",
+          "tableTo": "directus_flows",
+          "columnsFrom": [
+            "flow"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "directus_operations_user_created_directus_users_id_fk": {
+          "name": "directus_operations_user_created_directus_users_id_fk",
+          "tableFrom": "directus_operations",
+          "tableTo": "directus_users",
+          "columnsFrom": [
+            "user_created"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "directus_operations_resolve_foreign": {
+          "name": "directus_operations_resolve_foreign",
+          "tableFrom": "directus_operations",
+          "tableTo": "directus_operations",
+          "columnsFrom": [
+            "resolve"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "directus_operations_reject_foreign": {
+          "name": "directus_operations_reject_foreign",
+          "tableFrom": "directus_operations",
+          "tableTo": "directus_operations",
+          "columnsFrom": [
+            "reject"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "directus_operations_resolve_unique": {
+          "name": "directus_operations_resolve_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "resolve"
+          ]
+        },
+        "directus_operations_reject_unique": {
+          "name": "directus_operations_reject_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "reject"
+          ]
+        }
+      }
+    },
+    "directus_panels": {
+      "name": "directus_panels",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "dashboard": {
+          "name": "dashboard",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "icon": {
+          "name": "icon",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "''"
+        },
+        "color": {
+          "name": "color",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "show_header": {
+          "name": "show_header",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "type": {
+          "name": "type",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "position_x": {
+          "name": "position_x",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "position_y": {
+          "name": "position_y",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "width": {
+          "name": "width",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "height": {
+          "name": "height",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "options": {
+          "name": "options",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "date_created": {
+          "name": "date_created",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "user_created": {
+          "name": "user_created",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "directus_panels_dashboard_directus_dashboards_id_fk": {
+          "name": "directus_panels_dashboard_directus_dashboards_id_fk",
+          "tableFrom": "directus_panels",
+          "tableTo": "directus_dashboards",
+          "columnsFrom": [
+            "dashboard"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "directus_panels_user_created_directus_users_id_fk": {
+          "name": "directus_panels_user_created_directus_users_id_fk",
+          "tableFrom": "directus_panels",
+          "tableTo": "directus_users",
+          "columnsFrom": [
+            "user_created"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_permissions": {
+      "name": "directus_permissions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "role": {
+          "name": "role",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "collection": {
+          "name": "collection",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "action": {
+          "name": "action",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "permissions": {
+          "name": "permissions",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "validation": {
+          "name": "validation",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "presets": {
+          "name": "presets",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "fields": {
+          "name": "fields",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "directus_permissions_role_directus_roles_id_fk": {
+          "name": "directus_permissions_role_directus_roles_id_fk",
+          "tableFrom": "directus_permissions",
+          "tableTo": "directus_roles",
+          "columnsFrom": [
+            "role"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_presets": {
+      "name": "directus_presets",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "bookmark": {
+          "name": "bookmark",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user": {
+          "name": "user",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role": {
+          "name": "role",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "collection": {
+          "name": "collection",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "search": {
+          "name": "search",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "layout": {
+          "name": "layout",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'tabular'"
+        },
+        "layout_query": {
+          "name": "layout_query",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "layout_options": {
+          "name": "layout_options",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "refresh_interval": {
+          "name": "refresh_interval",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "filter": {
+          "name": "filter",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "icon": {
+          "name": "icon",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'bookmark'"
+        },
+        "color": {
+          "name": "color",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "directus_presets_user_directus_users_id_fk": {
+          "name": "directus_presets_user_directus_users_id_fk",
+          "tableFrom": "directus_presets",
+          "tableTo": "directus_users",
+          "columnsFrom": [
+            "user"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "directus_presets_role_directus_roles_id_fk": {
+          "name": "directus_presets_role_directus_roles_id_fk",
+          "tableFrom": "directus_presets",
+          "tableTo": "directus_roles",
+          "columnsFrom": [
+            "role"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_relations": {
+      "name": "directus_relations",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "many_collection": {
+          "name": "many_collection",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "many_field": {
+          "name": "many_field",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "one_collection": {
+          "name": "one_collection",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "one_field": {
+          "name": "one_field",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "one_collection_field": {
+          "name": "one_collection_field",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "one_allowed_collections": {
+          "name": "one_allowed_collections",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "junction_field": {
+          "name": "junction_field",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sort_field": {
+          "name": "sort_field",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "one_deselect_action": {
+          "name": "one_deselect_action",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'nullify'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_revisions": {
+      "name": "directus_revisions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "activity": {
+          "name": "activity",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "collection": {
+          "name": "collection",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "item": {
+          "name": "item",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "data": {
+          "name": "data",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "delta": {
+          "name": "delta",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "parent": {
+          "name": "parent",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version": {
+          "name": "version",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "directus_revisions_activity_directus_activity_id_fk": {
+          "name": "directus_revisions_activity_directus_activity_id_fk",
+          "tableFrom": "directus_revisions",
+          "tableTo": "directus_activity",
+          "columnsFrom": [
+            "activity"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "directus_revisions_version_directus_versions_id_fk": {
+          "name": "directus_revisions_version_directus_versions_id_fk",
+          "tableFrom": "directus_revisions",
+          "tableTo": "directus_versions",
+          "columnsFrom": [
+            "version"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "directus_revisions_parent_foreign": {
+          "name": "directus_revisions_parent_foreign",
+          "tableFrom": "directus_revisions",
+          "tableTo": "directus_revisions",
+          "columnsFrom": [
+            "parent"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_roles": {
+      "name": "directus_roles",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "icon": {
+          "name": "icon",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'supervised_user_circle'"
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ip_access": {
+          "name": "ip_access",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "enforce_tfa": {
+          "name": "enforce_tfa",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "admin_access": {
+          "name": "admin_access",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "app_access": {
+          "name": "app_access",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_sessions": {
+      "name": "directus_sessions",
+      "schema": "",
+      "columns": {
+        "token": {
+          "name": "token",
+          "type": "varchar(64)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user": {
+          "name": "user",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "expires": {
+          "name": "expires",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ip": {
+          "name": "ip",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_agent": {
+          "name": "user_agent",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "share": {
+          "name": "share",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "origin": {
+          "name": "origin",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "directus_sessions_user_directus_users_id_fk": {
+          "name": "directus_sessions_user_directus_users_id_fk",
+          "tableFrom": "directus_sessions",
+          "tableTo": "directus_users",
+          "columnsFrom": [
+            "user"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "directus_sessions_share_directus_shares_id_fk": {
+          "name": "directus_sessions_share_directus_shares_id_fk",
+          "tableFrom": "directus_sessions",
+          "tableTo": "directus_shares",
+          "columnsFrom": [
+            "share"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_settings": {
+      "name": "directus_settings",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "project_name": {
+          "name": "project_name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'Directus'"
+        },
+        "project_url": {
+          "name": "project_url",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "project_color": {
+          "name": "project_color",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'#6644FF'"
+        },
+        "project_logo": {
+          "name": "project_logo",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "public_foreground": {
+          "name": "public_foreground",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "public_background": {
+          "name": "public_background",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "public_note": {
+          "name": "public_note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "auth_login_attempts": {
+          "name": "auth_login_attempts",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 25
+        },
+        "auth_password_policy": {
+          "name": "auth_password_policy",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "storage_asset_transform": {
+          "name": "storage_asset_transform",
+          "type": "varchar(7)",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'all'"
+        },
+        "storage_asset_presets": {
+          "name": "storage_asset_presets",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_css": {
+          "name": "custom_css",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "storage_default_folder": {
+          "name": "storage_default_folder",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "basemaps": {
+          "name": "basemaps",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mapbox_key": {
+          "name": "mapbox_key",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "module_bar": {
+          "name": "module_bar",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "project_descriptor": {
+          "name": "project_descriptor",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "default_language": {
+          "name": "default_language",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'en-US'"
+        },
+        "custom_aspect_ratios": {
+          "name": "custom_aspect_ratios",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "public_favicon": {
+          "name": "public_favicon",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "default_appearance": {
+          "name": "default_appearance",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'auto'"
+        },
+        "default_theme_light": {
+          "name": "default_theme_light",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "theme_light_overrides": {
+          "name": "theme_light_overrides",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "default_theme_dark": {
+          "name": "default_theme_dark",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "theme_dark_overrides": {
+          "name": "theme_dark_overrides",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "report_error_url": {
+          "name": "report_error_url",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "report_bug_url": {
+          "name": "report_bug_url",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "report_feature_url": {
+          "name": "report_feature_url",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "directus_settings_project_logo_directus_files_id_fk": {
+          "name": "directus_settings_project_logo_directus_files_id_fk",
+          "tableFrom": "directus_settings",
+          "tableTo": "directus_files",
+          "columnsFrom": [
+            "project_logo"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "directus_settings_public_foreground_directus_files_id_fk": {
+          "name": "directus_settings_public_foreground_directus_files_id_fk",
+          "tableFrom": "directus_settings",
+          "tableTo": "directus_files",
+          "columnsFrom": [
+            "public_foreground"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "directus_settings_public_background_directus_files_id_fk": {
+          "name": "directus_settings_public_background_directus_files_id_fk",
+          "tableFrom": "directus_settings",
+          "tableTo": "directus_files",
+          "columnsFrom": [
+            "public_background"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "directus_settings_storage_default_folder_directus_folders_id_fk": {
+          "name": "directus_settings_storage_default_folder_directus_folders_id_fk",
+          "tableFrom": "directus_settings",
+          "tableTo": "directus_folders",
+          "columnsFrom": [
+            "storage_default_folder"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "directus_settings_public_favicon_directus_files_id_fk": {
+          "name": "directus_settings_public_favicon_directus_files_id_fk",
+          "tableFrom": "directus_settings",
+          "tableTo": "directus_files",
+          "columnsFrom": [
+            "public_favicon"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_shares": {
+      "name": "directus_shares",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "collection": {
+          "name": "collection",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "item": {
+          "name": "item",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "role": {
+          "name": "role",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_created": {
+          "name": "user_created",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "date_created": {
+          "name": "date_created",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "date_start": {
+          "name": "date_start",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "date_end": {
+          "name": "date_end",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "times_used": {
+          "name": "times_used",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 0
+        },
+        "max_uses": {
+          "name": "max_uses",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "directus_shares_collection_directus_collections_collection_fk": {
+          "name": "directus_shares_collection_directus_collections_collection_fk",
+          "tableFrom": "directus_shares",
+          "tableTo": "directus_collections",
+          "columnsFrom": [
+            "collection"
+          ],
+          "columnsTo": [
+            "collection"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "directus_shares_role_directus_roles_id_fk": {
+          "name": "directus_shares_role_directus_roles_id_fk",
+          "tableFrom": "directus_shares",
+          "tableTo": "directus_roles",
+          "columnsFrom": [
+            "role"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "directus_shares_user_created_directus_users_id_fk": {
+          "name": "directus_shares_user_created_directus_users_id_fk",
+          "tableFrom": "directus_shares",
+          "tableTo": "directus_users",
+          "columnsFrom": [
+            "user_created"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_translations": {
+      "name": "directus_translations",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "language": {
+          "name": "language",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "key": {
+          "name": "key",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "value": {
+          "name": "value",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_users": {
+      "name": "directus_users",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "first_name": {
+          "name": "first_name",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_name": {
+          "name": "last_name",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(128)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "location": {
+          "name": "location",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "title": {
+          "name": "title",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tags": {
+          "name": "tags",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "avatar": {
+          "name": "avatar",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "language": {
+          "name": "language",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "''"
+        },
+        "tfa_secret": {
+          "name": "tfa_secret",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "varchar(16)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'active'"
+        },
+        "role": {
+          "name": "role",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "token": {
+          "name": "token",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_access": {
+          "name": "last_access",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_page": {
+          "name": "last_page",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "provider": {
+          "name": "provider",
+          "type": "varchar(128)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'default'"
+        },
+        "external_identifier": {
+          "name": "external_identifier",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "auth_data": {
+          "name": "auth_data",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email_notifications": {
+          "name": "email_notifications",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": true
+        },
+        "appearance": {
+          "name": "appearance",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "theme_dark": {
+          "name": "theme_dark",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "theme_light": {
+          "name": "theme_light",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "theme_light_overrides": {
+          "name": "theme_light_overrides",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "theme_dark_overrides": {
+          "name": "theme_dark_overrides",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "directus_users_role_directus_roles_id_fk": {
+          "name": "directus_users_role_directus_roles_id_fk",
+          "tableFrom": "directus_users",
+          "tableTo": "directus_roles",
+          "columnsFrom": [
+            "role"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "directus_users_email_unique": {
+          "name": "directus_users_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        },
+        "directus_users_token_unique": {
+          "name": "directus_users_token_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "token"
+          ]
+        },
+        "directus_users_external_identifier_unique": {
+          "name": "directus_users_external_identifier_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "external_identifier"
+          ]
+        }
+      }
+    },
+    "directus_versions": {
+      "name": "directus_versions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "key": {
+          "name": "key",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "collection": {
+          "name": "collection",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "item": {
+          "name": "item",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "hash": {
+          "name": "hash",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "date_created": {
+          "name": "date_created",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "date_updated": {
+          "name": "date_updated",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "user_created": {
+          "name": "user_created",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_updated": {
+          "name": "user_updated",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "directus_versions_collection_directus_collections_collection_fk": {
+          "name": "directus_versions_collection_directus_collections_collection_fk",
+          "tableFrom": "directus_versions",
+          "tableTo": "directus_collections",
+          "columnsFrom": [
+            "collection"
+          ],
+          "columnsTo": [
+            "collection"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "directus_versions_user_created_directus_users_id_fk": {
+          "name": "directus_versions_user_created_directus_users_id_fk",
+          "tableFrom": "directus_versions",
+          "tableTo": "directus_users",
+          "columnsFrom": [
+            "user_created"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "directus_versions_user_updated_directus_users_id_fk": {
+          "name": "directus_versions_user_updated_directus_users_id_fk",
+          "tableFrom": "directus_versions",
+          "tableTo": "directus_users",
+          "columnsFrom": [
+            "user_updated"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "directus_webhooks": {
+      "name": "directus_webhooks",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "method": {
+          "name": "method",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'POST'"
+        },
+        "url": {
+          "name": "url",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'active'"
+        },
+        "data": {
+          "name": "data",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "actions": {
+          "name": "actions",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "collections": {
+          "name": "collections",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "headers": {
+          "name": "headers",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "was_active_before_deprecation": {
+          "name": "was_active_before_deprecation",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "migrated_flow": {
+          "name": "migrated_flow",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "directus_webhooks_migrated_flow_directus_flows_id_fk": {
+          "name": "directus_webhooks_migrated_flow_directus_flows_id_fk",
+          "tableFrom": "directus_webhooks",
+          "tableTo": "directus_flows",
+          "columnsFrom": [
+            "migrated_flow"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "org": {
+      "name": "org",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "slug": {
+          "name": "slug",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "org_invitation": {
+      "name": "org_invitation",
+      "schema": "",
+      "columns": {
+        "email": {
+          "name": "email",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "org_id": {
+          "name": "org_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "role": {
+          "name": "role",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "auto_accept": {
+          "name": "auto_accept",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "org_invitation_org_id_org_id_fk": {
+          "name": "org_invitation_org_id_org_id_fk",
+          "tableFrom": "org_invitation",
+          "tableTo": "org",
+          "columnsFrom": [
+            "org_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "org_invitation_email_org_id_pk": {
+          "name": "org_invitation_email_org_id_pk",
+          "columns": [
+            "email",
+            "org_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "org_member": {
+      "name": "org_member",
+      "schema": "",
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "org_id": {
+          "name": "org_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "role": {
+          "name": "role",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "org_member_user_id_auth_user_id_fk": {
+          "name": "org_member_user_id_auth_user_id_fk",
+          "tableFrom": "org_member",
+          "tableTo": "auth_user",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "org_member_org_id_org_id_fk": {
+          "name": "org_member_org_id_org_id_fk",
+          "tableFrom": "org_member",
+          "tableTo": "org",
+          "columnsFrom": [
+            "org_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "org_member_user_id_org_id_pk": {
+          "name": "org_member_user_id_org_id_pk",
+          "columns": [
+            "user_id",
+            "org_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "product": {
+      "name": "product",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "code": {
+          "name": "code",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pricing_monthly": {
+          "name": "pricing_monthly",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stripe_monthly_pricing_id": {
+          "name": "stripe_monthly_pricing_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pricing_yearly": {
+          "name": "pricing_yearly",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "stripe_yearly_pricing_id": {
+          "name": "stripe_yearly_pricing_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "features": {
+          "name": "features",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "stripe_customer": {
+      "name": "stripe_customer",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "org_id": {
+          "name": "org_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "stripe_customer_org_id_org_id_fk": {
+          "name": "stripe_customer_org_id_org_id_fk",
+          "tableFrom": "stripe_customer",
+          "tableTo": "org",
+          "columnsFrom": [
+            "org_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "stripe_subscription": {
+      "name": "stripe_subscription",
+      "schema": "",
+      "columns": {
+        "stripe_subscription_id": {
+          "name": "stripe_subscription_id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "org_id": {
+          "name": "org_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "code": {
+          "name": "code",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "stripe_customer_id": {
+          "name": "stripe_customer_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "expires": {
+          "name": "expires",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "interval": {
+          "name": "interval",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'month'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "stripe_subscription_org_id_org_id_fk": {
+          "name": "stripe_subscription_org_id_org_id_fk",
+          "tableFrom": "stripe_subscription",
+          "tableTo": "org",
+          "columnsFrom": [
+            "org_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "user_key": {
+      "name": "user_key",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "varchar(15)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "hashed_password": {
+          "name": "hashed_password",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "user_key_user_id_auth_user_id_fk": {
+          "name": "user_key_user_id_auth_user_id_fk",
+          "tableFrom": "user_key",
+          "tableTo": "auth_user",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "user_session": {
+      "name": "user_session",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "active_expires": {
+          "name": "active_expires",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "idle_expires": {
+          "name": "idle_expires",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "user_session_user_id_auth_user_id_fk": {
+          "name": "user_session_user_id_auth_user_id_fk",
+          "tableFrom": "user_session",
+          "tableTo": "auth_user",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

@@ -9,17 +9,17 @@ const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
 
   Components.addType(BuilderComponent.SOCIAL_CARDS.id, {
-    isComponent: el => isComponent(el, BuilderComponent.SOCIAL_CARDS.id),
+    isComponent: (el) => isComponent(el, BuilderComponent.SOCIAL_CARDS.id),
     model: {
       defaults: {
         styles: socialCards.styles,
         components: socialCards.content,
         attributes: {
-          'data-ca': BuilderComponent.SOCIAL_CARDS.id,
+          'data-ca': BuilderComponent.SOCIAL_CARDS.id
         },
-        classes: [BuilderComponent.SOCIAL_CARDS.class],
-      },
-    },
+        classes: [BuilderComponent.SOCIAL_CARDS.class]
+      }
+    }
   });
 
   BlockManager.add(BuilderBlock.SOCIAL_CARDS.id, {

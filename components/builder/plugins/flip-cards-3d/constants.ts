@@ -446,7 +446,6 @@ const flipCards3d = {
         card.classList.remove('flipped');
       });
     });
-
   }
 };
 

@@ -205,7 +205,7 @@ const socialCards = {
   </div>
 </div>
 </div>
-    `,
+    `
 };
 
 export default socialCards;

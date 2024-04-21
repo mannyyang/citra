@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import {ref} from 'vue';
+import { ref } from 'vue';
 
 const route = useRoute()
-const { builder } = await usePreviewBuilder(route.params.id);  
+const { builder } = await usePreviewBuilder(route.params.id)
 useHead({
-    script: builder.js,
-    style: builder.css,        
-})  
+  script: builder.js,
+  style: builder.css,
+})
 
-const htmlString = ref(builder.html);
-
+const htmlString = ref(builder.html)
 </script>
 
 <template>
-   <div v-html="htmlString"></div>
+  <div v-html="htmlString" />
 </template>

@@ -3,11 +3,11 @@ import type { RequiredPluginOptions } from '.';
 
 import { exportedSVG } from '../icons';
 import {
-cmdClear,
-cmdDeviceDesktop,
-cmdDeviceMobile,
-cmdDeviceTablet,
-cmdImport
+  cmdClear,
+  cmdDeviceDesktop,
+  cmdDeviceMobile,
+  cmdDeviceTablet,
+  cmdImport
 } from './consts';
 
 export default (editor: Editor, opts: RequiredPluginOptions) => {

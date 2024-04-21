@@ -34,9 +34,13 @@ const plugin: Plugin = (editor) => {
     },
     view: {
       init() {
-        this.listenTo(this.model, `change:modify change:dataSource change:Table`, this.handleChanges);
+        this.listenTo(
+          this.model,
+          `change:modify change:dataSource change:Table`,
+          this.handleChanges
+        );
       },
-      handleChanges() { }
+      handleChanges() {}
     }
   });
 

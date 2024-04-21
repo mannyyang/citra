@@ -1,0 +1,1 @@
+ALTER TABLE "builder_page" RENAME COLUMN "features" TO "projectData";

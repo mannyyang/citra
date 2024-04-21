@@ -9,7 +9,8 @@ const plugin: Plugin = (editor: Editor) => {
   const BlockManager = editor.BlockManager;
 
   Components.addType(BuilderComponent.HEADING.id, {
-    isComponent: (el: HTMLElement) => isComponent(el, BuilderComponent.HEADING.id),
+    isComponent: (el: HTMLElement) =>
+      isComponent(el, BuilderComponent.HEADING.id),
     extend: 'text',
     model: {
       defaults: {
@@ -38,6 +39,6 @@ const plugin: Plugin = (editor: Editor) => {
     },
     select: true
   });
-}
+};
 
 export default plugin;
