@@ -2,7 +2,7 @@
   "name": "citra",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@8.15.4",
+  "packageManager": "pnpm@9.0.4",
   "engines": {
     "node": ">=20.0.0"
   },
@@ -14,9 +14,12 @@
     "postinstall": "nuxt prepare",
     "db:push": "drizzle-kit push:pg",
     "db:gen": "drizzle-kit generate:pg",
+    "db:introspect": "drizzle-kit introspect:pg",
     "start": "node .output/server/index.mjs",
     "lint": "eslint . --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "docker:dev": "docker compose -f docker-compose.yaml up",
+    "docker:down": "docker compose down"
   },
   "dependencies": {
     "@iconify/json": "^2.2.166",
@@ -51,7 +54,12 @@
     "drizzle-kit": "^0.20.10",
     "eslint": "^8.56.0",
     "husky": "^8.0.0",
-    "nuxt": "^3.9.1",
+    "nuxt": "^3.11.2",
     "sass": "^1.72.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "rollup": "npm:@rollup/wasm-node"
+    }
   }
 }

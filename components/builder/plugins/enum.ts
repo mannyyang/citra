@@ -121,7 +121,7 @@ export const BuilderComponent = {
     id: 'youtube',
     name: 'Youtube',
     class: `${CLASS_PREFIX}-youtube`
-  },
+  }
 };
 
 export const BuilderBlock = {
@@ -187,7 +187,7 @@ export const BuilderBlock = {
   },
   VIDEO: {
     id: 'custom-video',
-    name: 'Video',
+    name: 'Video'
   },
   YOUTUBE: {
     id: 'youtube',
@@ -200,4 +200,4 @@ export const BuilderCategory = {
   BASIC: 'Basic',
   INTERACTIVE: 'Interactive',
   MEDIA: 'Media'
-}
+};

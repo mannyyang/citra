@@ -9,18 +9,18 @@ const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
 
   Components.addType(BuilderComponent.FLIP_CARDS.id, {
-    isComponent: el => isComponent(el, BuilderComponent.FLIP_CARDS.id),
+    isComponent: (el) => isComponent(el, BuilderComponent.FLIP_CARDS.id),
     model: {
       defaults: {
         script: flipCards.script,
         styles: flipCards.styles,
         components: flipCards.content,
         attributes: {
-          'data-ca': BuilderComponent.FLIP_CARDS.id,
+          'data-ca': BuilderComponent.FLIP_CARDS.id
         },
-        classes: [BuilderComponent.FLIP_CARDS.class],
-      },
-    },
+        classes: [BuilderComponent.FLIP_CARDS.class]
+      }
+    }
   });
 
   BlockManager.add(BuilderBlock.FLIP_CARDS.id, {

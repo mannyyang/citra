@@ -2,7 +2,9 @@
 </script>
 
 <template>
-  <MarketingHero />
-  <MarketingFeatures />  
-  <MarketingPricing />  
+  <div class="ca-home">
+    <MarketingHero />
+    <MarketingFeatures />
+    <MarketingPricing />
+  </div>
 </template>

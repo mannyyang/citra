@@ -1,0 +1,1 @@
+ALTER TABLE "builder_page" DROP COLUMN IF EXISTS "features";

@@ -21,7 +21,6 @@ const plugin: Plugin = (editor) => {
           'data-ca': BuilderComponent.DIV.id
         },
         style: {
-          display: 'flex',
           padding: '20px'
         }
       }
@@ -33,8 +32,8 @@ const plugin: Plugin = (editor) => {
     label: BuilderBlock.DIV.name,
     media: exportedSVG['div'],
     content: {
-      type: BuilderComponent.DIV.id
-    },
+      type: BuilderComponent.DIV.id,      
+    },    
     select: true
   });
 };

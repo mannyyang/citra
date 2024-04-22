@@ -1,5 +1,5 @@
 const flipCards = {
-    styles: `
+  styles: `
     .block-flip-cards * {
       box-sizing: border-box;
     }
@@ -152,7 +152,7 @@ const flipCards = {
       }
     }
     `,
-    content: `
+  content: `
     <div class="block-flip-cards">
       <div class="card-side-config" style="display: none;" data-gjs-editable="false">
         <button class="card-side-config-btn" data-config="show-front">
@@ -208,28 +208,30 @@ const flipCards = {
       </section>
     </div>
     `,
-    script: function () {
-        const cardSideConfigBtns = document.querySelectorAll('.card-side-config-btn');
-        const cards = document.querySelectorAll('.card');
-        cardSideConfigBtns.forEach((btn) => {
-            btn.addEventListener('click', () => {
-                removePrevClasses();
+  script: function () {
+    const cardSideConfigBtns = document.querySelectorAll(
+      '.card-side-config-btn'
+    );
+    const cards = document.querySelectorAll('.card');
+    cardSideConfigBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        removePrevClasses();
 
-                btn.classList.add('active');
-                const cssClass = (btn as HTMLElement).dataset.config;
-                if (cssClass) {
-                    cards.forEach((card: Element) => card.classList.add(cssClass));
-                }
-            });
-        });
-
-        function removePrevClasses() {
-            cardSideConfigBtns.forEach((btn) => btn.classList.remove('active'));
-            cards.forEach((card) => {
-                card.classList.remove('show-front', 'show-back');
-            });
+        btn.classList.add('active');
+        const cssClass = (btn as HTMLElement).dataset.config;
+        if (cssClass) {
+          cards.forEach((card: Element) => card.classList.add(cssClass));
         }
+      });
+    });
+
+    function removePrevClasses() {
+      cardSideConfigBtns.forEach((btn) => btn.classList.remove('active'));
+      cards.forEach((card) => {
+        card.classList.remove('show-front', 'show-back');
+      });
     }
+  }
 };
 
 export default flipCards;

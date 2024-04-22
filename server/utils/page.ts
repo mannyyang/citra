@@ -7,7 +7,7 @@ class PageService {
     return builder
   }
 
-  async getBuilderById(id: string) {    
+  async getBuilderById(id: string) {
     const [builder] = await db.select().from(tables.builderPage).where(eq(tables.builderPage.builderPageId, id))
     return builder
   }
