@@ -27,6 +27,7 @@
     "@lucia-auth/adapter-postgresql": "^2.0.2",
     "@lucia-auth/oauth": "^3.5.1",
     "@nuxt/ui": "^2.11.1",
+    "@silexlabs/grapesjs-fonts": "^1.0.18",
     "drizzle-orm": "^0.29.3",
     "grapesjs": "^0.21.9",
     "grapesjs-component-countdown": "^1.0.2",

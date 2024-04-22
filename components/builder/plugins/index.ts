@@ -1,3 +1,4 @@
+import pluginFonts from '@silexlabs/grapesjs-fonts';
 import { Editor } from 'grapesjs';
 import pluginCountdown from 'grapesjs-component-countdown';
 import pluginCustomCode from 'grapesjs-custom-code';
@@ -38,6 +39,9 @@ const plugins = [
     }),
   parserPostCSS,
   pluginStyleBg,
+  (editor: Editor) => pluginFonts(editor, {
+    api_key: "AIzaSyCDehD5ASGoh-9HOU1bGt9aOS01biDQ7FA",
+  }),
 
   // blocks
   pluginDiv,

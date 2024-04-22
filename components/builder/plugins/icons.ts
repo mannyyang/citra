@@ -250,8 +250,6 @@ function iconToSVG(iconData: any) {
     style
   };
 
-  console.log(iconData, attributes);
-
   return {
     attributes,
     body
