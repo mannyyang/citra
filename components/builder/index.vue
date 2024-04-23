@@ -10,6 +10,9 @@ const options: EditorConfig = {
   fromElement: true,
   panels: {},
   plugins,
+  selectorManager: {
+    componentFirst: true
+  }
 }
 
 const grapes = useGrapes(options)
