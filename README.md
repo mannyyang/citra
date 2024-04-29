@@ -1,3 +1,23 @@
+🍊 Citra 🍊
+
+Citra is a page builder for sponsored content.
+
+## Available Scripts 📜
+
+PNPM is used as the script and package manager. Here's the scripts to help with your development:
+
+- `pnpm run dev`: Starts the development server.
+- `pnpm run build`: Builds your application for production.
+- `pnpm run preview`: Preview the generate static site.
+- `pnpm run start`: Launches the built application.
+- `pnpm run lint`: Lints and fixes files.
+- `pnpm run db:push`: Pushes schema changes to your database.
+- `pnpm run db:gen`: Generates database artifacts.
+- `pnpm run docker:dev`: Run directus container.
+- `pnpm run docker:down`: Stops directus container.
+
+--
+
 # UseNuxt SaaS Starter Project 🚀
 
 Welcome to UseNuxt, a comprehensive SaaS starter project built with Nuxt.js, designed to kickstart your project with all the essential features you need. With built-in team management, authentication, and more, UseNuxt provides a solid foundation for building robust SaaS applications.
@@ -34,18 +54,6 @@ npm install
 # Prepare your environment (husky hooks, etc.)
 npm run prepare
 ```
-
-## Available Scripts 📜
-
-UseNuxt comes with several pre-configured npm scripts to help with your development:
-
-- `npm run dev`: Starts the development server.
-- `npm run build`: Builds your application for production.
-- `npm run preview`: Preview the generate static site.
-- `npm run start`: Launches the built application.
-- `npm run lint`: Lints and fixes files.
-- `npm run db:push`: Pushes schema changes to your database.
-- `npm run db:gen`: Generates database artifacts.
 
 ## Dependencies 📦
 

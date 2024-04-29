@@ -61,6 +61,7 @@ export function useGrapes(config: EditorConfig) {
     onInit(fn: (editor: Editor) => void) {
       afterInit.push(fn);
     },
+
     /**
      * Initialize GrapesJS
      * @method init
