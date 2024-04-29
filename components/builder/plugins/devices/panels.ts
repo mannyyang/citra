@@ -4,10 +4,12 @@ import type { RequiredPluginOptions } from '.';
 import { exportedSVG } from '../icons';
 import {
   cmdClear,
+  cmdCreateFonts,
   cmdDeviceDesktop,
   cmdDeviceMobile,
   cmdDeviceTablet,
-  cmdImport
+  cmdImport,
+  cmdPublish
 } from './consts';
 
 export default (editor: Editor, opts: RequiredPluginOptions) => {
@@ -47,6 +49,13 @@ export default (editor: Editor, opts: RequiredPluginOptions) => {
           id: cmdDeviceMobile,
           command: cmdDeviceMobile,
           label: exportedSVG['panelDeviceMobile']
+        },
+        {
+          id: cmdCreateFonts,
+          label: exportedSVG['fontsDialogButton'],
+          command: (editor:Editor)=> {
+            editor.runCommand("open-google-fonts");
+          },                    
         }
       ]
     },
@@ -95,6 +104,11 @@ export default (editor: Editor, opts: RequiredPluginOptions) => {
           id: cmdClear,
           command: () => editor.runCommand(cmdClear),
           label: exportedSVG['panelClear']
+        },
+        {
+          id: cmdPublish,
+          command: () => editor.runCommand(cmdPublish),
+          label: 'Publish',          
         }
       ]
     },
@@ -126,6 +140,8 @@ export default (editor: Editor, opts: RequiredPluginOptions) => {
     }
   ]);
 
+  Panels.getButton('options', 'sw-visibility')?.set('active', 1);  
+  
   const openBl = Panels.getButton('views', obl);
   editor.on('load', () => openBl?.set('active', true));
 

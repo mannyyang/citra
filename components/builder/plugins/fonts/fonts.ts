@@ -8,12 +8,12 @@ import { styleMap } from 'lit-html/directives/style-map.js';
 const el = document.createElement('div')
 let modal: any
 
-export const cmdOpenFonts = 'open-fonts'
+export const cmdOpenFonts = 'open-google-fonts'
 
 /**
  * Constants
  */
-const LS_FONTS = 'silex-loaded-fonts-list'
+const LS_FONTS = 'loaded-fonts-list'
 
 /**
  * Module variables
