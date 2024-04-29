@@ -1,4 +1,3 @@
-import pluginFonts from '@silexlabs/grapesjs-fonts';
 import { Editor } from 'grapesjs';
 import pluginCountdown from 'grapesjs-component-countdown';
 import pluginCustomCode from 'grapesjs-custom-code';
@@ -18,6 +17,7 @@ import pluginDevices from './devices';
 import pluginDiv from './div';
 import pluginFlipCards from './flip-cards';
 import pluginFlipCards3D from './flip-cards-3d';
+import pluginFonts from './fonts';
 import pluginImage from './image';
 import pluginLink from './link';
 import pluginList from './list';
@@ -37,11 +37,11 @@ const plugins = [
         return editor.getHtml() + '<style>' + editor.getCss() + '</style>';
       }
     }),
-  parserPostCSS,
-  pluginStyleBg,
   (editor: Editor) => pluginFonts(editor, {
     api_key: "AIzaSyCDehD5ASGoh-9HOU1bGt9aOS01biDQ7FA",
   }),
+  parserPostCSS,
+  pluginStyleBg,
 
   // blocks
   pluginDiv,

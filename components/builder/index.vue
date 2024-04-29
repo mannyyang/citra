@@ -18,7 +18,7 @@ const options: EditorConfig = {
 const grapes = useGrapes(options)
 
 grapes.onInit((editor) => {
-  const pn = editor.Panels;
+    const pn = editor.Panels;
 
   // Do stuff on load
   editor.on('load', function () {        
@@ -36,25 +36,8 @@ grapes.onInit((editor) => {
     });
 
     fontProperty?.set('default', `Lato, Helvetica, Arial, sans-serif`);
-    fontProperty?.set('defaults', `Lato, Helvetica, Arial, sans-serif`);
-
-    // Show borders by default
-    pn.getButton('options', 'sw-visibility')?.set('active', 1);
-    pn.addPanel({
-      id: "basic-actions",
-      el: ".panel__basic-actions",
-      buttons: [
-        {
-          id: "create-button",
-          label: "Open Font Dialog",
-          command(editor) {
-            editor.runCommand("open-fonts");
-          }
-        }
-      ]
-    });
-
-    // Open block manager
+    fontProperty?.set('defaults', `Lato, Helvetica, Arial, sans-serif`);   
+        
     const openBlocksBtn = editor.Panels.getButton('views', 'open-blocks');
     openBlocksBtn && openBlocksBtn.set('active', 1);
   });
@@ -415,5 +398,12 @@ async function onPublish() {
     }
   }
 }  
+
+#basic-actions {
+  border-width: 0;
+  padding: 0;
+  margin-top: 5px;
+  width: 0
+}
 
 </style>
