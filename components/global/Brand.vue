@@ -7,5 +7,5 @@
 
 <script setup lang="ts">
   const config = useRuntimeConfig()
-  const logoPath = config.directusPublicUrl + "/assets/db366ddb-7cc4-49d7-9835-c4b7341f085e" + "/Clementine.png"
+  const logoPath = config.directusPublicUrl + "/assets/73235046-a139-4315-91a8-e28963b44c75" + "/logo.png"
 </script>
