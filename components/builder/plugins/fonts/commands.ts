@@ -1,5 +1,5 @@
 import type { Editor } from 'grapesjs';
-import { getHtml } from './fonts';
+import { getHtml } from './font';
 
 export const cmdGetCss = 'get-fonts-css'
 export const cmdGetHtml = 'get-fonts-html'

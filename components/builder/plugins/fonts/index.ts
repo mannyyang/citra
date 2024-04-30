@@ -1,6 +1,6 @@
 import type { Editor, Plugin } from 'grapesjs';
 import commands from './commands';
-import { fontsDialogPlugin } from './fonts';
+import { fontsDialogPlugin } from './font';
 import en from './locale/en';
 import fr from './locale/fr';
 
@@ -23,7 +23,4 @@ const plugin: Plugin = (editor: Editor, opts: any) => {
     fontsDialogPlugin(editor, options);
 }
 
-// Expose commands to the app
-export * from './commands';
-export * from './fonts';
 export default plugin;

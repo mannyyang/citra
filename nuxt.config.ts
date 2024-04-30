@@ -25,6 +25,7 @@ export default defineNuxtConfig({
       secretKey: '',
       webhookSecret: '',
     },
+    directusPublicUrl: process.env.DIRECTUS_PUBLIC_URL
   },
   modules: ['@nuxt/ui', '@formkit/auto-animate/nuxt', '@nuxtjs/plausible'],
   ui: {
