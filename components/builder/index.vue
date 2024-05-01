@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { EditorConfig } from 'grapesjs';
 import plugins from './plugins';
+import { createDirectus, rest, uploadFiles } from '@directus/sdk';
 
 const canvas: any = ref(null)
+const directus = createDirectus(useRuntimeConfig().public.directusPublicUrl).with(rest())
 
 const options: EditorConfig = {
   container: canvas,
@@ -12,7 +14,7 @@ const options: EditorConfig = {
   plugins,
   selectorManager: {
     componentFirst: true
-  }
+  }  
 }
 
 const grapes = useGrapes(options)
@@ -39,6 +41,22 @@ grapes.onInit((editor) => {
     const openBlocksBtn = editor.Panels.getButton('views', 'open-blocks');
     openBlocksBtn && openBlocksBtn.set('active', 1);
   });
+
+  editor.on('asset:add', (asset)=>{ 
+    const title = asset.getFilename();
+    const file = asset.getSrc();
+    const type =asset.getType();
+    const formData = new FormData();
+    formData.append('file', file);    
+    formData.append('filename_disk', title);
+    formData.append('filename_download', title);
+    formData.append('type', type);
+    directus.request(uploadFiles(formData)).then(res=>{
+      console.log(res);
+      // editor.AssetManager.add({{src: res.url}});
+    })
+     
+  })
 });
 
 // Initialize GrapesJS
@@ -49,7 +67,7 @@ watch(
 
     grapes.init({
       ...options,
-      container: newVal    
+      container: newVal  
     });
   },
   { immediate: true }

@@ -5,7 +5,8 @@
   </NuxtLink>
 </template>
 
-<script setup lang="ts">
-  const config = useRuntimeConfig()
-  const logoPath = config.directusPublicUrl + "/assets/73235046-a139-4315-91a8-e28963b44c75" + "/logo.png"
+<script setup lang="ts">   
+
+const logoPath = useRuntimeConfig().public.directusPublicUrl + "/assets/73235046-a139-4315-91a8-e28963b44c75" + "/logo.png"    
+
 </script>
