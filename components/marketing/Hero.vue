@@ -2,7 +2,7 @@
   <section>
     <div class="mx-auto max-w-3xl py-10">
       <div class="flex justify-center">
-        <img class="h-12 max-w-full" src="~/assets/images/logo.png" alt="Logo"/>
+        <img class="h-12 max-w-full" :src="logoPath" alt="Logo"/>
       </div>
     </div>
     <div class="mx-auto max-w-3xl py-16">
@@ -38,6 +38,8 @@
 
 <script setup>
 import { onMounted } from 'vue'
+
+const logoPath = useRuntimeConfig().public.directusPublicUrl + "/assets/73235046-a139-4315-91a8-e28963b44c75" + "/logo.png"
 
 onMounted(()=> {
   const w="https://tally.so/widgets/embed.js";

@@ -4,7 +4,8 @@ import {
   cmdClear,
   cmdDeviceDesktop,
   cmdDeviceMobile,
-  cmdDeviceTablet
+  cmdDeviceTablet,
+  cmdPublish
 } from './../consts';
 import openImport from './openImport';
 
@@ -16,18 +17,30 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
 
   Commands.add(cmdDeviceDesktop, {
     run: (ed) => ed.setDevice('Desktop'),
-    stop: () => {}
+    stop: () => { }
   });
   Commands.add(cmdDeviceTablet, {
     run: (ed) => ed.setDevice('Tablet'),
-    stop: () => {}
+    stop: () => { }
   });
   Commands.add(cmdDeviceMobile, {
     run: (ed) => ed.setDevice('Mobile portrait'),
-    stop: () => {}
+    stop: () => { }
   });
   Commands.add(
     cmdClear,
     (e: Editor) => confirm(txtConfirm) && e.runCommand('core:canvas-clear')
+  );
+  Commands.add(
+    cmdPublish,
+    async (e: Editor) => {
+      const componentData = JSON.stringify(e.getComponents());
+      const html = e.getHtml();
+      const css = e.getCss() ?? '';
+      const js = e.getJs();
+      
+      const { builder } = await useCreateBuilder(componentData, html, css, js)
+      navigateTo(`/build/${builder.builderPageId}`)
+    }
   );
 };

@@ -18,9 +18,8 @@ const plugin: Plugin = (editor) => {
           'data-ntvb': 'button',
           'data-ca': BuilderComponent.BUTTON.id
         },
-        tagName: 'button',
         style: {
-          display: 'flex',
+          display: 'inline-block',
           'justify-content': 'center',
           padding: '10px 20px',
           'background-color': '#0d6efd',

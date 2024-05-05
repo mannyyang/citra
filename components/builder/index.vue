@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { EditorConfig } from 'grapesjs';
 import plugins from './plugins';
+import { createDirectus, rest, uploadFiles } from '@directus/sdk';
 
 const canvas: any = ref(null)
+const directus = createDirectus(useRuntimeConfig().public.directusPublicUrl).with(rest())
 
 const options: EditorConfig = {
   container: canvas,
@@ -10,20 +12,23 @@ const options: EditorConfig = {
   fromElement: true,
   panels: {},
   plugins,
+  selectorManager: {
+    componentFirst: true
+  }  
 }
 
 const grapes = useGrapes(options)
 
 grapes.onInit((editor) => {
-  const pn = editor.Panels;
-
   // Do stuff on load
-  editor.on('load', function () {
+  editor.on('load', function () {        
+    
     // load default fonts
     const fontProperty = editor.StyleManager.getProperty(
       'typography',
       'font-family'
     );
+
     // @ts-ignore
     fontProperty?.addOption({
       value: `Lato, Helvetica, Arial, sans-serif`,
@@ -31,17 +36,27 @@ grapes.onInit((editor) => {
     });
 
     fontProperty?.set('default', `Lato, Helvetica, Arial, sans-serif`);
-    fontProperty?.set('defaults', `Lato, Helvetica, Arial, sans-serif`);
-
-    console.log(fontProperty)
-
-    // Show borders by default
-    pn.getButton('options', 'sw-visibility')?.set('active', 1);
-
-    // Open block manager
+    fontProperty?.set('defaults', `Lato, Helvetica, Arial, sans-serif`);   
+        
     const openBlocksBtn = editor.Panels.getButton('views', 'open-blocks');
     openBlocksBtn && openBlocksBtn.set('active', 1);
   });
+
+  editor.on('asset:add', (asset)=>{ 
+    const title = asset.getFilename();
+    const file = asset.getSrc();
+    const type =asset.getType();
+    const formData = new FormData();
+    formData.append('file', file);    
+    formData.append('filename_disk', title);
+    formData.append('filename_download', title);
+    formData.append('type', type);
+    directus.request(uploadFiles(formData)).then(res=>{
+      console.log(res);
+      // editor.AssetManager.add({{src: res.url}});
+    })
+     
+  })
 });
 
 // Initialize GrapesJS
@@ -52,32 +67,16 @@ watch(
 
     grapes.init({
       ...options,
-      container: newVal
+      container: newVal  
     });
   },
   { immediate: true }
 );
 
-
-
-async function onPublish() {  
-  const componentData = JSON.stringify(grapes.editor.getComponents());
-  const html = grapes.editor.getHtml();
-  const css = grapes.editor.getCss();
-  const js =  grapes.editor.getJs()
-
-  try {
-    const { builder } =  await useCreateBuilder(componentData, html, css, js) 
-    navigateTo(`/build/${builder.builderPageId}`)
-  } catch(err) {}  
-}
-
-
 </script>
 
 <template>  
   <div class="w-full text-right min-h-full">
-    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="onPublish">Publish</button>
     <div class="ca-builder flex w-full h-full">  
       <div ref="canvas" class="flex-1" />
     </div>
@@ -128,6 +127,7 @@ async function onPublish() {
 
   .gjs-pn-btn svg {
     height: 22px;
+    width: 22px;
   }
 
   .gjs-block svg {
@@ -299,6 +299,105 @@ async function onPublish() {
   /* ADM-17588 eye icon has black background color */
   .gjs-off-prv.fa-eye-slash {
     background-color: unset;
+  } 
+}
+
+.panel__basic-actions {
+  z-index: 10; 
+  left: 120px; 
+  background-color: #fff; 
+  color: #000; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  padding: 2px 10px 2px 10px; 
+  margin-top: 2px;
+}
+
+.gjs-mdl-dialog {
+  .gjs-mdl-header {
+    position: relative;
+    display: flex;
+    border-bottom: 1px solid var(--gjs-main-dark-color);
+    padding: 15px 15px 7px;
   }
 }
+
+.silex-form {
+  text-align: left;
+
+  .silex-form__group {
+    .silex-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 5px;
+
+      input {
+        background-color: #E7E9EB;
+        color: #000;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      select {
+        background-color: #E7E9EB;
+        color: #000;
+      }
+
+      button {
+        background-color: #E7E9EB;
+        color: #000;
+      }
+    }  
+  }
+
+  .silex-form__element {
+    h2 {
+      font-size: 1.5em;        
+    }
+
+    .silex-list__item__header {
+        h4 {
+          font-size: 1.3em
+        }
+      }
+
+    .silex-list__item__body {
+      fieldset {
+        margin-inline-start: 2px;
+        margin-inline-end: 2px;
+        padding-block-start: 0.35em;
+        padding-inline-start: 0.75em;
+        padding-inline-end: 0.75em;
+        padding-block-end: 0.625em;
+        min-inline-size: min-content;
+        border-width: 2px;
+        border-style: groove;
+        border-color: rgb(192, 192, 192);
+
+        div {
+          display: flex;
+          gap: 5px;
+        }
+      }
+    }
+    .silex-list__item__footer {
+      text-align: right;
+      .silex-button {
+        margin-top: 10px;
+        background-color: #E7E9EB;
+        padding: 5px;
+      }
+    }
+  }
+
+  footer {
+    input {
+      margin-top: 10px;
+      background-color: #E7E9EB;
+      padding: 5px;
+    }
+  }
+}  
+
+
 </style>

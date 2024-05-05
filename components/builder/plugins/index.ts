@@ -17,6 +17,7 @@ import pluginDevices from './devices';
 import pluginDiv from './div';
 import pluginFlipCards from './flip-cards';
 import pluginFlipCards3D from './flip-cards-3d';
+import pluginFonts from './fonts';
 import pluginImage from './image';
 import pluginLink from './link';
 import pluginList from './list';
@@ -36,6 +37,9 @@ const plugins = [
         return editor.getHtml() + '<style>' + editor.getCss() + '</style>';
       }
     }),
+  (editor: Editor) => pluginFonts(editor, {
+    api_key: "AIzaSyCDehD5ASGoh-9HOU1bGt9aOS01biDQ7FA",
+  }),
   parserPostCSS,
   pluginStyleBg,
 
