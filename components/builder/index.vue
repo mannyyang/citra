@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import type { EditorConfig } from 'grapesjs';
 import plugins from './plugins';
+
 import { createDirectus, rest, uploadFiles } from '@directus/sdk';
 
 const canvas: any = ref(null)
+
+// TODO: create hook for this
+// migrate to backend
 const directus = createDirectus(useRuntimeConfig().public.directusPublicUrl).with(rest())
 
 const options: EditorConfig = {
