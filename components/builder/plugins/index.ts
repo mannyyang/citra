@@ -23,6 +23,7 @@ import pluginImage from './image';
 import pluginLink from './link';
 import pluginList from './list';
 import pluginListItem from './list-item';
+import pluginParagraph from './paragraph';
 import pluginSocialCards from './social-cards';
 import pluginText from './text';
 import pluginVideo from './video';
@@ -44,13 +45,14 @@ const plugins = [
   parserPostCSS,
   pluginStyleBg,
 
-  // blocks
+  pluginHeading,
+  pluginParagraph,
   pluginDiv,
   pluginLink,
   pluginList,
   pluginListItem,
   pluginText,
-  pluginHeading,
+  
   pluginColumn,
   pluginButton,
   pluginBlockQuote,

@@ -47,6 +47,11 @@ export const BuilderComponent = {
     name: 'Block Quote',
     class: `${CLASS_PREFIX}-block-quote`
   },
+  PARAGRAPH: {
+    id: 'n-paragraph',
+    name: 'Paragraph',
+    class: `${CLASS_PREFIX}-paragraph`
+  },
   CUSTOM_BLOCK: {
     id: 'n-custom-block',
     name: 'Custom Block',
@@ -152,6 +157,10 @@ export const BuilderBlock = {
   BLOCK_QUOTE: {
     id: 'blockQuote',
     name: 'Block Quote'
+  },
+  PARAGRAPH: {
+    id: 'paragraph',
+    name: 'Paragraph'
   },
   CUSTOM_BLOCK: {
     id: 'customBlock',
