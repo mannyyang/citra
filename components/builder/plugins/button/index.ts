@@ -14,6 +14,7 @@ const plugin: Plugin = (editor) => {
       defaults: {
         name: BuilderComponent.BUTTON.name,
         classes: [BuilderComponent.BUTTON.class],
+        tagName: 'a',
         attributes: {
           'data-ntvb': 'button',
           'data-ca': BuilderComponent.BUTTON.id
