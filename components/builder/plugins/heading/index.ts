@@ -25,8 +25,24 @@ const plugin: Plugin = (editor: Editor) => {
         content: 'Heading Text',
         attributes: {
           'data-ca': BuilderComponent.HEADING.id
-        }
-      }
+        },
+        traits: [
+          {
+            type: 'select',
+            name: 'tagName',
+            label: 'Head',
+            options: [
+              { id: 'h1', label: 'H1' },
+              { id: 'h2', label: 'H2' },
+              { id: 'h3', label: 'H3' },
+              { id: 'h4', label: 'H4' },
+              { id: 'h5', label: 'H5' },
+              { id: 'h6', label: 'H6' },
+            ],
+            changeProp: true
+          }
+        ]
+      },
     }
   });
 

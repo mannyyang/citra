@@ -18,6 +18,7 @@ import pluginDiv from './div';
 import pluginFlipCards from './flip-cards';
 import pluginFlipCards3D from './flip-cards-3d';
 import pluginFonts from './fonts';
+import pluginHeading from './heading';
 import pluginImage from './image';
 import pluginLink from './link';
 import pluginList from './list';
@@ -49,7 +50,7 @@ const plugins = [
   pluginList,
   pluginListItem,
   pluginText,
-  // pluginHeading,
+  pluginHeading,
   pluginColumn,
   pluginButton,
   pluginBlockQuote,
