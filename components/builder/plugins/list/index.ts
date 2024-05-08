@@ -32,7 +32,19 @@ const plugin: Plugin = (editor: Editor) => {
         ],
         attributes: {
           'data-ca': BuilderComponent.LIST.id
-        }
+        },
+        traits: [
+          {
+            type: 'select',
+            name: 'tagName',
+            label: 'Type',
+            options: [
+              { id: 'ul', label: 'UnOrdered' },
+              { id: 'ol', label: 'Ordered' },
+            ],
+            changeProp: true
+          }
+        ]
       }
     }
   });
