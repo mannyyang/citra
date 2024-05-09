@@ -175,6 +175,9 @@ export const BuilderComponent = {
     name: 'Carousel Right Button',
     class: `${CLASS_PREFIX}-carousel-right-button`
   },
+  CAROUSEL_GLIDE_ARROW: {
+    class: `${CLASS_PREFIX}-carousel-glide-arrow`
+  },
   SOCIAL_CARDS: {
     id: 'social-cards',
     name: 'Social Cards',
