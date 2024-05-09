@@ -15,15 +15,16 @@ const options: EditorConfig = {
   height: 'auto',
   fromElement: true,
   panels: {},
-  plugins,
+  plugins,  
   selectorManager: {
     componentFirst: true
-  }  
+  },
+  
 }
 
 const grapes = useGrapes(options)
 
-grapes.onInit((editor) => {
+grapes.onInit((editor) => { 
   // Do stuff on load
   editor.on('load', function () {        
     
@@ -60,6 +61,45 @@ grapes.onInit((editor) => {
       // editor.AssetManager.add({{src: res.url}});
     })
      
+  });
+
+  editor.RichTextEditor.remove('bold')
+  editor.RichTextEditor.add('bold', {    
+    name: 'bold',
+    icon: '<strong>B</strong>',  
+    result: rte => {
+      const content = rte.selection();
+      const active = rte.doc.queryCommandState('bold');    
+      if (active === false){
+        rte.insertHTML(`<strong>${rte.selection()}</strong>`)
+      } 
+    }     
+  })
+
+  editor.RichTextEditor.remove('italic')
+  editor.RichTextEditor.add('italic', {    
+    name: 'italic',
+    icon: '<em>I</em>',  
+    result: rte => {
+      const content = rte.selection();
+      const active = rte.doc.queryCommandState('italic');    
+      if (active === false){
+        rte.insertHTML(`<em>${rte.selection()}</em>`)
+      } 
+    }     
+  })
+
+  editor.RichTextEditor.remove('strikethrough')
+  editor.RichTextEditor.add('strikethrough', {    
+    name: 'strikethrough',
+    icon: '<s>S</s>',  
+    result: rte => {
+      const content = rte.selection();
+      const active = rte.doc.queryCommandState('strikethrough');    
+      if (active === false){
+        rte.insertHTML(`<s>${rte.selection()}</s>`)
+      } 
+    }     
   })
 });
 
@@ -70,7 +110,7 @@ watch(
     if (!newVal) return;
 
     grapes.init({
-      ...options,
+      ...options,     
       container: newVal  
     });
   },
