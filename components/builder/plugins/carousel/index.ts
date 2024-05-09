@@ -139,8 +139,8 @@ const plugin: Plugin = (editor: Editor) => {
         styles: carousel.styles,
         components: [
           {
-            tagName: BuilderBlock.DIV.id,
-            classes: ['container'],
+            name: BuilderComponent.CAROUSEL_CONTAINER.name,
+            classes: [BuilderComponent.CAROUSEL_CONTAINER.class, 'container'],
             components: [
               { type: BuilderComponent.CAROUSEL_SWIPER_CONTAINER.id },
               { type: BuilderComponent.CAROUSEL_LEFT_BUTTON.id },

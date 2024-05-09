@@ -1,10 +1,12 @@
+import { BuilderComponent } from "../enum";
+
 const flipCards = {
   styles: `
-    .block-flip-cards * {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} * {
       box-sizing: border-box;
     }
   
-    .block-flip-cards .section-plans {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FILP_CARDS_SECTION.class} {
       display: flex;
       justify-content: space-between;
       font-family: "Lato", sans-serif;
@@ -12,7 +14,7 @@ const flipCards = {
       margin: 0 auto;
     }
   
-    .block-flip-cards .card {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD.class} {
       text-align: center;
       position: relative;
       perspective: 50rem;
@@ -22,23 +24,23 @@ const flipCards = {
       margin: 0.833rem;
     }
   
-    .block-flip-cards .card__side--front img {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD_SIDE.class}--front img {
       max-width: 100%;
       max-height: 100%;
       object-fit: cover;
     }
   
-    .block-flip-cards .card__side--front h3 {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD_SIDE.class}--front h3 {
       font-size: 1rem;
       font-weight: 700;
     }
   
-    .block-flip-cards .card h4 {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD.class} h4 {
       margin: 0;
       font-weight: 500;
     }
   
-    .block-flip-cards .card__side {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD_SIDE.class} {
       transition: transform 0.8s ease;
       position: absolute;
       top: 0;
@@ -50,12 +52,12 @@ const flipCards = {
       box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.15);
     }
   
-    .block-flip-cards .card__side--front,
-    .block-flip-cards .card__side--back {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD_SIDE.class}--front,
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD_SIDE.class}--back {
       padding: 0.833rem;
     }
   
-    .block-flip-cards .card__side--back {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD_SIDE.class}--back {
       transform: rotateY(180deg);
       position: absolute;
       width: 100%;
@@ -67,15 +69,15 @@ const flipCards = {
       background: #fff;
     }
   
-    .block-flip-cards .card:hover .card__side--front {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD.class}:hover .${BuilderComponent.FLIP_CARD_SIDE.class}--front {
       transform: rotateY(-180deg);
     }
   
-    .block-flip-cards .card:hover .card__side--back {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD.class}:hover .${BuilderComponent.FLIP_CARD_SIDE.class}--back {
       transform: rotateY(0);
     }
   
-    .block-flip-cards .btn.btn--white {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .btn.btn--white {
       text-transform: uppercase;
       color: #000;
       text-decoration: none;
@@ -86,12 +88,12 @@ const flipCards = {
       font-size: 1rem;
     }
   
-    .block-flip-cards .card__side {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD_SIDE.class} {
       width: 100%;
       height: 100%;
     }
   
-    .block-flip-cards .card__side--front {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD_SIDE.class}--front {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -102,7 +104,7 @@ const flipCards = {
       background: #fff;
     }
   
-    .block-flip-cards .card-side-config button {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FILP_CARD_SIDE_CONFIG.class} button {
       margin-right: 0.133rem;
       color: #1f75fe;
       border: 0.033rem solid #1f75fe;
@@ -113,65 +115,65 @@ const flipCards = {
       cursor: pointer;
     }
   
-    .block-flip-cards .card-side-config button.active {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FILP_CARD_SIDE_CONFIG.class} button.active {
       background-color: #1f75fe;
       color: #fff;
     }
   
-    .block-flip-cards .card.show-front .card__side--front {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD.class}.show-front .${BuilderComponent.FLIP_CARD_SIDE.class}--front {
       transform: none !important;
     }
   
-    .block-flip-cards .card.show-front:hover .card__side--back {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD.class}.show-front:hover .${BuilderComponent.FLIP_CARD_SIDE.class}--back {
       transform: rotateY(180deg);
     }
   
-    .block-flip-cards .card.show-back .card__side--front {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD.class}.show-back .${BuilderComponent.FLIP_CARD_SIDE.class}--front {
       transform: rotateY(180deg);
     }
   
-    .block-flip-cards .card.show-back .card__side--back {
+    .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD.class}.show-back .${BuilderComponent.FLIP_CARD_SIDE.class}--back {
       transform: none !important;
     }
   
-    .gjs-dashed .block-flip-cards .card-side-config {
+    .gjs-dashed .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FILP_CARD_SIDE_CONFIG.class} {
       display: block !important;
       margin-bottom: 0.133rem;
     }
   
     @media (max-width: 36rem) {
-      .block-flip-cards .section-plans {
+      .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FILP_CARDS_SECTION.class} {
         flex-direction: column;
       }
-      .block-flip-cards .card {
+      .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD.class} {
         margin: 0 auto;
       }
-      .block-flip-cards .card:nth-child(2) {
+      .${BuilderComponent.FILP_CARDS_CONTAINER.class} .${BuilderComponent.FLIP_CARD.class}:nth-child(2) {
         margin-top: 1rem;
         margin-bottom: 1rem;
       }
     }
     `,
   content: `
-    <div class="block-flip-cards">
-      <div class="card-side-config" style="display: none;" data-gjs-editable="false">
-        <button class="card-side-config-btn" data-config="show-front">
+    <div class="${BuilderComponent.FILP_CARDS_CONTAINER.class}">
+      <div class="${BuilderComponent.FILP_CARD_SIDE_CONFIG.class}" style="display: none;" data-gjs-editable="false">
+        <button class="${BuilderComponent.FILP_CARD_SIDE_CONFIG_BTN.class}" data-config="show-front">
           Edit card front
         </button>
-        <button class="card-side-config-btn" data-config="show-back">
+        <button class="${BuilderComponent.FILP_CARD_SIDE_CONFIG_BTN.class}" data-config="show-back">
           Edit card back
         </button>
-        <button class="card-side-config-btn" data-config="allow-flip">
+        <button class="${BuilderComponent.FILP_CARD_SIDE_CONFIG_BTN.class}" data-config="allow-flip">
           Allow flip
         </button>
       </div>
-      <section class="section-plans" id="section-plans">
-        <div class="card">
-          <div class="card__side card__side--front">
+      <section class="${BuilderComponent.FILP_CARDS_SECTION.class}" id="section-plans">
+        <div class="${BuilderComponent.FLIP_CARD.class}">
+          <div class="${BuilderComponent.FLIP_CARD_SIDE.class} ${BuilderComponent.FLIP_CARD_SIDE.class}--front">
             <img src="https://ntvassets-a.akamaihd.net/A10C8D7B855F432281DC351355FBF1AF.jpg">
             <h3>Whipped Body Butter</h3>
           </div>
-          <div class="card__side card__side--back">
+          <div class="${BuilderComponent.FLIP_CARD_SIDE.class} ${BuilderComponent.FLIP_CARD_SIDE.class}--back">
             <h3>Whipped Body Butter</h3>
             <h4>By Tarte</h4>
             <p>
@@ -179,12 +181,12 @@ const flipCards = {
             </p>
           </div>
         </div>
-        <div class="card">
-          <div class="card__side card__side--front">
+        <div class="${BuilderComponent.FLIP_CARD.class}">
+          <div class="${BuilderComponent.FLIP_CARD_SIDE.class} ${BuilderComponent.FLIP_CARD_SIDE.class}--front">
             <img src="https://ntvassets-a.akamaihd.net/4DD91CB7584F4D2B81F74C0163F69A30.jpg">
             <h3>Mountain Herbal Body Moisturizer</h3>
           </div>
-          <div class="card__side card__side--back">
+          <div class="${BuilderComponent.FLIP_CARD_SIDE.class} ${BuilderComponent.FLIP_CARD_SIDE.class}--back">
             <h3>Mountain Herbal Body Moisturizer</h3>
             <h4>By Hempz</h4>
             <p>
@@ -192,12 +194,12 @@ const flipCards = {
             </p>
           </div>
         </div>
-        <div class="card">
-          <div class="card__side card__side--front">
+        <div class="${BuilderComponent.FLIP_CARD.class}">
+          <div class="${BuilderComponent.FLIP_CARD_SIDE.class} ${BuilderComponent.FLIP_CARD_SIDE.class}--front">
             <img src="https://ntvassets-a.akamaihd.net/ADD936C2E9574798A2A80A9A2B4B6E98.jpg">
             <h3>Full-On Satin Lipstick</h3>
           </div>
-          <div class="card__side card__side--back">
+          <div class="${BuilderComponent.FLIP_CARD_SIDE.class} ${BuilderComponent.FLIP_CARD_SIDE.class}--back">
             <h3>Full-On Satin Lipstick</h3>
             <h4>By Buxom</h4>
             <p>
@@ -210,9 +212,9 @@ const flipCards = {
     `,
   script: function () {
     const cardSideConfigBtns = document.querySelectorAll(
-      '.card-side-config-btn'
+      '.ntvc-card-side-config-btn'
     );
-    const cards = document.querySelectorAll('.card');
+    const cards = document.querySelectorAll('.ntvc-flip-card');
     cardSideConfigBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
         removePrevClasses();
