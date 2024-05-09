@@ -13,6 +13,7 @@ import pluginBlockQuote from './block-quote';
 import pluginButton from './button';
 import pluginCarousel from './carousel';
 import pluginColumn from './column';
+import pluginCopyPaste from './copy-paste';
 import pluginDevices from './devices';
 import pluginDiv from './div';
 import pluginFlipCards from './flip-cards';
@@ -44,6 +45,7 @@ const plugins = [
   }),
   parserPostCSS,
   pluginStyleBg,
+  pluginCopyPaste,
 
   pluginHeading,
   pluginParagraph,
