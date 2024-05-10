@@ -15,7 +15,11 @@ export default defineNuxtConfig({
     databaseUrl: '',
     public: {
       url: '',
-      directusPublicUrl: process.env.DIRECTUS_PUBLIC_URL
+      directus:{
+        url:process.env.DIRECTUS_PUBLIC_URL,
+        email: process.env.DIRECTUS_ADMIN_EMAIL,
+        password: process.env.DIRECTUS_ADMIN_PASSWORD
+      }
     },
     google: {
       clientId: '',
@@ -26,6 +30,7 @@ export default defineNuxtConfig({
       secretKey: '',
       webhookSecret: '',
     },
+    
     
   },
   modules: ['@nuxt/ui', '@formkit/auto-animate/nuxt', '@nuxtjs/plausible'],

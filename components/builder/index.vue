@@ -2,13 +2,11 @@
 import type { EditorConfig } from 'grapesjs';
 import plugins from './plugins';
 
-import { createDirectus, rest, uploadFiles } from '@directus/sdk';
-
 const canvas: any = ref(null)
+const { $directus, $uploadFiles, $isAuthenticated } = useNuxtApp();
 
 // TODO: create hook for this
 // migrate to backend
-const directus = createDirectus(useRuntimeConfig().public.directusPublicUrl).with(rest())
 
 const options: EditorConfig = {
   container: canvas,
@@ -56,10 +54,12 @@ grapes.onInit((editor) => {
     formData.append('filename_disk', title);
     formData.append('filename_download', title);
     formData.append('type', type);
-    directus.request(uploadFiles(formData)).then(res=>{
-      console.log(res);
-      // editor.AssetManager.add({{src: res.url}});
-    })
+    if ($isAuthenticated) {
+      $directus.request($uploadFiles(formData)).then(res=>{
+        console.log(res);
+        // editor.AssetManager.add({{src: res.url}});
+      })
+    }    
      
   });
 

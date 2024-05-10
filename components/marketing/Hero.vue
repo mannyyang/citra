@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted } from 'vue';
 
-const logoPath = `${useRuntimeConfig().public.directusPublicUrl}/assets/73235046-a139-4315-91a8-e28963b44c75` + `/logo.png`
+const logoPath = `${useRuntimeConfig().public.directus.url}/assets/73235046-a139-4315-91a8-e28963b44c75` + `/logo.png`
 
 onMounted(() => {
   const w = 'https://tally.so/widgets/embed.js'
