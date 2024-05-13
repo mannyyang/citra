@@ -8,15 +8,15 @@ const appLinks = computed(() => [
     icon: 'i-solar-home-line-duotone',
     to: base.value,
   },
-  {
-    label: 'Team',
-    icon: 'i-solar-users-group-rounded-line-duotone',
-    to: `${base.value}/team`,
-  },
+  // {
+  //   label: 'Team',
+  //   icon: 'i-solar-users-group-rounded-line-duotone',
+  //   to: `${base.value}/team`,
+  // },
   {
     label: 'Build',
     icon: 'i-solar-users-group-rounded-line-duotone',
-    to: `${base.value}/build`,
+    to: `/build`,
   },
 ])
 
@@ -44,8 +44,14 @@ const ui = {
 
 <template>
   <div class="w-full lg:w-96 lg:h-full pt-12">
-    <UVerticalNavigation :links="appLinks" :ui="ui" />
+    <UVerticalNavigation
+      :links="appLinks"
+      :ui="ui"
+    />
     <UDivider class="w-10/12 my-2" />
-    <UVerticalNavigation :links="adminLinks" :ui="ui" />
+    <UVerticalNavigation
+      :links="adminLinks"
+      :ui="ui"
+    />
   </div>
 </template>

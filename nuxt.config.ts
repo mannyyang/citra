@@ -9,16 +9,14 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/build/**': { ssr: false },
+    '/build/**': { ssr: false }
   },
   runtimeConfig: {
     databaseUrl: '',
     public: {
       url: '',
-      directus:{
-        url:process.env.DIRECTUS_PUBLIC_URL,
-        email: process.env.DIRECTUS_ADMIN_EMAIL,
-        password: process.env.DIRECTUS_ADMIN_PASSWORD
+      directus: {
+        url: process.env.DIRECTUS_PUBLIC_URL,
       }
     },
     google: {
@@ -30,10 +28,15 @@ export default defineNuxtConfig({
       secretKey: '',
       webhookSecret: '',
     },
-    
-    
+
+
   },
-  modules: ['@nuxt/ui', '@formkit/auto-animate/nuxt', '@nuxtjs/plausible'],
+  modules: [
+    '@nuxt/ui',
+    '@formkit/auto-animate/nuxt',
+    '@nuxtjs/plausible',
+    "nuxt-directus"
+  ],
   ui: {
     global: true,
     icons: ['solar', 'tabler', 'octicon', 'devicon', 'logos'],
@@ -42,6 +45,6 @@ export default defineNuxtConfig({
   plausible: {
     domain: process.env.PLAUSIBLE_DOMAIN,
     apiHost: process.env.PLAUSIBLE_API_HOST ?? 'https://plausible.io',
-    trackLocalhost: true,
+    trackLocalhost: false,
   }
 })

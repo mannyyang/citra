@@ -46,7 +46,8 @@
     "stripe": "^14.11.0",
     "uid": "^2.0.2",
     "vue": "^3.4.6",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.6.2",
@@ -57,6 +58,7 @@
     "eslint": "^8.56.0",
     "husky": "^8.0.0",
     "nuxt": "^3.11.2",
+    "nuxt-directus": "^5.6.1",
     "sass": "^1.72.0"
   },
   "pnpm": {
