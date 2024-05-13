@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import type { FormSubmitEvent } from '#ui/types';
-import { createDirectus, login, rest } from '@directus/sdk';
 import { z } from 'zod';
 
-const user = useDirectusUser()
-const googleAuthUrl = useGoogleAuthUrl()
-
+const user = useUser()
 if (user.value)
   await navigateTo('/app')
 
@@ -34,18 +31,6 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   else
     errorMessage.value = res.message
 }
-
-async function onLoginWithGoogle() {
-  const client = createDirectus('http://localhost:8055')
-    .with(rest());
-
-  // login using the authentication composable
-  const result = await client.request(
-    login('email', 'password', { provider: 'google' })
-  );
-
-  console.log(result)
-}
 </script>
 
 <template>
@@ -53,7 +38,7 @@ async function onLoginWithGoogle() {
     Sign in
   </h1>
   <UCard class="max-w-sm mx-auto ">
-    <UButton block class="mb-4" variant="outline" color="gray" @click="onLoginWithGoogle" external>
+    <UButton block class="mb-4" variant="outline" color="gray" to="/auth/google" external>
       <UIcon name="i-logos-google-icon" class="h-6 w-6 m-1" /> Sign in with Google
     </UButton>
     <UDivider class="my-4" label="OR" />

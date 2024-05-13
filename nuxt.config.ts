@@ -13,6 +13,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     databaseUrl: '',
+    directusUrl: process.env.DIRECTUS_PUBLIC_URL,
     public: {
       url: '',
       directus: {

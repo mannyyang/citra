@@ -3,29 +3,30 @@ import type { EditorConfig } from 'grapesjs';
 import plugins from './plugins';
 
 const canvas: any = ref(null)
-const { $directus, $uploadFiles, $isAuthenticated } = useNuxtApp();
-
-// TODO: create hook for this
-// migrate to backend
 
 const options: EditorConfig = {
   container: canvas,
   height: 'auto',
   fromElement: true,
   panels: {},
-  plugins,  
+  plugins,
   selectorManager: {
     componentFirst: true
   },
-  
+  assetManager: {
+    // Upload endpoint, set `false` to disable upload, default `false`
+    upload: '/api/file/upload',
+
+    // The name used in POST to pass uploaded files, default: `'files'`
+    uploadName: 'citra_files',
+  },
 }
 
 const grapes = useGrapes(options)
-
-grapes.onInit((editor) => { 
+grapes.onInit((editor) => {
   // Do stuff on load
-  editor.on('load', function () {        
-    
+  editor.on('load', function () {
+
     // load default fonts
     const fontProperty = editor.StyleManager.getProperty(
       'typography',
@@ -39,67 +40,49 @@ grapes.onInit((editor) => {
     });
 
     fontProperty?.set('default', `Lato, Helvetica, Arial, sans-serif`);
-    fontProperty?.set('defaults', `Lato, Helvetica, Arial, sans-serif`);   
-        
+    fontProperty?.set('defaults', `Lato, Helvetica, Arial, sans-serif`);
+
     const openBlocksBtn = editor.Panels.getButton('views', 'open-blocks');
     openBlocksBtn && openBlocksBtn.set('active', 1);
   });
 
-  editor.on('asset:add', (asset)=>{ 
-    const title = asset.getFilename();
-    const file = asset.getSrc();
-    const type =asset.getType();
-    const formData = new FormData();
-    formData.append('file', file);    
-    formData.append('filename_disk', title);
-    formData.append('filename_download', title);
-    formData.append('type', type);
-    if ($isAuthenticated) {
-      $directus.request($uploadFiles(formData)).then(res=>{
-        console.log(res);
-        // editor.AssetManager.add({{src: res.url}});
-      })
-    }    
-     
-  });
-
   editor.RichTextEditor.remove('bold')
-  editor.RichTextEditor.add('bold', {    
+  editor.RichTextEditor.add('bold', {
     name: 'bold',
-    icon: '<strong>B</strong>',  
+    icon: '<strong>B</strong>',
     result: rte => {
       const content = rte.selection();
-      const active = rte.doc.queryCommandState('bold');    
-      if (active === false){
+      const active = rte.doc.queryCommandState('bold');
+      if (active === false) {
         rte.insertHTML(`<strong>${rte.selection()}</strong>`)
-      } 
-    }     
+      }
+    }
   })
 
   editor.RichTextEditor.remove('italic')
-  editor.RichTextEditor.add('italic', {    
+  editor.RichTextEditor.add('italic', {
     name: 'italic',
-    icon: '<em>I</em>',  
+    icon: '<em>I</em>',
     result: rte => {
       const content = rte.selection();
-      const active = rte.doc.queryCommandState('italic');    
-      if (active === false){
+      const active = rte.doc.queryCommandState('italic');
+      if (active === false) {
         rte.insertHTML(`<em>${rte.selection()}</em>`)
-      } 
-    }     
+      }
+    }
   })
 
   editor.RichTextEditor.remove('strikethrough')
-  editor.RichTextEditor.add('strikethrough', {    
+  editor.RichTextEditor.add('strikethrough', {
     name: 'strikethrough',
-    icon: '<s>S</s>',  
+    icon: '<s>S</s>',
     result: rte => {
       const content = rte.selection();
-      const active = rte.doc.queryCommandState('strikethrough');    
-      if (active === false){
+      const active = rte.doc.queryCommandState('strikethrough');
+      if (active === false) {
         rte.insertHTML(`<s>${rte.selection()}</s>`)
-      } 
-    }     
+      }
+    }
   })
 });
 
@@ -110,8 +93,8 @@ watch(
     if (!newVal) return;
 
     grapes.init({
-      ...options,     
-      container: newVal  
+      ...options,
+      container: newVal
     });
   },
   { immediate: true }
@@ -119,9 +102,9 @@ watch(
 
 </script>
 
-<template>  
+<template>
   <div class="w-full text-right min-h-full">
-    <div class="ca-builder flex w-full h-full">  
+    <div class="ca-builder flex w-full h-full">
       <div ref="canvas" class="flex-1" />
     </div>
   </div>
@@ -343,17 +326,17 @@ watch(
   /* ADM-17588 eye icon has black background color */
   .gjs-off-prv.fa-eye-slash {
     background-color: unset;
-  } 
+  }
 }
 
 .panel__basic-actions {
-  z-index: 10; 
-  left: 120px; 
-  background-color: #fff; 
-  color: #000; 
-  border: 1px solid #ccc; 
-  border-radius: 5px; 
-  padding: 2px 10px 2px 10px; 
+  z-index: 10;
+  left: 120px;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 2px 10px 2px 10px;
   margin-top: 2px;
 }
 
@@ -391,19 +374,19 @@ watch(
         background-color: #E7E9EB;
         color: #000;
       }
-    }  
+    }
   }
 
   .silex-form__element {
     h2 {
-      font-size: 1.5em;        
+      font-size: 1.5em;
     }
 
     .silex-list__item__header {
-        h4 {
-          font-size: 1.3em
-        }
+      h4 {
+        font-size: 1.3em
       }
+    }
 
     .silex-list__item__body {
       fieldset {
@@ -424,8 +407,10 @@ watch(
         }
       }
     }
+
     .silex-list__item__footer {
       text-align: right;
+
       .silex-button {
         margin-top: 10px;
         background-color: #E7E9EB;
@@ -441,7 +426,5 @@ watch(
       padding: 5px;
     }
   }
-}  
-
-
+}
 </style>
