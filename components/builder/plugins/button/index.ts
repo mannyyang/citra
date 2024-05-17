@@ -17,7 +17,8 @@ const plugin: Plugin = (editor) => {
         tagName: 'a',
         attributes: {
           'data-ntvb': 'button',
-          'data-ca': BuilderComponent.BUTTON.id
+          'data-ca': BuilderComponent.BUTTON.id,
+          href: ''
         },
         style: {
           display: 'inline-block',
@@ -29,8 +30,16 @@ const plugin: Plugin = (editor) => {
           'text-align': 'center',
           'text-decoration': 'none'
         },
-        content: 'Button Text'
-      }
+        content: 'Button Text',
+        traits:[
+          {
+            type:'text',
+            name: 'href',
+            label: 'Href',
+          }
+        ]
+      },
+
     },
     view: {
       init() {
