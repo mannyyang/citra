@@ -17,8 +17,6 @@ const plugin: Plugin = (editor) => {
         tagName: 'a',
         attributes: {
           'data-ntvb': 'button',
-          'data-ca': BuilderComponent.BUTTON.id,
-          href: ''
         },
         style: {
           display: 'inline-block',

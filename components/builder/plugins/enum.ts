@@ -27,6 +27,11 @@ export const BuilderComponent = {
     name: 'Text',
     class: `${CLASS_PREFIX}-text`
   },
+  LINK: {
+    id: 'n-link',
+    name: 'Link',
+    class: `${CLASS_PREFIX}-link`
+  },
   BUTTON: {
     id: 'n-button',
     name: 'Button',
