@@ -26,10 +26,11 @@ class FileService {
       formData.append('title', title);
       formData.append('file', blob, fileName);
 
-      return await client.request(uploadFiles(formData));
+      const res = await client.request(uploadFiles(formData));
+      return { src: `${directus.url}/assets/${res.id}`,  type: res.type, name: res.filename_download}
     });
 
-    return await Promise.all(pendingUploads);
+    return {data: await Promise.all(pendingUploads)};
   }
 }
 
