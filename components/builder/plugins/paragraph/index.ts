@@ -1,14 +1,14 @@
 import type { Editor, Plugin } from 'grapesjs';
 import { BuilderBlock, BuilderCategory, BuilderComponent } from '../enum';
 import { exportedSVG } from '../icons';
-import { isComponent } from '../util';
 
 const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
   Components.addType(BuilderComponent.PARAGRAPH.id, {
-    isComponent: (el) => isComponent(el, BuilderComponent.PARAGRAPH.id),
+    isComponent: (el) =>
+      el.tagName ? el.tagName.toLowerCase() === 'p' : false,
     extend: 'text',
     model: {
       defaults: {

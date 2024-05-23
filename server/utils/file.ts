@@ -8,7 +8,6 @@ const {
 const client = createDirectus(directus.url).with(rest());
 
 class FileService {
-  // TODO: return response so that grapesjs can display the uploaded files
   async upload(bufferFiles: {
     buffer: Buffer;
     name?: string;
@@ -27,10 +26,15 @@ class FileService {
       formData.append('file', blob, fileName);
 
       const res = await client.request(uploadFiles(formData));
-      return { src: `${directus.url}/assets/${res.id}`,  type: res.type, name: res.filename_download}
+    
+      return {
+        src: `${directus.url}/assets/${res.id}`,
+        type: res.type,
+        name: res.filename_download
+      }
     });
 
-    return {data: await Promise.all(pendingUploads)};
+    return { data: await Promise.all(pendingUploads) };
   }
 }
 
