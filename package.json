@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@directus/sdk": "^15.1.0",
+    "@grapesjs/studio-sdk": "^1.0.7",
     "@iconify/json": "^2.2.166",
     "@iconify/utils": "^2.1.22",
     "@lucia-auth/adapter-postgresql": "^2.0.2",

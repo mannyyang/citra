@@ -11,6 +11,9 @@ dependencies:
   '@directus/sdk':
     specifier: ^15.1.0
     version: 15.1.0
+  '@grapesjs/studio-sdk':
+    specifier: ^1.0.7
+    version: 1.0.7
   '@iconify/json':
     specifier: ^2.2.166
     version: 2.2.208
@@ -1302,6 +1305,10 @@ packages:
     resolution: {integrity: sha512-SwPWfeRa5veb1hOIBMdzI+73te5puUBHmqqaF1Bu7FjvxlYSz/kJcZKSa9Cg60zL0uRNeJL2SbRxV6Jp6Q1nFQ==}
     dev: true
 
+  /@grapesjs/studio-sdk@1.0.7:
+    resolution: {integrity: sha512-nb36qZ4tofXy0D16IMpXsf1ynqWCYuw1Iq+CmUpd13D8jXcLE1f/wonEt60LO+7LGSUftgJkVolI8IM6d38WUQ==}
+    dev: false
+
   /@headlessui/tailwindcss@0.2.0(tailwindcss@3.4.3):
     resolution: {integrity: sha512-fpL830Fln1SykOCboExsWr3JIVeQKieLJ3XytLe/tt1A0XzqUthOftDmjcCYLW62w7mQI7wXcoPXr3tZ9QfGxw==}
     engines: {node: '>=10'}
@@ -1733,7 +1740,7 @@ packages:
       semver: 7.6.2
       simple-git: 3.24.0
       sirv: 2.0.4
-      unimport: 3.7.1(@rollup/wasm-node@4.17.2)
+      unimport: 3.7.1(@rollup/wasm-node@4.18.0)
       vite: 5.2.11(sass@1.77.1)
       vite-plugin-inspect: 0.8.4(@nuxt/kit@3.11.2)(vite@5.2.11)
       vite-plugin-vue-inspector: 5.1.0(vite@5.2.11)
@@ -1782,7 +1789,7 @@ packages:
       semver: 7.6.2
       ufo: 1.5.3
       unctx: 2.3.1
-      unimport: 3.7.1(@rollup/wasm-node@4.17.2)
+      unimport: 3.7.1(@rollup/wasm-node@4.18.0)
       untyped: 1.4.2
     transitivePeerDependencies:
       - rollup
@@ -1801,7 +1808,7 @@ packages:
       scule: 1.3.0
       std-env: 3.7.0
       ufo: 1.5.3
-      unimport: 3.7.1(@rollup/wasm-node@4.17.2)
+      unimport: 3.7.1(@rollup/wasm-node@4.18.0)
       untyped: 1.4.2
     transitivePeerDependencies:
       - rollup
@@ -1891,7 +1898,7 @@ packages:
       vue: ^3.3.4
     dependencies:
       '@nuxt/kit': 3.11.2
-      '@rollup/plugin-replace': 5.0.5(@rollup/wasm-node@4.17.2)
+      '@rollup/plugin-replace': 5.0.5(@rollup/wasm-node@4.18.0)
       '@vitejs/plugin-vue': 5.0.4(vite@5.2.11)(vue@3.4.27)
       '@vitejs/plugin-vue-jsx': 3.1.0(vite@5.2.11)(vue@3.4.27)
       autoprefixer: 10.4.19(postcss@8.4.38)
@@ -1914,7 +1921,7 @@ packages:
       perfect-debounce: 1.0.0
       pkg-types: 1.1.1
       postcss: 8.4.38
-      rollup-plugin-visualizer: 5.12.0(@rollup/wasm-node@4.17.2)
+      rollup-plugin-visualizer: 5.12.0(@rollup/wasm-node@4.18.0)
       std-env: 3.7.0
       strip-literal: 2.1.0
       ufo: 1.5.3
@@ -2256,7 +2263,7 @@ packages:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
     dev: false
 
-  /@rollup/plugin-alias@5.1.0(@rollup/wasm-node@4.17.2):
+  /@rollup/plugin-alias@5.1.0(@rollup/wasm-node@4.18.0):
     resolution: {integrity: sha512-lpA3RZ9PdIG7qqhEfv79tBffNaoDuukFDrmhLqg9ifv99u/ehn+lOg30x2zmhf8AQqQUZaMk/B9fZraQ6/acDQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -2265,10 +2272,10 @@ packages:
       rollup:
         optional: true
     dependencies:
-      rollup: /@rollup/wasm-node@4.17.2
+      rollup: /@rollup/wasm-node@4.18.0
       slash: 4.0.0
 
-  /@rollup/plugin-commonjs@25.0.7(@rollup/wasm-node@4.17.2):
+  /@rollup/plugin-commonjs@25.0.7(@rollup/wasm-node@4.18.0):
     resolution: {integrity: sha512-nEvcR+LRjEjsaSsc4x3XZfCCvZIaSMenZu/OiwOKGN2UhQpAYI7ru7czFvyWbErlpoGjnSX3D5Ch5FcMA3kRWQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -2277,15 +2284,15 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.17.2)
+      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.18.0)
       commondir: 1.0.1
       estree-walker: 2.0.2
       glob: 8.1.0
       is-reference: 1.2.1
       magic-string: 0.30.10
-      rollup: /@rollup/wasm-node@4.17.2
+      rollup: /@rollup/wasm-node@4.18.0
 
-  /@rollup/plugin-inject@5.0.5(@rollup/wasm-node@4.17.2):
+  /@rollup/plugin-inject@5.0.5(@rollup/wasm-node@4.18.0):
     resolution: {integrity: sha512-2+DEJbNBoPROPkgTDNe8/1YXWcqxbN5DTjASVIOx8HS+pITXushyNiBV56RB08zuptzz8gT3YfkqriTBVycepg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -2294,12 +2301,12 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.17.2)
+      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.18.0)
       estree-walker: 2.0.2
       magic-string: 0.30.10
-      rollup: /@rollup/wasm-node@4.17.2
+      rollup: /@rollup/wasm-node@4.18.0
 
-  /@rollup/plugin-json@6.1.0(@rollup/wasm-node@4.17.2):
+  /@rollup/plugin-json@6.1.0(@rollup/wasm-node@4.18.0):
     resolution: {integrity: sha512-EGI2te5ENk1coGeADSIwZ7G2Q8CJS2sF120T7jLw4xFw9n7wIOXHo+kIYRAoVpJAN+kmqZSoO3Fp4JtoNF4ReA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -2308,10 +2315,10 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.17.2)
-      rollup: /@rollup/wasm-node@4.17.2
+      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.18.0)
+      rollup: /@rollup/wasm-node@4.18.0
 
-  /@rollup/plugin-node-resolve@15.2.3(@rollup/wasm-node@4.17.2):
+  /@rollup/plugin-node-resolve@15.2.3(@rollup/wasm-node@4.18.0):
     resolution: {integrity: sha512-j/lym8nf5E21LwBT4Df1VD6hRO2L2iwUeUmP7litikRsVp1H6NWx20NEp0Y7su+7XGc476GnXXc4kFeZNGmaSQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -2320,15 +2327,15 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.17.2)
+      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.18.0)
       '@types/resolve': 1.20.2
       deepmerge: 4.3.1
       is-builtin-module: 3.2.1
       is-module: 1.0.0
       resolve: 1.22.8
-      rollup: /@rollup/wasm-node@4.17.2
+      rollup: /@rollup/wasm-node@4.18.0
 
-  /@rollup/plugin-replace@5.0.5(@rollup/wasm-node@4.17.2):
+  /@rollup/plugin-replace@5.0.5(@rollup/wasm-node@4.18.0):
     resolution: {integrity: sha512-rYO4fOi8lMaTg/z5Jb+hKnrHHVn8j2lwkqwyS4kTRhKyWOLf2wST2sWXr4WzWiTcoHTp2sTjqUbqIj2E39slKQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -2337,11 +2344,11 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.17.2)
+      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.18.0)
       magic-string: 0.30.10
-      rollup: /@rollup/wasm-node@4.17.2
+      rollup: /@rollup/wasm-node@4.18.0
 
-  /@rollup/plugin-terser@0.4.4(@rollup/wasm-node@4.17.2):
+  /@rollup/plugin-terser@0.4.4(@rollup/wasm-node@4.18.0):
     resolution: {integrity: sha512-XHeJC5Bgvs8LfukDwWZp7yeqin6ns8RTl2B9avbejt6tZqsqvVoWI7ZTQrcNsfKEDWBTnTxM8nMDkO2IFFbd0A==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -2350,7 +2357,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      rollup: /@rollup/wasm-node@4.17.2
+      rollup: /@rollup/wasm-node@4.18.0
       serialize-javascript: 6.0.2
       smob: 1.5.0
       terser: 5.31.0
@@ -2362,7 +2369,7 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
 
-  /@rollup/pluginutils@5.1.0(@rollup/wasm-node@4.17.2):
+  /@rollup/pluginutils@5.1.0(@rollup/wasm-node@4.18.0):
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -2374,10 +2381,10 @@ packages:
       '@types/estree': 1.0.5
       estree-walker: 2.0.2
       picomatch: 2.3.1
-      rollup: /@rollup/wasm-node@4.17.2
+      rollup: /@rollup/wasm-node@4.18.0
 
-  /@rollup/wasm-node@4.17.2:
-    resolution: {integrity: sha512-4F6C3XaUn02XY/GJMQTXncWrLyCkRHdRZe4OyWuQUprWKmU2u+esISOtCYdr3Bp9AqCIo/X3So2Ik7N9dNDwow==}
+  /@rollup/wasm-node@4.18.0:
+    resolution: {integrity: sha512-DkLoyblRMhJw9ZogW9zCpyH0CNJ+7GaM7Ty+Vl+G21z/Gr7uKBaXqcJqwWUiNYVxTOgxZrxhDG6pmOFxOuswvw==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
     dependencies:
@@ -2839,7 +2846,7 @@ packages:
     hasBin: true
     dependencies:
       '@ampproject/remapping': 2.3.0
-      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.17.2)
+      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.18.0)
       '@unocss/config': 0.60.0
       '@unocss/core': 0.60.0
       '@unocss/preset-uno': 0.60.0
@@ -2995,7 +3002,7 @@ packages:
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0 || ^5.0.0-0
     dependencies:
       '@ampproject/remapping': 2.3.0
-      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.17.2)
+      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.18.0)
       '@unocss/config': 0.60.0
       '@unocss/core': 0.60.0
       '@unocss/inspector': 0.60.0
@@ -3064,7 +3071,7 @@ packages:
         optional: true
     dependencies:
       '@babel/types': 7.24.5
-      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.17.2)
+      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.18.0)
       '@vue/compiler-sfc': 3.4.27
       ast-kit: 0.12.1
       local-pkg: 0.5.0
@@ -3590,7 +3597,7 @@ packages:
     engines: {node: '>=16.14.0'}
     dependencies:
       '@babel/parser': 7.24.5
-      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.17.2)
+      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.18.0)
       pathe: 1.1.2
     transitivePeerDependencies:
       - rollup
@@ -6738,14 +6745,14 @@ packages:
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.2
       '@netlify/functions': 2.6.3(@opentelemetry/api@1.8.0)
-      '@rollup/plugin-alias': 5.1.0(@rollup/wasm-node@4.17.2)
-      '@rollup/plugin-commonjs': 25.0.7(@rollup/wasm-node@4.17.2)
-      '@rollup/plugin-inject': 5.0.5(@rollup/wasm-node@4.17.2)
-      '@rollup/plugin-json': 6.1.0(@rollup/wasm-node@4.17.2)
-      '@rollup/plugin-node-resolve': 15.2.3(@rollup/wasm-node@4.17.2)
-      '@rollup/plugin-replace': 5.0.5(@rollup/wasm-node@4.17.2)
-      '@rollup/plugin-terser': 0.4.4(@rollup/wasm-node@4.17.2)
-      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.17.2)
+      '@rollup/plugin-alias': 5.1.0(@rollup/wasm-node@4.18.0)
+      '@rollup/plugin-commonjs': 25.0.7(@rollup/wasm-node@4.18.0)
+      '@rollup/plugin-inject': 5.0.5(@rollup/wasm-node@4.18.0)
+      '@rollup/plugin-json': 6.1.0(@rollup/wasm-node@4.18.0)
+      '@rollup/plugin-node-resolve': 15.2.3(@rollup/wasm-node@4.18.0)
+      '@rollup/plugin-replace': 5.0.5(@rollup/wasm-node@4.18.0)
+      '@rollup/plugin-terser': 0.4.4(@rollup/wasm-node@4.18.0)
+      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.18.0)
       '@types/http-proxy': 1.17.14
       '@vercel/nft': 0.26.5
       archiver: 7.0.1
@@ -6789,8 +6796,8 @@ packages:
       pkg-types: 1.1.1
       pretty-bytes: 6.1.1
       radix3: 1.1.2
-      rollup: /@rollup/wasm-node@4.17.2
-      rollup-plugin-visualizer: 5.12.0(@rollup/wasm-node@4.17.2)
+      rollup: /@rollup/wasm-node@4.18.0
+      rollup-plugin-visualizer: 5.12.0(@rollup/wasm-node@4.18.0)
       scule: 1.3.0
       semver: 7.6.2
       serve-placeholder: 2.0.1
@@ -6800,7 +6807,7 @@ packages:
       uncrypto: 0.1.3
       unctx: 2.3.1
       unenv: 1.9.0
-      unimport: 3.7.1(@rollup/wasm-node@4.17.2)
+      unimport: 3.7.1(@rollup/wasm-node@4.18.0)
       unstorage: 1.10.2(ioredis@5.4.1)
       unwasm: 0.3.9
     transitivePeerDependencies:
@@ -7082,7 +7089,7 @@ packages:
       uncrypto: 0.1.3
       unctx: 2.3.1
       unenv: 1.9.0
-      unimport: 3.7.1(@rollup/wasm-node@4.17.2)
+      unimport: 3.7.1(@rollup/wasm-node@4.18.0)
       unplugin: 1.10.1
       unplugin-vue-router: 0.7.0(vue-router@4.3.2)(vue@3.4.27)
       unstorage: 1.10.2(ioredis@5.4.1)
@@ -8051,7 +8058,7 @@ packages:
     dependencies:
       glob: 7.2.3
 
-  /rollup-plugin-visualizer@5.12.0(@rollup/wasm-node@4.17.2):
+  /rollup-plugin-visualizer@5.12.0(@rollup/wasm-node@4.18.0):
     resolution: {integrity: sha512-8/NU9jXcHRs7Nnj07PF2o4gjxmm9lXIrZ8r175bT9dK8qoLlvKTwRMArRCMgpMGlq8CTLugRvEmyMeMXIU2pNQ==}
     engines: {node: '>=14'}
     hasBin: true
@@ -8063,7 +8070,7 @@ packages:
     dependencies:
       open: 8.4.2
       picomatch: 2.3.1
-      rollup: /@rollup/wasm-node@4.17.2
+      rollup: /@rollup/wasm-node@4.18.0
       source-map: 0.7.4
       yargs: 17.7.2
 
@@ -8812,10 +8819,10 @@ packages:
     resolution: {integrity: sha512-lRfVq8fE8gz6QMBuDM6a+LO3IAzTi05H6gCVaUpir2E1Rwpo4ZUog45KpNXKC/Mn3Yb9UDuHumeFTo9iV/D9FQ==}
     engines: {node: '>=18'}
 
-  /unimport@3.7.1(@rollup/wasm-node@4.17.2):
+  /unimport@3.7.1(@rollup/wasm-node@4.18.0):
     resolution: {integrity: sha512-V9HpXYfsZye5bPPYUgs0Otn3ODS1mDUciaBlXljI4C2fTwfFpvFZRywmlOu943puN9sncxROMZhsZCjNXEpzEQ==}
     dependencies:
-      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.17.2)
+      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.18.0)
       acorn: 8.11.3
       escape-string-regexp: 5.0.0
       estree-walker: 3.0.3
@@ -8900,7 +8907,7 @@ packages:
         optional: true
     dependencies:
       '@babel/types': 7.24.5
-      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.17.2)
+      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.18.0)
       '@vue-macros/common': 1.10.3(vue@3.4.27)
       ast-walker-scope: 0.5.0
       chokidar: 3.6.0
@@ -9143,7 +9150,7 @@ packages:
     dependencies:
       '@antfu/utils': 0.7.8
       '@nuxt/kit': 3.11.2
-      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.17.2)
+      '@rollup/pluginutils': 5.1.0(@rollup/wasm-node@4.18.0)
       debug: 4.3.4
       error-stack-parser-es: 0.1.1
       fs-extra: 11.2.0
@@ -9204,7 +9211,7 @@ packages:
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
-      rollup: /@rollup/wasm-node@4.17.2
+      rollup: /@rollup/wasm-node@4.18.0
       sass: 1.77.1
     optionalDependencies:
       fsevents: 2.3.3
