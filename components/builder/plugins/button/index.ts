@@ -14,9 +14,9 @@ const plugin: Plugin = (editor) => {
       defaults: {
         name: BuilderComponent.BUTTON.name,
         classes: [BuilderComponent.BUTTON.class],
+        tagName: 'a',
         attributes: {
           'data-ntvb': 'button',
-          'data-ca': BuilderComponent.BUTTON.id
         },
         style: {
           display: 'inline-block',
@@ -28,8 +28,16 @@ const plugin: Plugin = (editor) => {
           'text-align': 'center',
           'text-decoration': 'none'
         },
-        content: 'Button Text'
-      }
+        content: 'Button Text',
+        traits:[
+          {
+            type:'text',
+            name: 'href',
+            label: 'Href',
+          }
+        ]
+      },
+
     },
     view: {
       init() {

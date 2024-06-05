@@ -55,7 +55,7 @@ const plugin: Plugin = (editor: Editor) => {
       defaults: {
         type: BuilderBlock.DIV.id,
         name: BuilderComponent.CAROUSEL_SWIPER_ITEM.name,
-        classes: [BuilderComponent.CAROUSEL_SWIPER_ITEM.class, 'swiper'],
+        classes: [BuilderComponent.CAROUSEL_SWIPER_ITEM.class],
         components: [{ type: BuilderComponent.CAROUSEL_WRAPPER.id }],
         attributes: {
           'data-ca': BuilderComponent.CAROUSEL_SWIPER_ITEM.id
@@ -72,8 +72,7 @@ const plugin: Plugin = (editor: Editor) => {
         type: BuilderBlock.DIV.id,
         name: BuilderComponent.CAROUSEL_SWIPER_CONTAINER.name,
         classes: [
-          BuilderComponent.CAROUSEL_SWIPER_CONTAINER.class,
-          'swiper-container'
+          BuilderComponent.CAROUSEL_SWIPER_CONTAINER.class
         ],
         components: [{ type: BuilderComponent.CAROUSEL_SWIPER_ITEM.id }],
         attributes: {
@@ -91,13 +90,12 @@ const plugin: Plugin = (editor: Editor) => {
         type: BuilderComponent.DIV.id,
         name: BuilderComponent.CAROUSEL_LEFT_BUTTON.name,
         classes: [
-          BuilderComponent.CAROUSEL_LEFT_BUTTON.class,
-          'swiper-button-prev'
+          BuilderComponent.CAROUSEL_LEFT_BUTTON.class
         ],
         components: [
           {
             type: BuilderComponent.BUTTON.id,
-            classes: ['glide__arrow', 'glide__arrow--left'],
+            classes: [BuilderComponent.CAROUSEL_GLIDE_ARROW.class, `${BuilderComponent.CAROUSEL_GLIDE_ARROW.class}--left`],
             content: exportedSVG['carouselLeftButton']
           }
         ],
@@ -116,12 +114,11 @@ const plugin: Plugin = (editor: Editor) => {
         type: BuilderComponent.DIV.id,
         name: BuilderComponent.CAROUSEL_RIGHT_BUTTON.name,
         classes: [
-          BuilderComponent.CAROUSEL_RIGHT_BUTTON.class,
-          'swiper-button-next'
+          BuilderComponent.CAROUSEL_RIGHT_BUTTON.class
         ],
         components: {
           type: BuilderComponent.BUTTON.id,
-          classes: ['glide__arrow', 'glide__arrow--right'],
+          classes: [BuilderComponent.CAROUSEL_GLIDE_ARROW.class, `${BuilderComponent.CAROUSEL_GLIDE_ARROW.class}--right`],
           content: exportedSVG['carouselRightButton']
         },
         attributes: {
@@ -139,8 +136,8 @@ const plugin: Plugin = (editor: Editor) => {
         styles: carousel.styles,
         components: [
           {
-            tagName: BuilderBlock.DIV.id,
-            classes: ['container'],
+            name: BuilderComponent.CAROUSEL_CONTAINER.name,
+            classes: [BuilderComponent.CAROUSEL_CONTAINER.class],
             components: [
               { type: BuilderComponent.CAROUSEL_SWIPER_CONTAINER.id },
               { type: BuilderComponent.CAROUSEL_LEFT_BUTTON.id },
@@ -151,7 +148,7 @@ const plugin: Plugin = (editor: Editor) => {
         attributes: {
           'data-ca': BuilderComponent.CAROUSEL.id
         },
-        classes: [BuilderComponent.CAROUSEL.class, 'block-carousel'],
+        classes: [BuilderComponent.CAROUSEL.class],
         traits: [
           {
             label: 'Slides Per Group',

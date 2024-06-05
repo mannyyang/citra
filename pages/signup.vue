@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { FormSubmitEvent } from '#ui/types'
-import { z } from 'zod'
+import type { FormSubmitEvent } from '#ui/types';
+import { z } from 'zod';
 
-const user = useUser()
+const user = useDirectusUser()
 if (user.value)
   await navigateTo('/app')
 

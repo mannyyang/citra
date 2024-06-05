@@ -13,15 +13,18 @@ import pluginBlockQuote from './block-quote';
 import pluginButton from './button';
 import pluginCarousel from './carousel';
 import pluginColumn from './column';
+import pluginCopyPaste from './copy-paste';
 import pluginDevices from './devices';
 import pluginDiv from './div';
 import pluginFlipCards from './flip-cards';
 import pluginFlipCards3D from './flip-cards-3d';
 import pluginFonts from './fonts';
+import pluginHeading from './heading';
 import pluginImage from './image';
 import pluginLink from './link';
 import pluginList from './list';
 import pluginListItem from './list-item';
+import pluginParagraph from './paragraph';
 import pluginSocialCards from './social-cards';
 import pluginText from './text';
 import pluginVideo from './video';
@@ -42,14 +45,16 @@ const plugins = [
   }),
   parserPostCSS,
   pluginStyleBg,
+  pluginCopyPaste,
 
-  // blocks
+  pluginHeading,
+  pluginParagraph,
   pluginDiv,
   pluginLink,
   pluginList,
   pluginListItem,
   pluginText,
-  // pluginHeading,
+  
   pluginColumn,
   pluginButton,
   pluginBlockQuote,

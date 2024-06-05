@@ -18,7 +18,7 @@ const plugin: Plugin = (editor) => {
         classes: [BuilderComponent.DIV.class],
         tagName: 'div',
         attributes: {
-          'data-ca': BuilderComponent.DIV.id
+          'data-ntvb': BuilderComponent.DIV.id
         },
         style: {
           padding: '20px'

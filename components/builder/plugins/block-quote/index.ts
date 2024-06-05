@@ -13,7 +13,7 @@ const plugin: Plugin = (editor: Editor) => {
     model: {
       defaults: {
         classes: [BuilderComponent.BLOCK_QUOTE.class],
-        tagName: 'div',
+        tagName: 'blockquote',
         droppable: false,
         style: {
           'white-space': 'pre-wrap',

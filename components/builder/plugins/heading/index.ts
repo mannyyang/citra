@@ -2,15 +2,25 @@ import type { Editor, Plugin } from 'grapesjs';
 import { exportedSVG } from '../icons';
 
 import { BuilderBlock, BuilderCategory, BuilderComponent } from '../enum';
-import { isComponent } from '../util';
+
+const H_TAGS = [
+  { id: 'h1', label: 'H1' },
+  { id: 'h2', label: 'H2' },
+  { id: 'h3', label: 'H3' },
+  { id: 'h4', label: 'H4' },
+  { id: 'h5', label: 'H5' },
+  { id: 'h6', label: 'H6' },
+]
 
 const plugin: Plugin = (editor: Editor) => {
   const Components = editor.Components;
   const BlockManager = editor.BlockManager;
 
   Components.addType(BuilderComponent.HEADING.id, {
-    isComponent: (el: HTMLElement) =>
-      isComponent(el, BuilderComponent.HEADING.id),
+    isComponent: (el) =>
+      el.tagName
+        ? H_TAGS.some(tag => tag.id === el.tagName.toLowerCase())
+        : false,
     extend: 'text',
     model: {
       defaults: {
@@ -25,8 +35,17 @@ const plugin: Plugin = (editor: Editor) => {
         content: 'Heading Text',
         attributes: {
           'data-ca': BuilderComponent.HEADING.id
-        }
-      }
+        },
+        traits: [
+          {
+            type: 'select',
+            name: 'tagName',
+            label: 'Head',
+            options: H_TAGS,
+            changeProp: true
+          }
+        ]
+      },
     }
   });
 

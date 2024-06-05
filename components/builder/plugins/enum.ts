@@ -27,6 +27,11 @@ export const BuilderComponent = {
     name: 'Text',
     class: `${CLASS_PREFIX}-text`
   },
+  LINK: {
+    id: 'n-link',
+    name: 'Link',
+    class: `${CLASS_PREFIX}-link`
+  },
   BUTTON: {
     id: 'n-button',
     name: 'Button',
@@ -47,6 +52,11 @@ export const BuilderComponent = {
     name: 'Block Quote',
     class: `${CLASS_PREFIX}-block-quote`
   },
+  PARAGRAPH: {
+    id: 'n-paragraph',
+    name: 'Paragraph',
+    class: `${CLASS_PREFIX}-paragraph`
+  },
   CUSTOM_BLOCK: {
     id: 'n-custom-block',
     name: 'Custom Block',
@@ -62,15 +72,83 @@ export const BuilderComponent = {
     name: '3D Flip Cards',
     class: `${CLASS_PREFIX}-flip-cards-3d`
   },
+  FLIP_CARDS_3D_CONTAINER: {
+    class: `${CLASS_PREFIX}-flip-cards-3d-container`
+  },
+  FLIP_CARDS_3D_WRAPPER: {
+    class: `${CLASS_PREFIX}-flip-cards-3d-wrapper`
+  },
+  FLIP_CARD_3D: {
+    class: `${CLASS_PREFIX}-flip-card-3d`
+  },
+  FLIP_CARD_3D_CONTENT: {
+    class: `${CLASS_PREFIX}-flip-card-3d-content`
+  },
+  FLIP_CARD_3D_FRONT: {
+    class: `${CLASS_PREFIX}-flip-card-3d-front`
+  },
+  FLIP_CARD_3D_BACK: {
+    class: `${CLASS_PREFIX}-flip-card-3d-back`
+  },
+  FLIP_CARD_3D_INNER: {
+    class: `${CLASS_PREFIX}-flip-card-3d-inner`
+  },
+  FLIP_CARD_3D_TITLE: {
+    class: `${CLASS_PREFIX}-flip-card-3d-title`
+  },
+  FLIP_CARD_3D_IMAGE_CONTAINER: {
+    class: `${CLASS_PREFIX}-flip-card-3d-image-container`
+  },
+  FLIP_CARD_3D_DETAIL: {
+    class: `${CLASS_PREFIX}-flip-card-3d-detail`
+  },
+  FLIP_CARD_3D_INFO: {
+    class: `${CLASS_PREFIX}-flip-card-3d-info`
+  },
+  FLIP_CARD_3D_DESCRIPTION: {
+    class: `${CLASS_PREFIX}-flip-card-3d-description`
+  },
+  FLIP_CARD_3D_LOCATION: {
+    class: `${CLASS_PREFIX}-flip-card-3d-location`
+  },
+  FLIP_CARD_3D_PRICE: {
+    class: `${CLASS_PREFIX}-flip-card-3d-price`
+  },
+  FLIP_CARD_3D_RETURN_BTN: {
+    class: `${CLASS_PREFIX}-flip-card-3d-return-btn`
+  },
   FLIP_CARDS: {
     id: 'flip-cards',
     name: 'Flip Cards',
     class: `${CLASS_PREFIX}-flip-cards`
   },
+  FILP_CARDS_CONTAINER: {
+    class: `${CLASS_PREFIX}-flip-cards-container`
+  },
+  FILP_CARDS_SECTION: {
+    class: `${CLASS_PREFIX}-flip-card-section`
+  },
+  FILP_CARD_SIDE_CONFIG: {
+    class: `${CLASS_PREFIX}-flip-card-side-config`
+  },
+  FILP_CARD_SIDE_CONFIG_BTN: {
+    class: `${CLASS_PREFIX}-flip-card-side-config-btn`
+  },
+  FLIP_CARD: {
+    class: `${CLASS_PREFIX}-flip-card`
+  },
+  FLIP_CARD_SIDE: {
+    class: `${CLASS_PREFIX}-flip-card-side`
+  },
   CAROUSEL: {
     id: 'carousel',
     name: 'Carousel',
     class: `${CLASS_PREFIX}-carousel`
+  },
+  CAROUSEL_CONTAINER: {
+    id: 'carousel-container',
+    name: 'Carousel Container',
+    class: `${CLASS_PREFIX}-carousel-container`
   },
   CAROUSEL_IMAGE: {
     id: 'carousel-image',
@@ -102,10 +180,31 @@ export const BuilderComponent = {
     name: 'Carousel Right Button',
     class: `${CLASS_PREFIX}-carousel-right-button`
   },
+  CAROUSEL_GLIDE_ARROW: {
+    class: `${CLASS_PREFIX}-carousel-glide-arrow`
+  },
   SOCIAL_CARDS: {
     id: 'social-cards',
     name: 'Social Cards',
     class: `${CLASS_PREFIX}-social-cards`
+  },
+  SOCIAL_CARDS_CONTAINER: {
+    class: `${CLASS_PREFIX}-social-cards-container`
+  },
+  SOCIAL_CARDS_WRAPPER: {
+    class: `${CLASS_PREFIX}-social-cards-wrapper`
+  },
+  SOCIAL_CARD: {
+    class: `${CLASS_PREFIX}-social-card`
+  },
+  SOCIAL_CARD_FACE: {
+    class: `${CLASS_PREFIX}-social-card-face`
+  },
+  SOCIAL_CARD_CONTENT: {
+    class: `${CLASS_PREFIX}-social-card-content`
+  },
+  SOCIAL_CARD_CONTENT_ICON: {
+    class: `${CLASS_PREFIX}-social-card-content-icon`
   },
   USER_BLOCKS: {
     id: 'block-adder',
@@ -121,7 +220,7 @@ export const BuilderComponent = {
     id: 'youtube',
     name: 'Youtube',
     class: `${CLASS_PREFIX}-youtube`
-  }
+  },
 };
 
 export const BuilderBlock = {
@@ -152,6 +251,10 @@ export const BuilderBlock = {
   BLOCK_QUOTE: {
     id: 'blockQuote',
     name: 'Block Quote'
+  },
+  PARAGRAPH: {
+    id: 'paragraph',
+    name: 'Paragraph'
   },
   CUSTOM_BLOCK: {
     id: 'customBlock',

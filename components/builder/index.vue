@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import type { EditorConfig } from 'grapesjs';
 import plugins from './plugins';
-import { createDirectus, rest, uploadFiles } from '@directus/sdk';
 
 const canvas: any = ref(null)
-const directus = createDirectus(useRuntimeConfig().public.directusPublicUrl).with(rest())
+const loading = ref(false);
 
 const options: EditorConfig = {
   container: canvas,
@@ -14,15 +13,21 @@ const options: EditorConfig = {
   plugins,
   selectorManager: {
     componentFirst: true
-  }  
+  },
+  assetManager: {
+    // Upload endpoint, set `false` to disable upload, default `false`
+    upload: '/api/file/upload',
+
+    // The name used in POST to pass uploaded files, default: `'files'`
+    uploadName: 'citra_files',
+  },
 }
 
 const grapes = useGrapes(options)
-
 grapes.onInit((editor) => {
   // Do stuff on load
-  editor.on('load', function () {        
-    
+  editor.on('load', function () {
+
     // load default fonts
     const fontProperty = editor.StyleManager.getProperty(
       'typography',
@@ -36,27 +41,59 @@ grapes.onInit((editor) => {
     });
 
     fontProperty?.set('default', `Lato, Helvetica, Arial, sans-serif`);
-    fontProperty?.set('defaults', `Lato, Helvetica, Arial, sans-serif`);   
-        
+    fontProperty?.set('defaults', `Lato, Helvetica, Arial, sans-serif`);
+
     const openBlocksBtn = editor.Panels.getButton('views', 'open-blocks');
     openBlocksBtn && openBlocksBtn.set('active', 1);
   });
 
-  editor.on('asset:add', (asset)=>{ 
-    const title = asset.getFilename();
-    const file = asset.getSrc();
-    const type =asset.getType();
-    const formData = new FormData();
-    formData.append('file', file);    
-    formData.append('filename_disk', title);
-    formData.append('filename_download', title);
-    formData.append('type', type);
-    directus.request(uploadFiles(formData)).then(res=>{
-      console.log(res);
-      // editor.AssetManager.add({{src: res.url}});
-    })
-     
+  editor.RichTextEditor.remove('bold')
+  editor.RichTextEditor.add('bold', {
+    name: 'bold',
+    icon: '<strong>B</strong>',
+    result: rte => {
+      const content = rte.selection();
+      const active = rte.doc.queryCommandState('bold');
+      if (active === false) {
+        rte.insertHTML(`<strong>${rte.selection()}</strong>`)
+      }
+    }
   })
+
+  editor.RichTextEditor.remove('italic')
+  editor.RichTextEditor.add('italic', {
+    name: 'italic',
+    icon: '<em>I</em>',
+    result: rte => {
+      const content = rte.selection();
+      const active = rte.doc.queryCommandState('italic');
+      if (active === false) {
+        rte.insertHTML(`<em>${rte.selection()}</em>`)
+      }
+    }
+  })
+
+  editor.RichTextEditor.remove('strikethrough')
+  editor.RichTextEditor.add('strikethrough', {
+    name: 'strikethrough',
+    icon: '<s>S</s>',
+    result: rte => {
+      const content = rte.selection();
+      const active = rte.doc.queryCommandState('strikethrough');
+      if (active === false) {
+        rte.insertHTML(`<s>${rte.selection()}</s>`)
+      }
+    }
+  })
+
+  editor.on('asset:upload:start', () => {
+    loading.value = true;
+  });
+
+  editor.on('asset:upload:end', () => {
+    loading.value = false;
+  });
+
 });
 
 // Initialize GrapesJS
@@ -67,7 +104,7 @@ watch(
 
     grapes.init({
       ...options,
-      container: newVal  
+      container: newVal
     });
   },
   { immediate: true }
@@ -75,10 +112,14 @@ watch(
 
 </script>
 
-<template>  
+<template>
   <div class="w-full text-right min-h-full">
-    <div class="ca-builder flex w-full h-full">  
-      <div ref="canvas" class="flex-1" />
+    <div :class="loading? 'ca-builder flex w-full h-full pointer-events-none': 'ca-builder flex w-full h-full'">
+      <div ref="canvas" class="flex-1" />      
+    </div>
+    <div v-show="loading" role="status" class="absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2 loading-spinner">
+      <svg aria-hidden="true" class="w-20 h-20 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/><path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/></svg>
+      <span class="sr-only">Loading...</span>
     </div>
   </div>
 </template>
@@ -121,6 +162,10 @@ watch(
   --gjs-placeholder-background-color: var(--gjs-color-green);
   --gjs-canvas-top: 40px;
   --gjs-flex-item-gap: 5px;
+}
+
+.loading-spinner {
+  z-index: 100
 }
 
 .ca-builder {
@@ -299,17 +344,17 @@ watch(
   /* ADM-17588 eye icon has black background color */
   .gjs-off-prv.fa-eye-slash {
     background-color: unset;
-  } 
+  }
 }
 
 .panel__basic-actions {
-  z-index: 10; 
-  left: 120px; 
-  background-color: #fff; 
-  color: #000; 
-  border: 1px solid #ccc; 
-  border-radius: 5px; 
-  padding: 2px 10px 2px 10px; 
+  z-index: 10;
+  left: 120px;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 2px 10px 2px 10px;
   margin-top: 2px;
 }
 
@@ -347,19 +392,19 @@ watch(
         background-color: #E7E9EB;
         color: #000;
       }
-    }  
+    }
   }
 
   .silex-form__element {
     h2 {
-      font-size: 1.5em;        
+      font-size: 1.5em;
     }
 
     .silex-list__item__header {
-        h4 {
-          font-size: 1.3em
-        }
+      h4 {
+        font-size: 1.3em
       }
+    }
 
     .silex-list__item__body {
       fieldset {
@@ -380,8 +425,10 @@ watch(
         }
       }
     }
+
     .silex-list__item__footer {
       text-align: right;
+
       .silex-button {
         margin-top: 10px;
         background-color: #E7E9EB;
@@ -397,7 +444,5 @@ watch(
       padding: 5px;
     }
   }
-}  
-
-
+}
 </style>

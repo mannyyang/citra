@@ -16,6 +16,12 @@ PNPM is used as the script and package manager. Here's the scripts to help with 
 - `pnpm run docker:dev`: Run directus container.
 - `pnpm run docker:down`: Stops directus container.
 
+# Authentication
+
+Authentication is handled by Lucia but also synced with Directus. This means
+that you can use the Directus API to manage users and roles. Everytime a new
+user is created in Lucia, a new user is created in Directus.
+
 --
 
 # UseNuxt SaaS Starter Project 🚀
